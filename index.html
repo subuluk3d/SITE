@@ -1,163 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Subuluk 3D: impressão 3D, produtos personalizados, chaveiros, displays e soluções para negócios em Caraguatatuba e região.">
-  <title>Subuluk 3D | Ideias que ganham forma</title>
-  <style>
-    :root { --bg:#0b0d0b; --panel:#151915; --green:#39ff14; --muted:#aab2a8; --line:#293129; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
-    body { font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:#f5f7f4; line-height:1.6; }
-    a { color:inherit; text-decoration:none; }
-    .wrap { width:min(1120px,90%); margin:auto; }
-    header { position:sticky; top:0; z-index:10; background:rgba(11,13,11,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .logo { font-weight:900; letter-spacing:2px; font-size:1.35rem; color:var(--green); }
-    .logo span { color:#fff; }
-    nav { display:flex; gap:26px; color:#d7ddd5; font-size:.95rem; }
-    nav a:hover { color:var(--green); }
-    .hero { padding:88px 0 76px; background:radial-gradient(ellipse at 80% 20%,rgba(57,255,20,.13),transparent 38%),linear-gradient(180deg,#101510,#0b0d0b); }
-    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
-    .eyebrow { color:var(--green); text-transform:uppercase; letter-spacing:3px; font-size:.78rem; font-weight:bold; }
-    h1 { font-size:clamp(2.7rem,6vw,5rem); line-height:1.03; margin:18px 0 22px; letter-spacing:-2px; }
-    h1 span,.green { color:var(--green); }
-    .hero p { color:var(--muted); max-width:560px; font-size:1.12rem; }
-    .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
-    .btn { display:inline-block; padding:13px 21px; border-radius:7px; font-weight:bold; border:1px solid var(--green); transition:.2s; }
-    .btn.primary { background:var(--green); color:#071006; }
-    .btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(57,255,20,.15); }
-    .hero-photo { width:100%; height:390px; object-fit:cover; border-radius:18px; border:1px solid #354035; box-shadow:0 20px 60px #0008; }
-    section { padding:76px 0; }
-    .section-head { max-width:700px; margin-bottom:34px; }
-    .section-head h2 { font-size:clamp(2rem,4vw,3rem); margin:10px 0; }
-    .section-head p { color:var(--muted); }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-    .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; transition:.2s; }
-    .card:hover { transform:translateY(-5px); border-color:#4b7845; }
-    .card img { width:100%; height:225px; object-fit:cover; display:block; }
-    .card-body { padding:22px; }
-    .card h3 { font-size:1.2rem; margin-bottom:9px; }
-    .card p { color:var(--muted); font-size:.95rem; }
-    .about { background:#101510; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
-    .about h2 { font-size:clamp(2rem,4vw,3rem); margin:10px 0 18px; }
-    .about p { color:var(--muted); margin-bottom:14px; }
-    .benefits { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .benefit { padding:18px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
-    .benefit strong { display:block; color:var(--green); margin-bottom:5px; }
-    .process { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .step { padding:24px; background:var(--panel); border:1px solid var(--line); border-radius:12px; }
-    .number { color:var(--green); font-size:1.8rem; font-weight:900; }
-    .step p { color:var(--muted); margin-top:7px; }
-    .contact { text-align:center; background:radial-gradient(ellipse at center,rgba(57,255,20,.12),transparent 60%); }
-    .contact h2 { font-size:clamp(2rem,4vw,3.2rem); margin:12px 0; }
-    .contact p { color:var(--muted); max-width:620px; margin:0 auto; }
-    .note { color:#8c978a; font-size:.78rem; margin-top:20px; }
-    footer { border-top:1px solid var(--line); padding:28px 0; color:#879087; font-size:.9rem; }
-    .footer-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-    @media(max-width:800px) { .hero-grid,.about-grid { grid-template-columns:1fr; } .hero-photo { height:300px; } .cards { grid-template-columns:1fr 1fr; } }
-    @media(max-width:560px) { .nav { flex-direction:column; padding:17px 0; } nav { gap:15px; font-size:.88rem; } .hero { padding:62px 0; } .cards,.process,.benefits { grid-template-columns:1fr; } section { padding:58px 0; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Subuluk 3D: impressão 3D e personalização de chaveiros, displays, plaquinhas, organizadores e peças sob medida em Caraguatatuba e região.">
+<meta name="theme-color" content="#0b0d0b">
+<title>Subuluk 3D | Impressão 3D e Personalização em Caraguatatuba</title>
+<style>
+:root{--bg:#090c09;--panel:#131913;--panel2:#1a211a;--green:#39ff14;--text:#f4f7f2;--muted:#aab4a8;--line:#2b372b;--max:1160px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:90px}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{width:min(var(--max),90%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(9,12,9,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{font-weight:950;font-size:1.35rem;letter-spacing:2px;color:var(--green)}.logo span{color:#fff}.navlinks{display:flex;gap:25px;color:#d7dfd5;font-size:.93rem}.navlinks a:hover,.footerlinks a:hover{color:var(--green)}
+.hero{padding:88px 0 78px;background:radial-gradient(ellipse at 83% 25%,rgba(57,255,20,.15),transparent 36%),linear-gradient(135deg,#111811,#090c09)}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center}.tag{font-size:.76rem;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;color:var(--green)}h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:1.02;letter-spacing:-2.5px;margin:18px 0 24px}h1 em,.green{font-style:normal;color:var(--green)}.lead{max-width:590px;color:#c0c9be;font-size:1.13rem}.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border:1px solid var(--green);border-radius:7px;font-weight:800;transition:.2s}.btn.primary{background:var(--green);color:#081007}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px #39ff1425}.hero-image{width:100%;height:420px;object-fit:cover;border-radius:18px;border:1px solid #425142;box-shadow:0 24px 65px #0009}
+section{padding:78px 0}.section-head{max-width:730px;margin-bottom:34px}.section-head h2,.about h2,.contact h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;margin:12px 0}.section-head p,.muted{color:var(--muted)}.catalog-intro{display:flex;justify-content:space-between;align-items:end;gap:25px}.catalog-intro .section-head{margin-bottom:34px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.22s}.product:hover{transform:translateY(-5px);border-color:#4c8144}.product img{width:100%;height:235px;object-fit:cover;background:#202820}.product-copy{padding:21px}.product-copy .type{font-size:.72rem;color:var(--green);text-transform:uppercase;letter-spacing:1.6px;font-weight:800}.product h3{font-size:1.18rem;margin:5px 0 8px}.product p{font-size:.93rem;color:var(--muted)}.product .more{display:inline-block;margin-top:14px;color:var(--green);font-weight:800;font-size:.9rem}
+.disclaimer{font-size:.77rem;color:#899489;margin-top:18px}.band{background:#101710;border-block:1px solid var(--line)}.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}.about p{color:#b7c0b5;margin:13px 0}.about-panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:28px}.about-panel h3{margin-bottom:14px;color:var(--green)}.about-panel ul{padding-left:20px;color:#c1c9bf}.about-panel li{margin:9px 0}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{padding:23px;background:var(--panel);border:1px solid var(--line);border-radius:12px}.service .symbol{font-size:1.55rem}.service h3{margin:8px 0}.service p{color:var(--muted);font-size:.94rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:12px}.step b{font-size:2rem;color:var(--green)}.step p{color:var(--muted);margin-top:7px}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:15px}.faq details{padding:19px 21px;background:var(--panel);border:1px solid var(--line);border-radius:10px}.faq summary{cursor:pointer;font-weight:800}.faq details p{color:var(--muted);padding-top:12px}
+.contact{text-align:center;background:radial-gradient(ellipse at center,rgba(57,255,20,.12),transparent 60%)}.contact p{max-width:680px;margin:0 auto;color:var(--muted)}.contact .buttons{justify-content:center}.contact-placeholder{margin-top:20px!important;font-size:.83rem;color:#899489!important}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#929d90;font-size:.88rem}.footer-top{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap}.footerlinks{display:flex;gap:18px;flex-wrap:wrap}.copyright{margin-top:20px;font-size:.78rem;color:#707b70}
+@media(max-width:850px){.hero-grid,.about-grid{grid-template-columns:1fr}.hero-image{height:330px}.grid{grid-template-columns:repeat(2,1fr)}.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.nav{flex-direction:column;padding:15px 0}.navlinks{gap:13px;flex-wrap:wrap;justify-content:center;font-size:.83rem}.hero{padding:60px 0}.hero-image{height:260px}section{padding:58px 0}.grid,.services,.steps,.faq{grid-template-columns:1fr}.catalog-intro{display:block}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="logo" href="#inicio">SUBULUK <span>3D</span></a>
-      <nav aria-label="Navegação principal">
-        <a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#sobre">Sobre</a><a href="#contato">Orçamento</a>
-      </nav>
-    </div>
-  </header>
+<header><div class="wrap nav"><a class="logo" href="#inicio">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#servicos">Soluções</a><a href="#sobre">Sobre nós</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></nav></div></header>
+<main>
+<section class="hero" id="inicio"><div class="wrap hero-grid"><div><div class="tag">Impressão 3D • Caraguatatuba e região</div><h1>Ideias que ganham <em>forma.</em></h1><p class="lead">Peças personalizadas, produtos criativos e soluções em impressão 3D para o dia a dia, presentes, marcas e negócios. Conte sua ideia e vamos estudar como transformar em uma peça.</p><div class="buttons"><a class="btn primary" href="#catalogo">Conhecer o catálogo</a><a class="btn" href="#contato">Solicitar orçamento</a></div></div><img class="hero-image" src="https://i.etsystatic.com/46610869/r/il/082a02/6361273071/il_1588xN.6361273071_l217.jpg" alt="Exemplo ilustrativo de display de mesa com QR Code e NFC"></div></section>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Impressão 3D • Caraguatatuba e região</div>
-          <h1>Ideias que<br>ganham <span>forma.</span></h1>
-          <p>Criamos peças personalizadas e soluções em impressão 3D para pessoas, marcas e negócios. Da ideia ao produto, com atenção aos detalhes.</p>
-          <div class="actions">
-            <a class="btn primary" href="#produtos">Explorar produtos</a>
-            <a class="btn" href="#contato">Pedir orçamento</a>
-          </div>
-        </div>
-        <img class="hero-photo" src="https://homeharmony.ro/cdn/shop/files/20241122_103244.jpg?v=1774217514" alt="Exemplo de display de mesa com QR Code e NFC impresso em 3D">
-      </div>
-    </section>
+<section id="catalogo"><div class="wrap"><div class="section-head"><div class="tag">Catálogo de possibilidades</div><h2>Uma ideia. <span class="green">Muitas possibilidades.</span></h2><p>Explore algumas categorias de produtos que podem ser desenvolvidas em impressão 3D. Formatos, dimensões, cores e personalização são definidos conforme cada pedido e a viabilidade do projeto.</p></div>
+<div class="grid">
+<article class="product"><img src="https://www.ikids.co.za/cdn/shop/files/92A72D4C-92A8-4585-997A-E5FB0745C08B.webp?v=1776952715&width=1024" alt="Chaveiros personalizados com nomes - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Personalizados</span><h3>Chaveiros com nome e marca</h3><p>Ideias para lembranças, brindes, divulgação de empresas, eventos e presentes personalizados.</p><a class="more" href="#contato">Consultar personalização →</a></div></article>
+<article class="product"><img src="https://i.etsystatic.com/46610869/r/il/082a02/6361273071/il_1588xN.6361273071_l217.jpg" alt="Display de mesa com QR Code e NFC - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Para empresas</span><h3>Displays QR Code e NFC</h3><p>Displays de balcão para direcionar clientes a cardápios, avaliações, redes sociais e páginas digitais.</p><a class="more" href="#contato">Consultar projeto →</a></div></article>
+<article class="product"><img src="https://i.etsystatic.com/7818185/r/il/5d723c/7613747955/il_1080xN.7613747955_bfs9.jpg" alt="Organizador modular de mesa impresso em 3D - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Organização</span><h3>Organizadores e suportes</h3><p>Peças para organizar mesas, acessórios, ferramentas e espaços de trabalho.</p><a class="more" href="#contato">Consultar modelo →</a></div></article>
+<article class="product"><img src="https://i.etsystatic.com/10574163/r/il/826c64/2801546922/il_570xN.2801546922_lvi8.jpg" alt="Chaveiros temáticos de controle de videogame - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Presentes e coleções</span><h3>Chaveiros temáticos</h3><p>Pequenos objetos inspirados em hobbies, esportes, profissões e temas especiais.</p><a class="more" href="#contato">Criar uma ideia →</a></div></article>
+<article class="product"><img src="https://i.etsystatic.com/61989245/r/il/036fe8/7747097019/il_794xN.7747097019_mo0z.jpg" alt="Conjunto de organizadores modulares impressos em 3D - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Casa e escritório</span><h3>Acessórios para ambientes</h3><p>Porta-objetos, bandejas, suportes e itens funcionais para personalizar ambientes.</p><a class="more" href="#contato">Consultar possibilidade →</a></div></article>
+<article class="product"><img src="https://i.etsystatic.com/50792594/r/il/f66087/7648177952/il_794xN.7648177952_85zy.jpg" alt="Organizador de mesa preto impresso em 3D - imagem ilustrativa" loading="lazy"><div class="product-copy"><span class="type">Sob medida</span><h3>Peças e projetos exclusivos</h3><p>Suportes, adaptadores, reposições e objetos desenvolvidos a partir de uma necessidade específica.</p><a class="more" href="#contato">Descrever meu projeto →</a></div></article>
+</div><p class="disclaimer">Aviso: as fotografias desta demonstração são referências de produtos encontrados online e pertencem aos respectivos autores ou vendedores. Elas não são apresentadas como trabalhos realizados pela Subuluk 3D. O catálogo definitivo deve usar fotos próprias ou imagens com licença de uso confirmada.</p></div></section>
 
-    <section id="produtos">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">O que fazemos</div>
-          <h2>Produtos que conectam <span class="green">criatividade e utilidade.</span></h2>
-          <p>Conheça algumas possibilidades. Podemos adaptar formatos, medidas, nomes e identidade visual conforme cada projeto.</p>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <img src="https://www.ikids.co.za/cdn/shop/files/92A72D4C-92A8-4585-997A-E5FB0745C08B.webp?v=1776952715&width=1024" alt="Exemplos de chaveiros personalizados impressos em 3D" loading="lazy">
-            <div class="card-body"><h3>Chaveiros personalizados</h3><p>Peças para lembranças, brindes, divulgação de marcas e presentes com a sua identidade.</p></div>
-          </article>
-          <article class="card">
-            <img src="https://c.p02.c4a.im/images/item/20018584/9faef14b0d61eb13ca5a0de0e9312bed6aff13fe59c7985cadf52a30df5fc8fc?d=500x500" alt="Exemplo de display de mesa com QR Code e NFC" loading="lazy">
-            <div class="card-body"><h3>Displays e plaquinhas</h3><p>Expositores de mesa, placas com QR Code e soluções para facilitar o acesso aos seus canais digitais.</p></div>
-          </article>
-          <article class="card">
-            <img src="https://d1mhq73dsagkr8.cloudfront.net/media/product/-/_/1763690939_-.jpg?o=1" alt="Exemplo de organizadores personalizados impressos em 3D" loading="lazy">
-            <div class="card-body"><h3>Peças sob medida</h3><p>Organizadores, suportes, acessórios e projetos desenvolvidos de acordo com sua necessidade.</p></div>
-          </article>
-        </div>
-        <p class="note">Imagens ilustrativas encontradas online, usadas apenas para demonstrar o estilo da vitrine. Não representam trabalhos próprios da Subuluk 3D.</p>
-      </div>
-    </section>
+<section class="band" id="servicos"><div class="wrap"><div class="section-head"><div class="tag">Como podemos ajudar</div><h2>Soluções em 3D para <span class="green">pessoas e negócios.</span></h2><p>A impressão 3D permite criar objetos personalizados em diferentes formatos. Cada solicitação é avaliada individualmente antes do orçamento.</p></div><div class="services">
+<div class="service"><div class="symbol">✳</div><h3>Personalização</h3><p>Nomes, textos, símbolos e identidade visual aplicados a produtos, conforme as possibilidades técnicas.</p></div>
+<div class="service"><div class="symbol">▣</div><h3>Materiais de divulgação</h3><p>Chaveiros, lembranças, displays e peças para apresentar marcas e facilitar o contato com clientes.</p></div>
+<div class="service"><div class="symbol">⌂</div><h3>Organização e utilidades</h3><p>Suportes, organizadores e acessórios funcionais para casa, escritório e comércio.</p></div>
+<div class="service"><div class="symbol">⚙</div><h3>Peças sob demanda</h3><p>Avaliação de peças específicas, reposições e soluções para necessidades do cotidiano.</p></div>
+<div class="service"><div class="symbol">◇</div><h3>Pequenas séries</h3><p>Produção de mais de uma unidade, com análise de quantidade, prazo e custo por projeto.</p></div>
+<div class="service"><div class="symbol">✎</div><h3>Desenvolvimento de ideias</h3><p>Conversa inicial para entender a aplicação, referências, medidas e possibilidades de fabricação.</p></div>
+</div></div></section>
 
-    <section class="about" id="sobre">
-      <div class="wrap about-grid">
-        <div>
-          <div class="eyebrow">Sobre a Subuluk</div>
-          <h2>Mais que impressão. <span class="green">Soluções em 3D.</span></h2>
-          <p>A Subuluk 3D transforma ideias em objetos físicos por meio da impressão 3D e da personalização.</p>
-          <p>Atendemos Caraguatatuba e região, criando desde pequenas peças personalizadas até produtos que ajudam empresas a apresentar sua marca e atender melhor seus clientes.</p>
-        </div>
-        <div class="benefits">
-          <div class="benefit"><strong>Personalização</strong><span>Seu projeto, com a sua identidade.</span></div>
-          <div class="benefit"><strong>Desenvolvimento</strong><span>Peças pensadas para cada necessidade.</span></div>
-          <div class="benefit"><strong>Utilidade</strong><span>Produtos para o dia a dia e para negócios.</span></div>
-          <div class="benefit"><strong>Atendimento regional</strong><span>Caraguatatuba e cidades próximas.</span></div>
-        </div>
-      </div>
-    </section>
+<section id="sobre"><div class="wrap about-grid"><div class="about"><div class="tag">Quem somos</div><h2>Somos a <span class="green">Subuluk 3D.</span></h2><p>A Subuluk 3D é um projeto de impressão 3D e personalização com atuação voltada a Caraguatatuba e região, no litoral norte de São Paulo.</p><p>Nosso foco é explorar a fabricação digital para transformar ideias em objetos úteis, personalizados e com identidade. Trabalhamos com propostas que vão de chaveiros e brindes a displays para negócios, organizadores e peças desenvolvidas sob demanda.</p><p>Cada projeto começa entendendo o que a pessoa precisa. A partir daí, avaliamos o formato, as dimensões, o material, a quantidade e os detalhes de produção para apresentar uma proposta adequada.</p></div><aside class="about-panel"><h3>O que orienta nosso trabalho</h3><ul><li><strong>Utilidade:</strong> pensar no uso real da peça.</li><li><strong>Personalização:</strong> adaptar o projeto à ideia e à identidade do cliente.</li><li><strong>Transparência:</strong> alinhar possibilidades, custos e prazos antes da produção.</li><li><strong>Desenvolvimento:</strong> buscar soluções viáveis para cada necessidade.</li><li><strong>Proximidade:</strong> atendimento direcionado a Caraguatatuba e cidades próximas.</li></ul></aside></div></section>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Como funciona</div>
-          <h2>Do seu pedido à <span class="green">peça pronta.</span></h2>
-        </div>
-        <div class="process">
-          <div class="step"><div class="number">01</div><h3>Conte sua ideia</h3><p>Explique o que precisa, envie referências ou medidas.</p></div>
-          <div class="step"><div class="number">02</div><h3>Definimos o projeto</h3><p>Avaliamos tamanho, material, acabamento e quantidade para preparar o orçamento.</p></div>
-          <div class="step"><div class="number">03</div><h3>Produzimos</h3><p>Com o projeto aprovado, seguimos para a produção da sua peça.</p></div>
-        </div>
-      </div>
-    </section>
+<section class="band"><div class="wrap"><div class="section-head"><div class="tag">Etapas do pedido</div><h2>Do primeiro contato à <span class="green">produção.</span></h2><p>Um processo simples para entender o pedido antes de iniciar a fabricação.</p></div><div class="steps"><article class="step"><b>01</b><h3>Você apresenta a ideia</h3><p>Conte o que deseja, para que será usado e, se possível, envie imagens de referência e medidas.</p></article><article class="step"><b>02</b><h3>Avaliamos e orçamos</h3><p>Verificamos dimensões, material, personalização, quantidade e prazo estimado. Você recebe as condições antes de aprovar.</p></article><article class="step"><b>03</b><h3>Produção do pedido</h3><p>Após a aprovação do orçamento e dos detalhes, o pedido segue para produção conforme o combinado.</p></article></div></div></section>
 
-    <section class="contact" id="contato">
-      <div class="wrap">
-        <div class="eyebrow">Vamos conversar?</div>
-        <h2>Sua ideia pode virar <span class="green">realidade.</span></h2>
-        <p>Precisa de um produto personalizado ou quer uma solução em 3D para seu negócio? Fale com a Subuluk e conte o que você imaginou.</p>
-        <div class="actions" style="justify-content:center">
-          <a class="btn primary" href="mailto:contato@subuluk3d.com.br?subject=Or%C3%A7amento%20Subuluk%203D">Solicitar orçamento</a>
-        </div>
-        <p class="note">Contato provisório de demonstração: vamos substituir pelo seu WhatsApp ou Instagram antes da versão final.</p>
-      </div>
-    </section>
-  </main>
+<section id="duvidas"><div class="wrap"><div class="section-head"><div class="tag">Perguntas frequentes</div><h2>Antes de pedir, <span class="green">tire suas dúvidas.</span></h2></div><div class="faq">
+<details><summary>O que é impressão 3D?</summary><p>É um processo de fabricação que cria objetos físicos a partir de um modelo digital, adicionando material camada por camada.</p></details>
+<details><summary>Posso pedir um produto personalizado?</summary><p>Sim. Envie sua ideia, referência, medidas e quantidade desejada. A viabilidade é avaliada antes de confirmar o pedido.</p></details>
+<details><summary>Quais cores estão disponíveis?</summary><p>As cores dependem dos materiais disponíveis no momento do pedido. Consulte as opções antes de fechar a produção.</p></details>
+<details><summary>Quanto custa uma peça?</summary><p>O valor depende do tamanho, formato, tempo de impressão, material, acabamento e quantidade. Por isso, cada projeto recebe um orçamento.</p></details>
+<details><summary>Qual é o prazo de produção?</summary><p>O prazo varia conforme a complexidade e a fila de produção. A estimativa é informada junto com o orçamento.</p></details>
+<details><summary>Vocês atendem fora de Caraguatatuba?</summary><p>O atendimento é direcionado a Caraguatatuba e região. Consulte a disponibilidade para sua cidade e a possibilidade de entrega ou retirada.</p></details>
+</div></div></section>
 
-  <footer>
-    <div class="wrap footer-row"><span><strong class="green">SUBULUK 3D</strong> — Impressão 3D e Personalização</span><span>Caraguatatuba e região</span></div>
-  </footer>
-</body>
-</html>
+<section class="contact" id="contato"><div class="wrap"><div class="tag">Fale com a Subuluk 3D</div><h2>Tem uma ideia? Vamos <span class="green">conversar.</span></h2><p>Para solicitar um orçamento, prepare uma breve descrição do produto, a quantidade desejada e, se tiver, uma imagem de referência. Assim conseguimos avaliar melhor sua necessidade.</p><div class="buttons"><a class="btn primary" href="mailto:">Solicitar orçamento</a></div><p class="contact-placeholder">Canal de contato ainda precisa ser configurado com o WhatsApp ou e-mail oficial da Subuluk 3D antes de anunciar.</p></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-top"><a class="logo" href="#inicio">SUBULUK <span>3D</span></a><div class="footerlinks"><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre nós</a><a href="#duvidas">Perguntas frequentes</a><a href="privacidade.html">Política de privacidade</a></div><span>Caraguatatuba • SP</span></div><p class="copyright">© 2026 Subuluk 3D. Conteúdo e identidade da marca. Todos os direitos reservados.</p></div></footer>
+</body></html>
