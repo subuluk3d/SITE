@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subuluk 3D | Impressão 3D</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: #ffffff;
+    }
+
+    header {
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #292929;
+    }
+
+    .logo {
+      color: #39ff14;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .hero {
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #39ff14;
+    }
+
+    .hero p {
+      color: #bbbbbb;
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .botao {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 28px;
+      background: #39ff14;
+      color: #101010;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .produtos {
+      padding: 55px 8%;
+      text-align: center;
+    }
+
+    .produtos h2 {
+      color: #39ff14;
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 35px 20px;
+    }
+
+    .card h3 {
+      color: #39ff14;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #bbbbbb;
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: #888;
+      border-top: 1px solid #292929;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">SUBULUK 3D</div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Ideias que ganham <span>forma.</span></h1>
+
+    <p>
+      Impressão 3D, criatividade e personalização.
+      Transformamos ideias em produtos reais,
+      desenvolvidos para você e seu negócio.
+    </p>
+
+    <a href="#contato" class="botao">Conheça nossos produtos</a>
+  </section>
+
+  <section class="produtos" id="produtos">
+    <h2>Nossas soluções</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Chaveiros personalizados</h3>
+        <p>Peças criativas para presentear,
+        divulgar marcas e colecionar.</p>
+      </div>
+
+      <div class="card">
+        <h3>Displays e plaquinhas</h3>
+        <p>Produtos com QR Code e NFC
+        para destacar seu negócio.</p>
+      </div>
+
+      <div class="card">
+        <h3>Projetos exclusivos</h3>
+        <p>Desenvolvimento de peças
+        personalizadas em impressão 3D.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contato">
+    <p>SUBULUK 3D — Impressão 3D e Personalização</p>
+    <p>Caraguatatuba e região</p>
+  </footer>
+
+</body>
+</html>
