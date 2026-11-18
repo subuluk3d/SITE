@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel do catálogo | Subuluk 3D</title>
+<link rel="stylesheet" href="catalogo.css">
+<style>
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:20px}.panel h2{font-size:1.1rem;margin-bottom:12px}
+.fg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.fg label,.panel>label{display:flex;flex-direction:column;gap:5px;font-size:.84rem;color:var(--muted)}.fg .full{grid-column:1/-1}.row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:14px}
+table{width:100%;border-collapse:collapse;font-size:.86rem}td,th{padding:8px;border-bottom:1px solid var(--line);text-align:left}.mini{padding:5px 10px;font-size:.78rem}
+textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{min-height:80px;font-family:inherit;font-size:.9rem}.msg{color:var(--green);font-size:.85rem;margin-top:10px;min-height:1.2em}ol{margin:10px 0 0 20px;color:var(--muted);font-size:.88rem}
+@media(max-width:700px){.fg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks"><a href="catalogo.html">Ver catálogo</a></nav></div></header>
+<main><div class="wrap">
+<h1>Painel do catálogo</h1>
+<p class="lead">Cadastre e organize os produtos aqui. O rascunho fica salvo neste navegador. Para publicar no site, copie o texto da última caixa para o arquivo <b>produtos.json</b> no GitHub.</p>
+<div id="ms" class="msg" role="status"></div>
+
+<div class="panel"><h2>WhatsApp</h2>
+<label>Número com DDI e DDD, só dígitos (55 + DDD + número)<input id="wa" inputmode="numeric" placeholder="Preencha com o número oficial da Subuluk 3D"></label></div>
+
+<div class="panel"><h2 id="ft">Novo produto</h2>
+<div class="fg">
+<label>Referência (código)<input id="rf"></label>
+<label>Nome do produto<input id="nm"></label>
+<label>Nicho<select id="ni"></select></label>
+<label>Subcategoria (opcional)<select id="su"></select></label>
+<label class="full">Descrição<textarea id="ds"></textarea></label>
+<label>Dimensões (só se souber)<input id="di" placeholder="ex.: preencha com as medidas reais"></label>
+<label>Cores disponíveis (separadas por vírgula)<input id="co"></label>
+<label class="full">Fotos: nomes dos arquivos da pasta "fotos", separados por vírgula<input id="fo" placeholder="ex.: ref-001-a.jpg, ref-001-b.jpg"></label>
+<label>Data de cadastro<input id="cr" type="date"></label>
+</div>
+<div class="row"><label class="chk"><input type="checkbox" id="pe">Aceita personalização</label><label class="chk"><input type="checkbox" id="de">Produto em destaque</label></div>
+<div class="row"><button class="btn primary" type="button" id="sv">Salvar produto</button><button class="btn" type="button" id="cl">Limpar formulário</button></div></div>
+
+<div class="panel"><h2>Produtos cadastrados (<span id="qt">0</span>)</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Ref.</th><th>Nome</th><th>Nicho</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+
+<div class="panel"><h2>Adicionar novo nicho</h2>
+<div class="fg"><label>Nome do nicho<input id="nn"></label><label>Subcategorias (separadas por vírgula)<input id="ns"></label><label class="full">Descrição curta<input id="nd"></label></div>
+<div class="row"><button class="btn" type="button" id="an">Adicionar nicho</button></div></div>
+
+<div class="panel"><h2>Publicar no site</h2>
+<ol><li>Clique em <b>Copiar</b>.</li><li>No GitHub, abra o arquivo <b>produtos.json</b> e clique no lápis.</li><li>Apague tudo, cole o texto copiado e clique em <b>Commit changes</b>.</li><li>Envie as fotos para a pasta <b>fotos</b> (Add file → Upload files).</li></ol>
+<textarea id="js" spellcheck="false" aria-label="Conteúdo do produtos.json"></textarea>
+<div class="row"><button class="btn primary" type="button" id="cp">Copiar</button><button class="btn" type="button" id="ld">Carregar texto colado</button><button class="btn" type="button" id="rs">Descartar rascunho</button></div></div>
+</div></main>
+<script>
+(function () {
+  var D = { whatsapp: '', nichos: [], produtos: [] }, ed = -1;
+  var $ = function (i) { return document.getElementById(i); };
+  var E = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  var say = function (t) { $('ms').textContent = t; };
+  var list = function (v) { return v.split(',').map(function (x) { return x.trim(); }).filter(Boolean); };
+  var nicho = function (id) { return D.nichos.filter(function (n) { return n.id === id; })[0]; };
+
+  function persist() {
+    D.whatsapp = $('wa').value.replace(/\D/g, '');
+    try { localStorage.setItem('sbk_rascunho', JSON.stringify(D)); } catch (e) {}
+    $('js').value = JSON.stringify(D, null, 1);
+  }
+  function subs() {
+    var n = nicho($('ni').value), cur = $('su').value;
+    $('su').innerHTML = '<option value="">(nenhuma)</option>' + (n ? n.subs || [] : []).map(function (x) { return '<option' + (x === cur ? ' selected' : '') + '>' + E(x) + '</option>'; }).join('');
+  }
+  function nextRef() {
+    var m = 0; D.produtos.forEach(function (p) { var x = /SBK-(\d+)/.exec(p.ref); if (x) m = Math.max(m, +x[1]); });
+    return 'SBK-' + ('000' + (m + 1)).slice(-3);
+  }
+  function clear() {
+    ed = -1; $('ft').textContent = 'Novo produto';
+    ['nm', 'ds', 'di', 'co', 'fo'].forEach(function (i) { $(i).value = ''; });
+    $('pe').checked = $('de').checked = false; $('rf').value = nextRef(); $('cr').value = new Date().toISOString().slice(0, 10); subs();
+  }
+  function draw() {
+    $('wa').value = D.whatsapp || '';
+    $('ni').innerHTML = D.nichos.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('');
+    subs(); $('qt').textContent = D.produtos.length;
+    $('tb').innerHTML = D.produtos.map(function (p, i) {
+      return '<tr><td>' + E(p.ref) + '</td><td>' + E(p.nome) + '</td><td>' + E((nicho(p.nicho) || {}).nome) + '</td><td>' +
+        '<button class="btn mini" data-e="' + i + '">Editar</button> <button class="btn mini" data-d="' + i + '">Excluir</button></td></tr>';
+    }).join('') || '<tr><td colspan="4">Nenhum produto cadastrado ainda.</td></tr>';
+    persist(); if (ed < 0) clear();
+  }
+
+  $('ni').addEventListener('change', subs);
+  $('wa').addEventListener('input', persist);
+  $('cl').addEventListener('click', clear);
+  $('sv').addEventListener('click', function () {
+    var p = {
+      ref: $('rf').value.trim(), nome: $('nm').value.trim(), nicho: $('ni').value, sub: $('su').value, descricao: $('ds').value.trim(),
+      dimensoes: $('di').value.trim(), cores: list($('co').value),
+      fotos: list($('fo').value).map(function (x) { return x.indexOf('/') < 0 ? 'fotos/' + x : x; }),
+      personalizavel: $('pe').checked, destaque: $('de').checked, criado: $('cr').value
+    };
+    if (!p.ref || !p.nome || !p.nicho) { say('Preencha referência, nome e nicho.'); return; }
+    var dup = D.produtos.some(function (x, i) { return x.ref === p.ref && i !== ed; });
+    if (dup) { say('Já existe um produto com essa referência.'); return; }
+    if (ed >= 0) D.produtos[ed] = p; else D.produtos.push(p);
+    ed = -1; say('Produto salvo no rascunho. Lembre de copiar e publicar.'); draw();
+  });
+  $('tb').addEventListener('click', function (e) {
+    var b = e.target, i;
+    if (b.getAttribute('data-e') != null) {
+      i = +b.getAttribute('data-e'); var p = D.produtos[i]; ed = i; $('ft').textContent = 'Editando ' + p.ref;
+      $('rf').value = p.ref; $('nm').value = p.nome; $('ni').value = p.nicho; subs(); $('su').value = p.sub || '';
+      $('ds').value = p.descricao || ''; $('di').value = p.dimensoes || ''; $('co').value = (p.cores || []).join(', ');
+      $('fo').value = (p.fotos || []).map(function (x) { return x.replace(/^fotos\//, ''); }).join(', ');
+      $('cr').value = p.criado || ''; $('pe').checked = !!p.personalizavel; $('de').checked = !!p.destaque;
+      $('ft').scrollIntoView({ behavior: 'smooth' });
+    } else if (b.getAttribute('data-d') != null) {
+      i = +b.getAttribute('data-d');
+      if (confirm('Excluir "' + D.produtos[i].nome + '"?')) { D.produtos.splice(i, 1); ed = -1; draw(); say('Produto excluído do rascunho.'); }
+    }
+  });
+  $('an').addEventListener('click', function () {
+    var nome = $('nn').value.trim(); if (!nome) { say('Informe o nome do nicho.'); return; }
+    var id = nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    if (nicho(id)) { say('Esse nicho já existe.'); return; }
+    D.nichos.push({ id: id, nome: nome, desc: $('nd').value.trim(), subs: list($('ns').value) });
+    $('nn').value = $('nd').value = $('ns').value = ''; draw(); say('Nicho adicionado ao rascunho.');
+  });
+  $('cp').addEventListener('click', function () {
+    var t = $('js'); t.select();
+    if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(function () { say('Copiado! Agora cole no produtos.json do GitHub.'); }, function () { document.execCommand('copy'); say('Copiado.'); });
+    else { document.execCommand('copy'); say('Copiado.'); }
+  });
+  $('ld').addEventListener('click', function () {
+    try { var j = JSON.parse($('js').value); if (!j.nichos) throw 0; D = j; ed = -1; draw(); say('Texto carregado.'); } catch (e) { say('Texto inválido. Cole o conteúdo completo do produtos.json.'); }
+  });
+  $('rs').addEventListener('click', function () {
+    if (!confirm('Descartar o rascunho e recarregar o produtos.json publicado?')) return;
+    try { localStorage.removeItem('sbk_rascunho'); } catch (e) {} location.reload();
+  });
+
+  var saved = null;
+  try { saved = JSON.parse(localStorage.getItem('sbk_rascunho')); } catch (e) {}
+  if (saved && saved.nichos) { D = saved; draw(); say('Rascunho anterior carregado.'); }
+  else fetch('produtos.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) { D = j; draw(); })
+    .catch(function () { say('Não consegui ler o produtos.json. Cole o conteúdo na última caixa e clique em Carregar.'); });
+})();
+</script>
+</body>
+</html>
