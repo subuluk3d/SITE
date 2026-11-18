@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Catálogo de produtos impressos em 3D da Subuluk 3D: automotivo, organização, decoração, pet, comércio, presentes e mais.">
+<meta name="theme-color" content="#090c09">
+<title>Catálogo de Produtos | Subuluk 3D</title>
+<link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="index.html">Início</a><a class="on" href="catalogo.html">Catálogo</a><a href="index.html#empresas">Para empresas</a><a href="index.html#sobre">Sobre nós</a><a href="index.html#contato">Contato</a></nav></div></header>
+<main><div class="wrap" id="app"><p class="vazio">Carregando catálogo...</p></div></main>
+<footer><div class="wrap">© 2026 Subuluk 3D • Caraguatatuba, SP • <a href="privacidade.html">Política de privacidade</a></div></footer>
+<script>
+(function () {
+  var P = new URLSearchParams(location.search), app = document.getElementById('app');
+  var E = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+
+  fetch('produtos.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(run)
+    .catch(function () { app.innerHTML = '<p class="vazio">Não foi possível carregar o catálogo. Verifique se o arquivo produtos.json está no site.</p>'; });
+
+  function run(D) {
+    var N = D.nichos || [], L = D.produtos || [];
+    var nm = function (id) { return N.filter(function (n) { return n.id === id; })[0]; };
+    var cnt = function (id) { return L.filter(function (p) { return p.nicho === id; }).length; };
+    var ph = function (src, label, extra) {
+      return '<div class="ph">' + (extra || '') + '<span>' + E(label) + '</span>' +
+        (src ? '<img src="' + E(src) + '" alt="" loading="lazy" onerror="this.remove()">' : '') + '</div>';
+    };
+    var tags = function (p) {
+      return (p.destaque ? '<span class="badge">Destaque</span>' : '') + (p.personalizavel ? '<span class="badge alt">Personalizável</span>' : '');
+    };
+    var ncard = function (n) {
+      var c = cnt(n.id);
+      return '<a class="card" href="?n=' + E(n.id) + '">' + ph('fotos/nichos/' + n.id + '.jpg', n.nome) +
+        '<div class="cb"><h3>' + E(n.nome) + '</h3><p>' + E(n.desc) + '</p><span class="count">' + c + (c === 1 ? ' produto' : ' produtos') + '</span></div></a>';
+    };
+    var pcard = function (p) {
+      var n = nm(p.nicho) || {};
+      return '<a class="card" href="?p=' + encodeURIComponent(p.ref) + '">' + ph((p.fotos || [])[0], 'Foto em breve', '<div class="badges">' + tags(p) + '</div>') +
+        '<div class="cb"><h3>' + E(p.nome) + '</h3><p>' + E(n.nome || '') + (p.sub ? ' · ' + E(p.sub) : '') + '</p><span class="ref">' + E(p.ref) + '</span></div></a>';
+    };
+
+    var q = P.get('q') || '', n = P.get('n') || '', s = P.get('s') || '', o = P.get('o') || 'recentes', pe = P.get('pers'), pr = P.get('p');
+    var cur = nm(n);
+
+    function tools() {
+      var subs = cur ? (cur.subs || []) : [];
+      return '<form class="tools" method="get" role="search">' + (n ? '<input type="hidden" name="n" value="' + E(n) + '">' : '') +
+        '<input type="search" name="q" value="' + E(q) + '" placeholder="Buscar produto pelo nome" aria-label="Buscar produto">' +
+        (subs.length ? '<select name="s" aria-label="Subcategoria" onchange="this.form.submit()"><option value="">Todas as subcategorias</option>' +
+          subs.map(function (x) { return '<option' + (x === s ? ' selected' : '') + '>' + E(x) + '</option>'; }).join('') + '</select>' : '') +
+        '<select name="o" aria-label="Ordenar" onchange="this.form.submit()"><option value="recentes"' + (o === 'recentes' ? ' selected' : '') + '>Mais recentes</option><option value="nome"' + (o === 'nome' ? ' selected' : '') + '>Nome (A–Z)</option></select>' +
+        '<label class="chk"><input type="checkbox" name="pers" value="1"' + (pe ? ' checked' : '') + ' onchange="this.form.submit()">Só personalizáveis</label>' +
+        '<button class="btn primary" type="submit">Buscar</button></form>';
+    }
+    var crumb = function (last) {
+      return '<nav class="crumb" aria-label="Você está em"><a href="catalogo.html">Catálogo</a>' +
+        (cur ? ' › <a href="?n=' + E(cur.id) + '">' + E(cur.nome) + '</a>' : '') + (last ? ' › ' + E(last) : '') + '</nav>';
+    };
+    var recent = function (a, b) { return (b.criado || '').localeCompare(a.criado || ''); };
+
+    // ---- página do produto ----
+    if (pr) {
+      var p = L.filter(function (x) { return x.ref === pr; })[0];
+      if (!p) { app.innerHTML = '<p class="vazio">Produto não encontrado. <a href="catalogo.html"><u>Voltar ao catálogo</u></a></p>'; return; }
+      cur = nm(p.nicho);
+      var f = p.fotos || [], w = String(D.whatsapp || '').replace(/\D/g, '');
+      var msg = 'Olá! Tenho interesse no produto ' + p.nome + ', referência ' + p.ref + '. Gostaria de receber mais informações e um orçamento.';
+      var row = function (k, v) { return v ? '<dt>' + k + '</dt><dd>' + E(v) + '</dd>' : ''; };
+      document.title = p.nome + ' | Subuluk 3D';
+      app.innerHTML = crumb(p.nome) + '<div class="pd"><div><div id="main">' + ph(f[0], 'Foto em breve') + '</div>' +
+        (f.length > 1 ? '<div class="thumbs">' + f.map(function (x) { return '<button type="button" data-src="' + E(x) + '" aria-label="Ver foto"><img src="' + E(x) + '" alt="" loading="lazy"></button>'; }).join('') + '</div>' : '') +
+        '</div><div><h1>' + E(p.nome) + '</h1><div class="badges">' + tags(p) + '</div><p class="lead">' + E(p.descricao || '') + '</p><dl>' +
+        row('Referência', p.ref) + row('Nicho', cur && cur.nome) + row('Subcategoria', p.sub) + row('Dimensões', p.dimensoes) +
+        row('Cores', (p.cores || []).join(', ')) + row('Personalização', p.personalizavel ? 'Sim' : 'Não') + '</dl>' +
+        (w ? '<a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/' + w + '?text=' + encodeURIComponent(msg) + '">Solicitar orçamento pelo WhatsApp</a>'
+           : '<span class="btn off">WhatsApp ainda não configurado</span>') +
