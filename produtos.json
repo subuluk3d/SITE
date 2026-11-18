@@ -1,0 +1,18 @@
+{
+ "whatsapp": "",
+ "nichos": [
+  {"id":"automotivo","nome":"Automotivo","desc":"Suportes, organizadores e acessórios para o interior do veículo.","subs":["Suportes para celular","Organizadores automotivos","Clips e presilhas","Acessórios internos","Tampas e acabamentos","Personalizados"]},
+  {"id":"organizacao","nome":"Organização","desc":"Peças para organizar mesas, gavetas, cabos e pequenos objetos.","subs":["Organizadores de mesa","Porta-canetas","Organizadores de gaveta","Suportes para cabos","Organizadores modulares","Porta-objetos"]},
+  {"id":"decoracao","nome":"Decoração","desc":"Vasos, esculturas, luminárias e peças decorativas.","subs":["Vasos","Esculturas","Enfeites","Luminárias","Decoração de parede","Objetos minimalistas"]},
+  {"id":"casa-utilidades","nome":"Casa e Utilidades","desc":"Suportes, ganchos e utilidades para o dia a dia da casa.","subs":["Suportes de parede","Porta-chaves","Acessórios de cozinha","Acessórios de banheiro","Ganchos e cabides","Utilidades domésticas"]},
+  {"id":"escritorio","nome":"Escritório e Home Office","desc":"Acessórios para organizar e melhorar a estação de trabalho.","subs":["Suportes para notebook","Suportes para celular","Suportes para headset","Organizadores de cabos","Acessórios de escritório"]},
+  {"id":"pet-shop","nome":"Pet Shop","desc":"Identificadores, suportes e acessórios para animais de estimação.","subs":["Identificadores","Acessórios para coleiras","Organizadores","Suportes para potes","Acessórios para animais"]},
+  {"id":"comercio-empresas","nome":"Comércio e Empresas","desc":"Displays, plaquinhas e expositores para negócios.","subs":["Displays NFC","Plaquinhas QR Code","Porta-preços","Expositores","Porta-cartões","Displays de balcão","Peças personalizadas"]},
+  {"id":"games-tecnologia","nome":"Games e Tecnologia","desc":"Suportes e acessórios para consoles, controles e setups.","subs":["Suportes para controles","Suportes para headset","Acessórios gamer","Organizadores","Suportes para consoles"]},
+  {"id":"ferramentas-oficina","nome":"Ferramentas e Oficina","desc":"Suportes, organizadores e acessórios para oficina e bancada.","subs":["Suportes para ferramentas","Organizadores de parafusos","Gabaritos","Suportes para brocas","Acessórios de bancada"]},
+  {"id":"presentes-personalizados","nome":"Presentes e Personalizados","desc":"Chaveiros, nomes, letras e lembranças personalizadas.","subs":["Chaveiros","Nomes personalizados","Letras decorativas","Miniaturas","Lembrancinhas","Brindes corporativos"]},
+  {"id":"turismo-regional","nome":"Turismo e Regional","desc":"Ímãs, chaveiros e lembranças inspiradas no litoral e na região.","subs":["Ímãs de geladeira","Chaveiros de cidades","Miniaturas de pontos turísticos","Lembranças de praia","Souvenirs personalizados"]},
+  {"id":"jardim-plantas","nome":"Jardim e Plantas","desc":"Vasos, suportes e acessórios para plantas e jardinagem.","subs":["Suportes para plantas","Vasos","Identificadores de plantas","Acessórios de jardinagem","Decoração de jardim"]}
+ ],
+ "produtos": []
+}
