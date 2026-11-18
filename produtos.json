@@ -1,4 +1,3 @@
-{
  "whatsapp": "",
  "nichos": [
   {"id":"automotivo","nome":"Automotivo","desc":"Suportes, organizadores e acessórios para o interior do veículo.","subs":["Suportes para celular","Organizadores automotivos","Clips e presilhas","Acessórios internos","Tampas e acabamentos","Personalizados"]},
@@ -15,4 +14,3 @@
   {"id":"jardim-plantas","nome":"Jardim e Plantas","desc":"Vasos, suportes e acessórios para plantas e jardinagem.","subs":["Suportes para plantas","Vasos","Identificadores de plantas","Acessórios de jardinagem","Decoração de jardim"]}
  ],
  "produtos": []
-}
