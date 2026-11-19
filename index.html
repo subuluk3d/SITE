@@ -3,10 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Subuluk 3D Lab</title>
-<meta name="description" content="Subuluk 3D em Caraguatatuba: impressão 3D sob medida, placas NFC, chaveiros, organizadores e peças para empresas.">
+<title>Impressão 3D em Caraguatatuba | Subuluk 3D</title>
+<meta name="description" content="Impressão 3D sob medida em Caraguatatuba e Litoral Norte: placas NFC de avaliação Google, chaveiros personalizados, brindes, organizadores e peças para empresas. Orçamento pelo WhatsApp.">
+<link rel="canonical" href="https://subuluk3d.github.io/SITE/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#060706">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Subuluk 3D">
+<meta property="og:title" content="Subuluk 3D | Impressão 3D sob medida em Caraguatatuba">
+<meta property="og:description" content="Placas NFC, chaveiros, brindes e peças personalizadas impressas em 3D. Peça seu orçamento pelo WhatsApp.">
+<meta property="og:url" content="https://subuluk3d.github.io/SITE/">
+<meta property="og:image" content="https://subuluk3d.github.io/SITE/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Subuluk 3D, impressão 3D sob medida">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Subuluk 3D | Impressão 3D sob medida">
+<meta name="twitter:description" content="Placas NFC, chaveiros, brindes e peças personalizadas impressas em 3D em Caraguatatuba.">
+<meta name="twitter:image" content="https://subuluk3d.github.io/SITE/assets/og-image.jpg">
 <link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"LocalBusiness","@id":"https://subuluk3d.github.io/SITE/#negocio","name":"Subuluk 3D","description":"Impressão 3D sob medida e produtos personalizados: placas NFC, chaveiros, brindes, decoração e organizadores.","url":"https://subuluk3d.github.io/SITE/","image":"https://subuluk3d.github.io/SITE/assets/og-image.jpg","logo":"https://subuluk3d.github.io/SITE/logo.png","telephone":"+55-12-98229-9331","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Caraguatatuba","addressRegion":"SP","addressCountry":"BR"},"geo":{"@type":"GeoCoordinates","latitude":-23.6178,"longitude":-45.4128},"areaServed":["Caraguatatuba","São Sebastião","Ilhabela","Ubatuba","Litoral Norte de São Paulo"],"contactPoint":{"@type":"ContactPoint","telephone":"+55-12-98229-9331","contactType":"customer service","availableLanguage":"Portuguese"}},
+{"@type":"WebSite","@id":"https://subuluk3d.github.io/SITE/#site","url":"https://subuluk3d.github.io/SITE/","name":"Subuluk 3D","inLanguage":"pt-BR","publisher":{"@id":"https://subuluk3d.github.io/SITE/#negocio"}}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -185,8 +213,54 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
 .m .rv{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),filter .8s}
 .m .rv.in{opacity:1;transform:none;filter:none}
 
+/* menu mobile */
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line2);place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:transform .25s,background .25s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.hdr-r{display:flex;gap:10px;align-items:center}
+.mnav{position:fixed;inset:72px 0 auto;z-index:39;background:rgba(6,7,6,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 16px 24px}
+.mnav[hidden]{display:none}
+.mnav a{display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid var(--line);font-size:1.25rem;font-weight:500}
+.mnav a span{font-family:var(--mono);font-size:.72rem;color:var(--lime)}
+.mnav .pill{margin-top:18px;justify-content:space-between;width:100%;border:0}
+
+/* formulário */
+.cform{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:start;text-align:left;margin-top:44px}
+.cform .info p{color:#BCC5B9;margin:0 0 20px}
+.cform .info ul{list-style:none;display:grid;gap:10px}
+.cform .info li{display:flex;gap:12px;align-items:center;color:#D6DDD3}
+.cform .info li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--lime)}
+form.qf{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(6,7,6,.6);border:1px solid var(--line2);border-radius:20px;padding:clamp(18px,3vw,28px)}
+.qf .f{display:flex;flex-direction:column;gap:6px}.qf .full{grid-column:1/-1}
+.qf label{font-size:.88rem;font-weight:500}.qf label .opt{color:var(--mute);font-weight:400}
+.qf input,.qf select,.qf textarea{width:100%;min-height:48px;padding:12px 14px;border-radius:12px;border:1px solid var(--line2);background:#0A0C0A;color:var(--ink);font:inherit;font-size:1rem}
+.qf textarea{min-height:120px;resize:vertical}
+.qf select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--lime) 50%),linear-gradient(135deg,var(--lime) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.qf input:focus,.qf select:focus,.qf textarea:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(184,255,60,.18)}
+.qf [aria-invalid="true"]{border-color:#FF6B5B}
+.qf .err{color:#FF8A7D;font-size:.82rem;min-height:0}
+.qf .err:empty{display:none}
+.qf .hint{color:var(--mute);font-size:.8rem}
+.qf .chk{display:flex;gap:12px;align-items:flex-start;font-size:.88rem;color:#C9D1C6;font-weight:400}
+.qf .chk input{flex:none;width:22px;height:22px;min-height:0;margin-top:1px;accent-color:var(--lime)}
+.qf .chk a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+.qf .send{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.qf .send .pill{border:0;cursor:pointer}
+.qf .ok{color:var(--lime);font-size:.9rem}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* rodapé extra */
+.ft button{color:inherit;padding:4px 0;text-align:left}.ft button:hover{color:var(--lime)}
+.pausebtn{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line2);border-radius:999px;padding:8px 14px;color:#C2CAC0;min-height:36px}
+.pausebtn:hover{border-color:var(--lime);color:var(--lime)}
+
 @media(max-width:1020px){
-  .links{display:none}
+  .links{display:none}.menu-btn{display:grid}
+  .cform{grid-template-columns:1fr}
   .grid{grid-template-columns:repeat(3,1fr)}
   .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .svc{grid-template-columns:1fr 1fr}.sv.wide{grid-column:span 2}
@@ -204,6 +278,7 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
   section{padding:76px 0}
   .ft{grid-template-columns:1fr}
   .nav .pill .t{display:none}.nav .pill{padding-left:6px}
+  form.qf{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.m .rv{opacity:1;transform:none;filter:none}html{scroll-behavior:auto}}
 </style>
@@ -224,16 +299,25 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
 <header id="hdr"><div class="wrap nav">
   <a class="brand" href="#inicio" aria-label="Subuluk 3D, início"><img src="logo.png" alt="" width="30" height="30">SUBULUK<b>3D</b></a>
   <nav class="links" aria-label="Menu principal"><a href="#catalogo">Catálogo</a><a href="#empresas">Empresas</a><a href="#processo">Processo</a><a href="#duvidas">Dúvidas</a></nav>
-  <a class="pill sm" href="#contato" data-wa><span class="t">Pedir orçamento</span><span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a>
+  <div class="hdr-r">
+    <a class="pill sm" href="#contato" data-wa aria-label="Pedir orçamento pelo WhatsApp"><span class="t">Pedir orçamento</span><span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Abrir menu"><span></span></button>
+  </div>
 </div></header>
+<nav class="mnav" id="mnav" aria-label="Menu" hidden>
+  <a href="#catalogo">Catálogo <span>01</span></a><a href="#empresas">Empresas <span>02</span></a><a href="#processo">Processo <span>03</span></a><a href="#duvidas">Dúvidas <span>04</span></a><a href="#contato">Orçamento <span>05</span></a>
+  <a class="pill" href="#" data-wa>Chamar no WhatsApp<span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a>
+</nav>
 
 <main id="inicio">
 <section class="hero" aria-label="Apresentação">
   <canvas id="gl" aria-hidden="true"></canvas>
+  <div aria-hidden="true">
   <div class="hud tl"><span class="dot"></span>Status: <b>imprimindo</b><br>Bico 0.4 mm · 215 °C</div>
   <div class="hud tr">23.62° S · 45.41° W<br>Caraguatatuba / SP</div>
   <div class="hud bl">Camada <b id="layer">001</b> / 240<br>Altura 0.20 mm</div>
   <div class="hud br">Scroll ↓<br>Catálogo</div>
+  </div>
   <div class="wrap hc">
     <div class="shots rv">
       <div class="shot"><img src="fotos/produtos/luminaria.webp" alt="Luminária ondulada impressa em 3D"></div>
@@ -267,6 +351,7 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
   </div>
   <div class="tabs" role="group" aria-label="Filtrar por categoria" id="tabs"></div>
   <div class="grid" id="grid" aria-live="polite"></div>
+  <p style="margin-top:28px;text-align:center"><a class="ghost" href="catalogo.html">Catálogo completo com busca e detalhes →</a></p>
 </div></section>
 
 <section id="empresas" style="padding-top:20px"><div class="wrap">
@@ -316,8 +401,25 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
   <div class="final rv">
     <span class="mono">// Pronto para imprimir</span>
     <h2 style="margin-top:18px">Bora dar <em>forma</em><br>à sua ideia?</h2>
-    <p>Mande o que precisa, a quantidade e uma foto de referência. A gente responde com o orçamento no WhatsApp.</p>
-    <div class="cta"><a class="pill" href="#" data-wa>Chamar no WhatsApp<span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a><span class="ghost" style="cursor:default">(12) 98229-9331</span></div>
+    <div class="cform">
+      <div class="info">
+        <p>Preencha o pedido e ele abre pronto no seu WhatsApp. Você revisa e envia. Se preferir, chame direto.</p>
+        <ul><li>Resposta com orçamento e prazo</li><li>Produção só depois da sua aprovação</li><li>Entrega ou retirada no Litoral Norte</li></ul>
+        <div class="cta" style="justify-content:flex-start;margin-top:26px"><a class="ghost" href="#" data-wa><span data-wa-label>(12) 98229-9331</span></a></div>
+      </div>
+      <form class="qf" id="qf" novalidate aria-describedby="qf-priv">
+        <div class="f"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="name" required maxlength="80" aria-describedby="e-nome"><span class="err" id="e-nome" aria-live="polite"></span></div>
+        <div class="f"><label for="f-tel">WhatsApp</label><input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" required maxlength="20" placeholder="(12) 90000-0000" aria-describedby="e-tel"><span class="err" id="e-tel" aria-live="polite"></span></div>
+        <div class="f"><label for="f-cidade">Cidade <span class="opt">(opcional)</span></label><input id="f-cidade" name="cidade" autocomplete="address-level2" maxlength="60"></div>
+        <div class="f"><label for="f-tipo">O que você precisa?</label><select id="f-tipo" name="tipo"><option>Placa ou display NFC</option><option>Chaveiros e brindes</option><option>Decoração</option><option>Organização e escritório</option><option>Peça sob medida</option><option>Outro</option></select></div>
+        <div class="f"><label for="f-qtd">Quantidade <span class="opt">(aprox.)</span></label><input id="f-qtd" name="qtd" inputmode="numeric" maxlength="10"></div>
+        <div class="f"><label for="f-prazo">Para quando? <span class="opt">(opcional)</span></label><input id="f-prazo" name="prazo" maxlength="40" placeholder="ex.: até 10/12"></div>
+        <div class="f full"><label for="f-msg">Descreva o pedido</label><textarea id="f-msg" name="msg" required maxlength="1200" aria-describedby="h-msg e-msg"></textarea><span class="hint" id="h-msg">Medidas, cores, texto ou logotipo. Fotos de referência você envia na conversa.</span><span class="err" id="e-msg" aria-live="polite"></span></div>
+        <div class="hp" aria-hidden="true"><label for="f-site">Não preencha</label><input id="f-site" name="site" tabindex="-1" autocomplete="off"></div>
+        <div class="f full"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required aria-describedby="e-ok"><span id="qf-priv">Concordo que a Subuluk 3D use esses dados para responder ao meu pedido de orçamento, conforme a <a href="privacidade.html">Política de Privacidade</a>. Nada é guardado no site: a mensagem é enviada pelo WhatsApp.</span></label><span class="err" id="e-ok" aria-live="polite"></span></div>
+        <div class="full send"><button class="pill" type="submit">Enviar pelo WhatsApp<span class="ar"><svg aria-hidden="true"><use href="#i-ar"/></svg></span></button><span class="ok" id="qf-ok" role="status"></span></div>
+      </form>
+    </div>
   </div>
 </div></section>
 </main>
@@ -326,9 +428,9 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
   <div class="ft">
     <div><a class="brand" href="#inicio"><img src="logo.png" alt="" width="28" height="28">SUBULUK<b>3D</b></a><p>Impressão 3D e personalização em Caraguatatuba, Litoral Norte de SP.</p></div>
     <div><h4>Navegar</h4><a href="#catalogo">Catálogo</a><a href="#empresas">Empresas</a><a href="#processo">Processo</a><a href="#duvidas">Dúvidas</a></div>
-    <div><h4>Contato</h4><a href="#" data-wa>WhatsApp (12) 98229-9331</a><a href="privacidade.html">Política de privacidade</a></div>
+    <div><h4>Contato e legal</h4><a href="#" data-wa>WhatsApp <span data-wa-label>(12) 98229-9331</span></a><a href="privacidade.html">Política de privacidade</a><a href="termos.html">Termos de uso</a><a href="cookies.html">Política de cookies</a><button type="button" data-cookie-prefs>Gerenciar cookies</button></div>
   </div>
-  <div class="copy"><span class="mono">© 2026 Subuluk 3D</span><span class="mono">Feito camada por camada</span></div>
+  <div class="copy"><span class="mono">© 2026 Subuluk 3D · Caraguatatuba, SP</span><button type="button" class="pausebtn" data-pause aria-pressed="false">Pausar animações</button></div>
   <div class="big-word" aria-hidden="true">SUBULUK</div>
 </div></footer>
 
@@ -371,13 +473,17 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
   function size(){var d=Math.min(devicePixelRatio||1,1.5)*.7;c.width=Math.round(c.clientWidth*d);c.height=Math.round(c.clientHeight*d);gl.viewport(0,0,c.width,c.height)}
   addEventListener("resize",size);size();
   addEventListener("pointermove",function(e){tx=e.clientX/innerWidth-.5;ty=.5-e.clientY/innerHeight});
-  new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&!reduce)requestAnimationFrame(loop)}).observe(c);
+  new IntersectionObserver(function(es){vis=es[0].isIntersecting;kick()}).observe(c);
   var layer=document.getElementById("layer");
   function draw(now){mx+=(tx-mx)*.04;my+=(ty-my)*.04;
     gl.uniform2f(uR,c.width,c.height);gl.uniform1f(uT,(now-t0)/1000);gl.uniform2f(uM,mx,my);gl.drawArrays(gl.TRIANGLES,0,3);
     if(layer)layer.textContent=String(1+Math.floor((now-t0)/400)%240).padStart(3,"0");}
-  function loop(now){if(!vis)return;draw(now);requestAnimationFrame(loop)}
-  if(reduce)draw(t0+8000);else requestAnimationFrame(loop);
+  function paused(){return window.SBK&&SBK.isPaused&&SBK.isPaused()}
+  var running=false;
+  function loop(now){if(!vis||paused()){running=false;return}running=true;draw(now);requestAnimationFrame(loop)}
+  function kick(){if(!running&&!reduce&&vis&&!paused()){running=true;requestAnimationFrame(loop)}}
+  document.addEventListener("sbk:pause",kick);
+  draw(t0+8000);if(!reduce)kick();
 })();
 
 /* ===== Conteúdo / catálogo ===== */
@@ -419,6 +525,45 @@ function init(D){
     document.querySelectorAll(".rv,.ps").forEach(function(el){var s=el.parentElement.children,i=Array.prototype.indexOf.call(s,el);el.style.transitionDelay=Math.min(i,4)*90+"ms";io.observe(el)});
   } else document.querySelectorAll(".ps").forEach(function(el){el.classList.add("in")});
 }
+
+/* ===== Menu mobile (teclado: Esc fecha, foco volta ao botão) ===== */
+(function(){
+  var btn=document.querySelector(".menu-btn"),nav=document.getElementById("mnav");if(!btn)return;
+  function set(o){btn.setAttribute("aria-expanded",o);btn.setAttribute("aria-label",o?"Fechar menu":"Abrir menu");nav.hidden=!o;if(o)nav.querySelector("a").focus()}
+  btn.addEventListener("click",function(){set(nav.hidden)});
+  nav.addEventListener("click",function(e){if(e.target.closest("a"))set(false)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!nav.hidden){set(false);btn.focus()}});
+  matchMedia("(min-width:1021px)").addEventListener("change",function(m){if(m.matches)set(false)});
+})();
+
+/* ===== Formulário de orçamento (LGPD: nada é armazenado; abre o WhatsApp) ===== */
+(function(){
+  var f=document.getElementById("qf");if(!f)return;
+  var ok=document.getElementById("qf-ok");
+  function err(id,msg){var i=document.getElementById(id),e=document.getElementById("e-"+id.replace("f-",""));i.setAttribute("aria-invalid",msg?"true":"false");e.textContent=msg||"";return !msg}
+  f.addEventListener("input",function(e){if(e.target.getAttribute("aria-invalid")==="true")e.target.setAttribute("aria-invalid","false")});
+  f.addEventListener("submit",function(e){
+    e.preventDefault();ok.textContent="";
+    if(f.site.value)return; // robô
+    var tel=f.tel.value.replace(/\D/g,"");
+    var v=[err("f-nome",f.nome.value.trim().length<2?"Informe seu nome.":""),
+           err("f-tel",tel.length<10||tel.length>13?"Informe um WhatsApp com DDD.":""),
+           err("f-msg",f.msg.value.trim().length<5?"Conte um pouco do que você precisa.":""),
+           err("f-ok",!f.ok.checked?"Para enviar, marque a concordância com o uso dos dados.":"")];
+    var bad=f.querySelector('[aria-invalid="true"]');if(bad){bad.focus();return}
+    var L=["Olá! Quero um orçamento pelo site da Subuluk 3D.","","*Nome:* "+f.nome.value.trim(),"*WhatsApp:* "+f.tel.value.trim()];
+    if(f.cidade.value.trim())L.push("*Cidade:* "+f.cidade.value.trim());
+    L.push("*Tipo:* "+f.tipo.value);
+    if(f.qtd.value.trim())L.push("*Quantidade:* "+f.qtd.value.trim());
+    if(f.prazo.value.trim())L.push("*Prazo:* "+f.prazo.value.trim());
+    L.push("","*Pedido:* "+f.msg.value.trim());
+    var url="https://wa.me/"+((window.SBK&&SBK.config.WHATSAPP)||"5512982299331")+"?text="+encodeURIComponent(L.join("\n"));
+    if(window.SBK)SBK.track("generate_lead",{form_name:"orcamento",lead_type:f.tipo.value});
+    var w=window.open(url,"_blank");if(w)w.opener=null;else location.href=url;
+    ok.textContent="Pronto! Abrimos o WhatsApp com o seu pedido. É só tocar em enviar.";
+    f.reset();
+  });
+})();
 </script>
 </body>
 </html>

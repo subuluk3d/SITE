@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Catálogo de produtos impressos em 3D da Subuluk 3D: placas NFC, chaveiros, decoração, escritório, games, pet, oficina e lembranças do Litoral Norte.">
 <meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://subuluk3d.github.io/SITE/catalogo.html">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Catálogo de Produtos | Subuluk 3D">
+<meta property="og:url" content="https://subuluk3d.github.io/SITE/catalogo.html">
+<meta property="og:image" content="https://subuluk3d.github.io/SITE/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
 <title>Catálogo de Produtos | Subuluk 3D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +24,10 @@
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver"in window)document.documentElement.classList.add("m")</script>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="index.html">Início</a><a class="on" href="catalogo.html">Catálogo</a><a href="index.html#empresas">Para empresas</a><a href="index.html#sobre">Sobre</a><a href="index.html#contato">Contato</a></nav></div></header>
-<main><div class="wrap" id="app"><p class="vazio">Carregando catálogo...</p></div></main>
-<footer><div class="wrap">© 2026 Subuluk 3D • Caraguatatuba, SP • <a href="privacidade.html">Política de privacidade</a></div></footer>
+<a class="skip" href="#app" style="position:absolute;left:-999px" onfocus="this.style.left='12px'" onblur="this.style.left='-999px'">Ir para o conteúdo</a>
+<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="index.html">Início</a><a class="on" href="catalogo.html">Catálogo</a><a href="index.html#empresas">Para empresas</a><a href="index.html#processo">Processo</a><a href="index.html#contato">Contato</a></nav></div></header>
+<main id="conteudo"><div class="wrap" id="app"><p class="vazio">Carregando catálogo...</p></div></main>
+<footer><div class="wrap">© 2026 Subuluk 3D • Caraguatatuba, SP • <a href="privacidade.html">Privacidade</a> • <a href="termos.html">Termos de uso</a> • <a href="cookies.html">Cookies</a> • <button type="button" data-cookie-prefs style="background:none;border:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:0">Gerenciar cookies</button></div></footer>
 <script>
 (function () {
   var P = new URLSearchParams(location.search), app = document.getElementById('app');
