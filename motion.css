@@ -1,0 +1,82 @@
+/* Subuluk 3D: motion compartilhado (index + catálogo).
+   Só transform/opacity/filter (GPU). Tudo desligado em prefers-reduced-motion. */
+:root{--ease-out:cubic-bezier(.16,1,.3,1);--ease-io:cubic-bezier(.65,0,.35,1);--acc:#4cd62b}
+
+/* barra de progresso de leitura */
+.scroll-bar{position:fixed;left:0;top:0;z-index:60;height:2px;width:100%;background:var(--acc);box-shadow:0 0 10px var(--acc);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+
+/* header encolhe ao rolar */
+header{transition:background .3s,box-shadow .3s}
+header.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.9),0 1px 0 rgba(76,214,43,.18)}
+
+/* entradas ao rolar (só quando o JS liga .m no <html>) */
+.m .rv{opacity:0;transform:translate3d(0,28px,0);filter:blur(4px)}
+.m .rv.in{opacity:1;transform:none;filter:none;transition:opacity .7s var(--ease-out),transform .9s var(--ease-out),filter .7s var(--ease-out);transition-delay:calc(var(--d,0) * 70ms)}
+.m .rv-l{transform:translate3d(-28px,0,0)}
+.m .rv-s{transform:scale(.94)}
+
+/* título do hero: palavras sobem por trás de uma máscara */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.w>span{display:inline-block}
+.m .hero h1:not(.split){opacity:0}
+.m .hero h1 .w>span{transform:translate3d(0,105%,0);animation:wup .9s var(--ease-out) calc(.1s + var(--i) * 90ms) forwards}
+.m .hero .lead,.m .hero .cta,.m .hero .where{opacity:0;animation:fup .8s var(--ease-out) forwards}
+.m .hero .lead{animation-delay:.45s}.m .hero .cta{animation-delay:.58s}.m .hero .where{animation-delay:.7s}
+@keyframes wup{to{transform:none}}
+@keyframes fup{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:none}}
+
+/* hero: linhas de camada derivam devagar + brilho que segue o cursor */
+.hero::before{animation:layers 14s linear infinite}
+@keyframes layers{to{background-position:0 70px}}
+.hero .spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,70%) var(--my,40%),rgba(76,214,43,.13),transparent 60%);opacity:0;transition:opacity .6s}
+.hero:hover .spot{opacity:1}
+
+/* links do menu: sublinhado que cresce */
+.navlinks a{position:relative}
+.navlinks a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:100% 50%;transition:transform .35s var(--ease-out)}
+.navlinks a:hover::after,.navlinks a.on::after{transform:scaleX(1);transform-origin:0 50%}
+.navlinks a:hover{text-decoration:none!important}
+
+/* botões: leve elevação, brilho que atravessa, toque afunda */
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease-out),box-shadow .25s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%)}
+@media(hover:hover){
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(76,214,43,.55)}
+  .btn:hover::before{transform:translateX(120%);transition:transform .7s var(--ease-out)}
+}
+.btn:active{transform:translateY(0) scale(.97);transition-duration:.08s}
+
+/* lista "o que podemos imprimir": traço verde entra pela esquerda, conteúdo desliza */
+.row{position:relative;transition:background .3s!important}
+.row::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease-out)}
+.row>*{transition:transform .4s var(--ease-out),color .3s}
+@media(hover:hover){
+  .row:hover{padding-left:4px!important}
+  .row:hover::before{transform:scaleX(1)}
+  .row:hover>h3,.row:hover>p{transform:translateX(10px)}
+}
+
+/* passos: número acende ao entrar */
+.m .step.in::before{animation:pop .7s var(--ease-out) calc(var(--d,0) * 70ms + .15s) both}
+@keyframes pop{0%{transform:scale(.4);background:transparent}55%{transform:scale(1.12);background:var(--acc);color:#000;box-shadow:0 0 22px rgba(76,214,43,.7)}100%{transform:none}}
+
+/* blocos de empresas / sobre: realce no hover */
+.biz div{transition:border-color .3s,transform .4s var(--ease-out)}
+@media(hover:hover){.biz div:hover{border-top-color:var(--acc);transform:translateY(-3px)}}
+
+/* FAQ abre e fecha suave (navegadores que suportam) */
+:root{interpolate-size:allow-keywords}
+details::details-content{block-size:0;overflow:hidden;transition:block-size .4s var(--ease-out),content-visibility .4s allow-discrete}
+details[open]::details-content{block-size:auto}
+.faq summary::after{transition:transform .35s var(--ease-out)!important}
+.faq summary{transition:color .2s}.faq summary:hover{color:var(--acc)}
+
+/* logo do contato flutua */
+.m .contact.in-view img{animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .m .rv,.m .hero .lead,.m .hero .cta,.m .hero .where{opacity:1!important;transform:none!important;filter:none!important}
+  .scroll-bar,.hero .spot{display:none}
+}

@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Catálogo de produtos impressos em 3D da Subuluk 3D: automotivo, organização, decoração, pet, comércio, presentes e mais.">
-<meta name="theme-color" content="#090c09">
+<meta name="description" content="Catálogo de produtos impressos em 3D da Subuluk 3D: placas NFC, chaveiros, decoração, escritório, games, pet, oficina e lembranças do Litoral Norte.">
+<meta name="theme-color" content="#000000">
 <title>Catálogo de Produtos | Subuluk 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="catalogo.css">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver"in window)document.documentElement.classList.add("m")</script>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="index.html">Início</a><a class="on" href="catalogo.html">Catálogo</a><a href="index.html#empresas">Para empresas</a><a href="index.html#sobre">Sobre nós</a><a href="index.html#contato">Contato</a></nav></div></header>
+<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks" aria-label="Menu principal"><a href="index.html">Início</a><a class="on" href="catalogo.html">Catálogo</a><a href="index.html#empresas">Para empresas</a><a href="index.html#sobre">Sobre</a><a href="index.html#contato">Contato</a></nav></div></header>
 <main><div class="wrap" id="app"><p class="vazio">Carregando catálogo...</p></div></main>
 <footer><div class="wrap">© 2026 Subuluk 3D • Caraguatatuba, SP • <a href="privacidade.html">Política de privacidade</a></div></footer>
 <script>
 (function () {
   var P = new URLSearchParams(location.search), app = document.getElementById('app');
   var E = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
+  var AVISO = '<p class="aviso">Imagens ilustrativas (renderizações 3D). Cores e acabamento podem variar na peça real.</p>';
 
   fetch('produtos.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
@@ -26,27 +31,31 @@
     var N = D.nichos || [], L = D.produtos || [];
     var nm = function (id) { return N.filter(function (n) { return n.id === id; })[0]; };
     var cnt = function (id) { return L.filter(function (p) { return p.nicho === id; }).length; };
-    var ph = function (src, label, extra) {
-      return '<div class="ph">' + (extra || '') + '<span>' + E(label) + '</span>' +
-        (src ? '<img src="' + E(src) + '" alt="" loading="lazy" onerror="this.remove()">' : '') + '</div>';
+    var ph = function (src, label, extra, eager) {
+      return '<div class="ph">' + (extra || '') + '<span class="ph-txt">' + E(label) + '</span>' +
+        (src ? '<img src="' + E(src) + '" alt="' + E(label) + '" width="1000" height="750"' + (eager ? '' : ' loading="lazy"') + ' decoding="async" onerror="this.remove()">' : '') + '</div>';
     };
     var tags = function (p) {
       return (p.destaque ? '<span class="badge">Destaque</span>' : '') + (p.personalizavel ? '<span class="badge alt">Personalizável</span>' : '');
     };
     var ncard = function (n) {
       var c = cnt(n.id);
-      return '<a class="card" href="?n=' + E(n.id) + '">' + ph('fotos/nichos/' + n.id + '.jpg', n.nome) +
-        '<div class="cb"><h3>' + E(n.nome) + '</h3><p>' + E(n.desc) + '</p><span class="count">' + c + (c === 1 ? ' produto' : ' produtos') + '</span></div></a>';
+      return '<a class="card" href="?n=' + E(n.id) + '">' + ph(n.capa || ('fotos/nichos/' + n.id + '.jpg'), n.nome) +
+        '<div class="cb"><h3>' + E(n.nome) + '</h3><p>' + E(n.desc) + '</p><div class="meta"><span class="count">' + c + (c === 1 ? ' produto' : ' produtos') + '</span><span class="go" aria-hidden="true">→</span></div></div></a>';
     };
     var pcard = function (p) {
       var n = nm(p.nicho) || {};
-      return '<a class="card" href="?p=' + encodeURIComponent(p.ref) + '">' + ph((p.fotos || [])[0], 'Foto em breve', '<div class="badges">' + tags(p) + '</div>') +
-        '<div class="cb"><h3>' + E(p.nome) + '</h3><p>' + E(n.nome || '') + (p.sub ? ' · ' + E(p.sub) : '') + '</p><span class="ref">' + E(p.ref) + '</span></div></a>';
+      return '<a class="card" href="?p=' + encodeURIComponent(p.ref) + '">' + ph((p.fotos || [])[0], p.nome, '<div class="badges">' + tags(p) + '</div>') +
+        '<div class="cb"><h3>' + E(p.nome) + '</h3><p>' + E(n.nome || '') + (p.sub ? ' · ' + E(p.sub) : '') + '</p><div class="meta"><span class="ref">' + E(p.ref) + '</span><span class="go" aria-hidden="true">→</span></div></div></a>';
     };
 
     var q = P.get('q') || '', n = P.get('n') || '', s = P.get('s') || '', o = P.get('o') || 'recentes', pe = P.get('pers'), pr = P.get('p');
     var cur = nm(n);
 
+    var chips = function () {
+      return '<nav class="chips" aria-label="Categorias"><a class="chip' + (!cur ? ' on' : '') + '" href="catalogo.html">Todas</a>' +
+        N.map(function (x) { return '<a class="chip' + (cur && cur.id === x.id ? ' on' : '') + '" href="?n=' + E(x.id) + '">' + E(x.nome) + '</a>'; }).join('') + '</nav>';
+    };
     function tools() {
       var subs = cur ? (cur.subs || []) : [];
       return '<form class="tools" method="get" role="search">' + (n ? '<input type="hidden" name="n" value="' + E(n) + '">' : '') +
@@ -62,6 +71,7 @@
         (cur ? ' › <a href="?n=' + E(cur.id) + '">' + E(cur.nome) + '</a>' : '') + (last ? ' › ' + E(last) : '') + '</nav>';
     };
     var recent = function (a, b) { return (b.criado || '').localeCompare(a.criado || ''); };
+    var grid = function (items, fn) { return items.length ? '<div class="grid">' + items.map(fn).join('') + '</div>' : '<p class="vazio">Nenhum produto encontrado com esses filtros.</p>'; };
 
     // ---- página do produto ----
     if (pr) {
@@ -71,11 +81,63 @@
       var f = p.fotos || [], w = String(D.whatsapp || '').replace(/\D/g, '');
       var msg = 'Olá! Tenho interesse no produto ' + p.nome + ', referência ' + p.ref + '. Gostaria de receber mais informações e um orçamento.';
       var row = function (k, v) { return v ? '<dt>' + k + '</dt><dd>' + E(v) + '</dd>' : ''; };
+      var rel = L.filter(function (x) { return x.nicho === p.nicho && x.ref !== p.ref; }).slice(0, 4);
       document.title = p.nome + ' | Subuluk 3D';
-      app.innerHTML = crumb(p.nome) + '<div class="pd"><div><div id="main">' + ph(f[0], 'Foto em breve') + '</div>' +
-        (f.length > 1 ? '<div class="thumbs">' + f.map(function (x) { return '<button type="button" data-src="' + E(x) + '" aria-label="Ver foto"><img src="' + E(x) + '" alt="" loading="lazy"></button>'; }).join('') + '</div>' : '') +
-        '</div><div><h1>' + E(p.nome) + '</h1><div class="badges">' + tags(p) + '</div><p class="lead">' + E(p.descricao || '') + '</p><dl>' +
-        row('Referência', p.ref) + row('Nicho', cur && cur.nome) + row('Subcategoria', p.sub) + row('Dimensões', p.dimensoes) +
+      app.innerHTML = crumb(p.nome) + '<div class="pd"><div class="fade"><div id="main">' + ph(f[0], p.nome, '', true) + '</div>' +
+        (f.length > 1 ? '<div class="thumbs">' + f.map(function (x, i) { return '<button type="button" class="' + (i ? '' : 'on') + '" data-src="' + E(x) + '" aria-label="Ver foto ' + (i + 1) + '"><img src="' + E(x) + '" alt="" loading="lazy"></button>'; }).join('') + '</div>' : '') +
+        AVISO + '</div><div class="fade" style="animation-delay:.12s"><h1>' + E(p.nome) + '</h1><div class="badges">' + tags(p) + '</div><p class="lead">' + E(p.descricao || '') + '</p><dl>' +
+        row('Referência', p.ref) + row('Categoria', cur && cur.nome) + row('Subcategoria', p.sub) + row('Dimensões', p.dimensoes) +
         row('Cores', (p.cores || []).join(', ')) + row('Personalização', p.personalizavel ? 'Sim' : 'Não') + '</dl>' +
-        (w ? '<a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/' + w + '?text=' + encodeURIComponent(msg) + '">Solicitar orçamento pelo WhatsApp</a>'
+        (w ? '<a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/' + w + '?text=' + encodeURIComponent(msg) + '">Pedir orçamento no WhatsApp</a>'
            : '<span class="btn off">WhatsApp ainda não configurado</span>') +
+        '</div></div>' + (rel.length ? '<h2 class="sec">Da mesma categoria</h2>' + grid(rel, pcard) : '');
+      var main = document.querySelector('#main img');
+      Array.prototype.forEach.call(document.querySelectorAll('.thumbs button'), function (b) {
+        b.addEventListener('click', function () {
+          if (!main) return;
+          document.querySelectorAll('.thumbs button').forEach(function (x) { x.classList.remove('on'); });
+          b.classList.add('on'); main.classList.add('swap');
+          setTimeout(function () { main.src = b.getAttribute('data-src'); main.onload = function () { main.classList.remove('swap'); }; }, 180);
+        });
+      });
+      return fx();
+    }
+
+    // ---- lista de produtos (busca / categoria) ----
+    if (cur || q || pe) {
+      var list = L.filter(function (x) {
+        return (!cur || x.nicho === cur.id) && (!s || x.sub === s) && (!pe || x.personalizavel) &&
+          (!q || (x.nome + ' ' + (x.descricao || '')).toLowerCase().indexOf(q.toLowerCase()) >= 0);
+      }).sort(o === 'nome' ? function (a, b) { return a.nome.localeCompare(b.nome, 'pt-BR'); } : recent);
+      if (cur) document.title = cur.nome + ' | Catálogo Subuluk 3D';
+      app.innerHTML = crumb(cur ? '' : 'Busca') + '<h1 class="fade">' + E(cur ? cur.nome : 'Resultados da busca') + '</h1><p class="lead fade">' + E(cur ? cur.desc : list.length + ' produto(s) encontrado(s).') + '</p>' +
+        chips() + tools() + grid(list, pcard) + AVISO;
+      return fx();
+    }
+
+    // ---- início do catálogo ----
+    var dest = L.filter(function (x) { return x.destaque; }).sort(recent).slice(0, 8);
+    app.innerHTML = '<h1 class="fade">Catálogo de produtos</h1><p class="lead fade">Peças impressas em 3D para casa, empresas, presentes e para o seu setup. Todas podem ser ajustadas em medida, texto e cor.</p>' +
+      chips() + tools() + '<h2 class="sec">Categorias</h2>' + grid(N, ncard) +
+      (dest.length ? '<h2 class="sec">Destaques</h2>' + grid(dest, pcard) : '') + AVISO;
+    fx();
+  }
+
+  // ---- motion: entrada em grade + brilho que segue o cursor ----
+  function fx() {
+    var on = document.documentElement.classList.contains('m');
+    var io = on ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px', threshold: .1 }) : null;
+    document.querySelectorAll('.grid').forEach(function (g) {
+      Array.prototype.forEach.call(g.children, function (c, i) { c.classList.add('rv'); c.style.setProperty('--d', i % 8); io ? io.observe(c) : c.classList.add('in'); });
+    });
+    if (on && matchMedia('(hover:hover)').matches) document.querySelectorAll('.card').forEach(function (c) {
+      c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--x', (e.clientX - r.left) + 'px'); c.style.setProperty('--y', (e.clientY - r.top) + 'px'); }, { passive: true });
+    });
+    var bar = document.querySelector('.scroll-bar') || document.body.appendChild(Object.assign(document.createElement('div'), { className: 'scroll-bar' })), t = 0;
+    var upd = function () { t = 0; var m = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX(' + (m > 0 ? scrollY / m : 0) + ')'; };
+    addEventListener('scroll', function () { if (!t) t = requestAnimationFrame(upd); }, { passive: true }); upd();
+  }
+})();
+</script>
+</body>
+</html>
