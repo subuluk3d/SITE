@@ -112,6 +112,81 @@
     "Miniaturas"
    ],
    "capa": "fotos/produtos/farol-miniatura.webp"
+  },
+  {
+   "id": "festas-eventos",
+   "nome": "Festas e Eventos",
+   "desc": "Topos de bolo, lembrancinhas, centros de mesa e letreiros para aniversários, casamentos e eventos.",
+   "subs": [
+    "Topos de bolo",
+    "Lembrancinhas",
+    "Centros de mesa",
+    "Letreiros"
+   ]
+  },
+  {
+   "id": "sinalizacao",
+   "nome": "Placas e Sinalização",
+   "desc": "Placas de porta, sinalização interna e letreiros com o logotipo da sua empresa.",
+   "subs": [
+    "Placas de porta",
+    "Sinalização interna",
+    "Letreiros com logo",
+    "Placas de mesa"
+   ]
+  },
+  {
+   "id": "plantas-jardim",
+   "nome": "Plantas e Jardim",
+   "desc": "Vasos autoirrigáveis, suportes de parede e marcadores para hortas e plantas.",
+   "subs": [
+    "Vasos autoirrigáveis",
+    "Suportes de parede",
+    "Marcadores de plantas"
+   ]
+  },
+  {
+   "id": "colecionaveis",
+   "nome": "Colecionáveis e Miniaturas",
+   "desc": "Miniaturas, bustos, articulados e peças para coleção e decoração geek.",
+   "subs": [
+    "Miniaturas",
+    "Articulados",
+    "Bustos",
+    "Expositores de coleção"
+   ]
+  },
+  {
+   "id": "pecas-reposicao",
+   "nome": "Peças de Reposição",
+   "desc": "Reproduzimos peças quebradas ou que não se acham mais: tampas, engrenagens, presilhas e suportes.",
+   "subs": [
+    "Tampas e presilhas",
+    "Engrenagens",
+    "Suportes e fixadores",
+    "Peças sob medida"
+   ]
+  },
+  {
+   "id": "maker-educacao",
+   "nome": "Maker e Educação",
+   "desc": "Protótipos, maquetes, peças para robótica e materiais didáticos para escolas e projetos.",
+   "subs": [
+    "Protótipos",
+    "Maquetes",
+    "Robótica",
+    "Material didático"
+   ]
+  },
+  {
+   "id": "cozinha-casa",
+   "nome": "Cozinha e Organização da Casa",
+   "desc": "Suportes, ganchos e organizadores para cozinha, banheiro e lavanderia (sem contato com alimentos).",
+   "subs": [
+    "Suportes de cozinha",
+    "Organizadores de gaveta",
+    "Banheiro e lavanderia"
+   ]
   }
  ],
  "produtos": [

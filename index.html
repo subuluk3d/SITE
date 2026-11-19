@@ -213,6 +213,14 @@ footer{padding:60px 0 40px;color:var(--mute);font-size:.9rem}
 .m .rv{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),filter .8s}
 .m .rv.in{opacity:1;transform:none;filter:none}
 
+/* busca da home */
+.hsearch{display:flex;align-items:center;gap:10px;height:58px;padding:0 6px 0 20px;margin-bottom:16px;border-radius:999px;background:var(--panel);border:1px solid var(--line2);transition:border-color .2s,box-shadow .2s}
+.hsearch:focus-within{border-color:var(--lime);box-shadow:0 0 0 4px rgba(184,255,60,.14)}
+.hsearch>svg{color:var(--mute);flex:none}
+.hsearch input{flex:1;min-width:0;height:100%;background:none;border:0;outline:none;color:var(--ink);font:inherit;font-size:1rem}
+.hsearch input::placeholder{color:#7D867A}
+.hsearch .pill{border:0;cursor:pointer}
+@media(max-width:680px){.hsearch{height:52px;padding-left:16px}.hsearch .pill{padding:6px}.hsearch .pill{font-size:0;gap:0}}
 /* menu mobile */
 .menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line2);place-items:center}
 .menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:transform .25s,background .25s}
@@ -298,14 +306,14 @@ form.qf{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(6,7,
 
 <header id="hdr"><div class="wrap nav">
   <a class="brand" href="#inicio" aria-label="Subuluk 3D, início"><img src="logo.png" alt="" width="30" height="30">SUBULUK<b>3D</b></a>
-  <nav class="links" aria-label="Menu principal"><a href="#catalogo">Catálogo</a><a href="#empresas">Empresas</a><a href="#processo">Processo</a><a href="#duvidas">Dúvidas</a></nav>
+  <nav class="links" aria-label="Menu principal"><a href="catalogo.html">Catálogo</a><a href="#empresas">Empresas</a><a href="#processo">Processo</a><a href="#duvidas">Dúvidas</a></nav>
   <div class="hdr-r">
     <a class="pill sm" href="#contato" data-wa aria-label="Pedir orçamento pelo WhatsApp"><span class="t">Pedir orçamento</span><span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Abrir menu"><span></span></button>
   </div>
 </div></header>
 <nav class="mnav" id="mnav" aria-label="Menu" hidden>
-  <a href="#catalogo">Catálogo <span>01</span></a><a href="#empresas">Empresas <span>02</span></a><a href="#processo">Processo <span>03</span></a><a href="#duvidas">Dúvidas <span>04</span></a><a href="#contato">Orçamento <span>05</span></a>
+  <a href="catalogo.html">Catálogo completo <span>01</span></a><a href="#empresas">Empresas <span>02</span></a><a href="#processo">Processo <span>03</span></a><a href="#duvidas">Dúvidas <span>04</span></a><a href="#contato">Orçamento <span>05</span></a>
   <a class="pill" href="#" data-wa>Chamar no WhatsApp<span class="ar"><svg aria-hidden="true"><use href="#i-wa"/></svg></span></a>
 </nav>
 
@@ -349,6 +357,12 @@ form.qf{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(6,7,
     <div class="rv"><div class="idx"><span class="mono">01</span><i></i><span class="mono">Catálogo</span></div><h2>Peças prontas<br>para <em>imprimir.</em></h2></div>
     <p class="rv">Toque numa peça e o pedido já vai pro WhatsApp com o código. Medida, texto e cor podem ser ajustados.</p>
   </div>
+  <form class="hsearch" action="catalogo.html" role="search">
+    <label for="hq" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Buscar no catálogo</label>
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></svg>
+    <input id="hq" name="q" type="search" placeholder="Busque no catálogo: chaveiro, NFC, vaso, suporte..." enterkeyhint="search">
+    <button type="submit" class="pill sm">Buscar<span class="ar"><svg aria-hidden="true"><use href="#i-ar"/></svg></span></button>
+  </form>
   <div class="tabs" role="group" aria-label="Filtrar por categoria" id="tabs"></div>
   <div class="grid" id="grid" aria-live="polite"></div>
   <p style="margin-top:28px;text-align:center"><a class="ghost" href="catalogo.html">Catálogo completo com busca e detalhes →</a></p>
