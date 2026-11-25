@@ -1,5 +1,37 @@
 {
  "whatsapp": "5512982299331",
+ "departamentos": [
+  {
+   "id": "empresas",
+   "nome": "Para Empresas",
+   "desc": "Peças para o seu negócio atender, sinalizar e divulgar a marca.",
+   "icone": "c-sign"
+  },
+  {
+   "id": "presentes",
+   "nome": "Presentes e Festas",
+   "desc": "Presentes personalizados, lembranças, festas e datas especiais.",
+   "icone": "c-gift"
+  },
+  {
+   "id": "casa",
+   "nome": "Casa e Decoração",
+   "desc": "Decoração, organização e utilidades para todos os cômodos.",
+   "icone": "c-vase"
+  },
+  {
+   "id": "lazer",
+   "nome": "Games e Diversão",
+   "desc": "Setup gamer, brinquedos, jogos de mesa, colecionáveis e cosplay.",
+   "icone": "c-game"
+  },
+  {
+   "id": "trabalho",
+   "nome": "Escritório e Oficina",
+   "desc": "Organização de mesa, oficina, carro, peças de reposição e projetos maker.",
+   "icone": "c-tool"
+  }
+ ],
  "nichos": [
   {
    "id": "comercio-empresas",
@@ -11,7 +43,20 @@
     "Porta-cartões",
     "Expositores"
    ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp",
+   "grupo": "empresas"
+  },
+  {
+   "id": "sinalizacao",
+   "nome": "Placas e Sinalização",
+   "desc": "Placas de porta, sinalização interna e letreiros com o logotipo da sua empresa.",
+   "subs": [
+    "Placas de porta",
+    "Sinalização interna",
+    "Letreiros com logo",
+    "Placas de mesa"
+   ],
+   "grupo": "empresas"
   },
   {
    "id": "presentes-personalizados",
@@ -23,7 +68,56 @@
     "Brindes corporativos",
     "Lembrancinhas"
    ],
-   "capa": "fotos/produtos/chaveiro-nome.webp"
+   "capa": "fotos/produtos/chaveiro-nome.webp",
+   "grupo": "presentes"
+  },
+  {
+   "id": "festas-eventos",
+   "nome": "Festas e Eventos",
+   "desc": "Topos de bolo, lembrancinhas, centros de mesa e letreiros para aniversários, casamentos e eventos.",
+   "subs": [
+    "Topos de bolo",
+    "Centros de mesa",
+    "Letreiros de festa",
+    "Lembrancinhas de festa"
+   ],
+   "grupo": "presentes"
+  },
+  {
+   "id": "natal",
+   "nome": "Natal",
+   "desc": "Enfeites, árvores minimalistas e porta-velas para decorar a casa e a vitrine no fim de ano.",
+   "subs": [
+    "Enfeites de árvore",
+    "Árvores decorativas",
+    "Porta-velas",
+    "Presépios e figuras"
+   ],
+   "grupo": "presentes"
+  },
+  {
+   "id": "moda-acessorios",
+   "nome": "Moda e Acessórios",
+   "desc": "Brincos, porta-joias e acessórios leves, com cores e formatos sob medida.",
+   "subs": [
+    "Brincos",
+    "Anéis e pulseiras",
+    "Porta-joias",
+    "Acessórios para bolsas"
+   ],
+   "grupo": "presentes"
+  },
+  {
+   "id": "turismo-regional",
+   "nome": "Litoral Norte",
+   "desc": "Ímãs, chaveiros e miniaturas inspirados em Caraguatatuba e região.",
+   "subs": [
+    "Ímãs de geladeira",
+    "Chaveiros de cidades",
+    "Miniaturas"
+   ],
+   "capa": "fotos/produtos/farol-miniatura.webp",
+   "grupo": "presentes"
   },
   {
    "id": "decoracao",
@@ -35,7 +129,115 @@
     "Esculturas",
     "Objetos minimalistas"
    ],
-   "capa": "fotos/produtos/vaso-espiral.webp"
+   "capa": "fotos/produtos/vaso-espiral.webp",
+   "grupo": "casa"
+  },
+  {
+   "id": "casa-utilidades",
+   "nome": "Casa e Utilidades",
+   "desc": "Porta-chaves, ganchos e utilidades para banheiro, lavanderia e o dia a dia.",
+   "subs": [
+    "Porta-chaves de parede",
+    "Ganchos",
+    "Banheiro e lavanderia",
+    "Utilidades domésticas"
+   ],
+   "capa": "fotos/produtos/porta-chaves-parede.webp",
+   "grupo": "casa"
+  },
+  {
+   "id": "cozinha-casa",
+   "nome": "Cozinha",
+   "desc": "Suportes, organizadores de gaveta e utilidades para a cozinha.",
+   "subs": [
+    "Suportes de cozinha",
+    "Organizadores de gaveta",
+    "Porta-temperos",
+    "Utensílios"
+   ],
+   "grupo": "casa"
+  },
+  {
+   "id": "plantas-jardim",
+   "nome": "Plantas e Jardim",
+   "desc": "Vasos autoirrigáveis, suportes de parede e marcadores para hortas e plantas.",
+   "subs": [
+    "Vasos autoirrigáveis",
+    "Vasos para suculentas",
+    "Suportes de parede",
+    "Marcadores de plantas"
+   ],
+   "grupo": "casa"
+  },
+  {
+   "id": "pet-shop",
+   "nome": "Pet",
+   "desc": "Plaquinhas de identificação com o nome do seu pet.",
+   "subs": [
+    "Identificadores",
+    "Acessórios para coleiras"
+   ],
+   "capa": "fotos/produtos/tag-pet.webp",
+   "grupo": "casa"
+  },
+  {
+   "id": "games-tecnologia",
+   "nome": "Games e Setup",
+   "desc": "Suportes para headset, controles e acessórios para o seu setup.",
+   "subs": [
+    "Suportes para headset",
+    "Suportes para controles",
+    "Acessórios gamer"
+   ],
+   "capa": "fotos/produtos/suporte-headset.webp",
+   "grupo": "lazer"
+  },
+  {
+   "id": "brinquedos-fidgets",
+   "nome": "Brinquedos e Fidgets",
+   "desc": "Fidgets, brinquedos articulados e quebra-cabeças impressos em 3D para todas as idades.",
+   "subs": [
+    "Fidgets",
+    "Articulados",
+    "Quebra-cabeças",
+    "Brinquedos de montar"
+   ],
+   "grupo": "lazer"
+  },
+  {
+   "id": "jogos-mesa",
+   "nome": "Jogos de Mesa e RPG",
+   "desc": "Torres de dados, porta-cartas, organizadores de caixa e peças para jogos de tabuleiro.",
+   "subs": [
+    "Torres de dados",
+    "Porta-cartas e deck box",
+    "Organizadores de jogos",
+    "Peças de reposição para jogos"
+   ],
+   "grupo": "lazer"
+  },
+  {
+   "id": "colecionaveis",
+   "nome": "Colecionáveis e Miniaturas",
+   "desc": "Miniaturas, bustos, dioramas e expositores para a sua coleção.",
+   "subs": [
+    "Miniaturas",
+    "Bustos",
+    "Dioramas",
+    "Expositores de coleção"
+   ],
+   "grupo": "lazer"
+  },
+  {
+   "id": "cosplay-props",
+   "nome": "Cosplay e Props",
+   "desc": "Máscaras, capacetes e acessórios de fantasia, prontos para lixar e pintar.",
+   "subs": [
+    "Máscaras e capacetes",
+    "Réplicas e props",
+    "Acessórios de fantasia"
+   ],
+   "grupo": "lazer"
   },
   {
    "id": "escritorio",
@@ -47,49 +249,8 @@
     "Suportes para celular",
     "Organizadores de cabos"
    ],
-   "capa": "fotos/produtos/organizador-mesa.webp"
-  },
-  {
-   "id": "casa-utilidades",
-   "nome": "Casa e Utilidades",
-   "desc": "Porta-chaves, ganchos e utilidades para o dia a dia.",
-   "subs": [
-    "Porta-chaves de parede",
-    "Ganchos",
-    "Utilidades domésticas"
-   ],
-   "capa": "fotos/produtos/porta-chaves-parede.webp"
-  },
-  {
-   "id": "games-tecnologia",
-   "nome": "Games e Setup",
-   "desc": "Suportes para headset, controles e acessórios para o seu setup.",
-   "subs": [
-    "Suportes para headset",
-    "Suportes para controles",
-    "Acessórios gamer"
-   ],
-   "capa": "fotos/produtos/suporte-headset.webp"
-  },
-  {
-   "id": "automotivo",
-   "nome": "Automotivo",
-   "desc": "Organizadores e acessórios para o interior do carro.",
-   "subs": [
-    "Organizadores automotivos",
-    "Acessórios internos"
-   ],
-   "capa": "fotos/produtos/organizador-porta-copos.webp"
-  },
-  {
-   "id": "pet-shop",
-   "nome": "Pet",
-   "desc": "Plaquinhas de identificação com o nome do seu pet.",
-   "subs": [
-    "Identificadores",
-    "Acessórios para coleiras"
-   ],
-   "capa": "fotos/produtos/tag-pet.webp"
+   "capa": "fotos/produtos/organizador-mesa.webp",
+   "grupo": "trabalho"
   },
   {
    "id": "ferramentas-oficina",
@@ -100,61 +261,19 @@
     "Suportes para brocas",
     "Acessórios de bancada"
    ],
-   "capa": "fotos/produtos/organizador-parafusos.webp"
+   "capa": "fotos/produtos/organizador-parafusos.webp",
+   "grupo": "trabalho"
   },
   {
-   "id": "turismo-regional",
-   "nome": "Litoral Norte",
-   "desc": "Ímãs, chaveiros e miniaturas inspirados em Caraguatatuba e região.",
+   "id": "automotivo",
+   "nome": "Automotivo",
+   "desc": "Organizadores e acessórios para o interior do carro.",
    "subs": [
-    "Ímãs de geladeira",
-    "Chaveiros de cidades",
-    "Miniaturas"
+    "Organizadores automotivos",
+    "Acessórios internos"
    ],
-   "capa": "fotos/produtos/farol-miniatura.webp"
-  },
-  {
-   "id": "festas-eventos",
-   "nome": "Festas e Eventos",
-   "desc": "Topos de bolo, lembrancinhas, centros de mesa e letreiros para aniversários, casamentos e eventos.",
-   "subs": [
-    "Topos de bolo",
-    "Lembrancinhas",
-    "Centros de mesa",
-    "Letreiros"
-   ]
-  },
-  {
-   "id": "sinalizacao",
-   "nome": "Placas e Sinalização",
-   "desc": "Placas de porta, sinalização interna e letreiros com o logotipo da sua empresa.",
-   "subs": [
-    "Placas de porta",
-    "Sinalização interna",
-    "Letreiros com logo",
-    "Placas de mesa"
-   ]
-  },
-  {
-   "id": "plantas-jardim",
-   "nome": "Plantas e Jardim",
-   "desc": "Vasos autoirrigáveis, suportes de parede e marcadores para hortas e plantas.",
-   "subs": [
-    "Vasos autoirrigáveis",
-    "Suportes de parede",
-    "Marcadores de plantas"
-   ]
-  },
-  {
-   "id": "colecionaveis",
-   "nome": "Colecionáveis e Miniaturas",
-   "desc": "Miniaturas, bustos, articulados e peças para coleção e decoração geek.",
-   "subs": [
-    "Miniaturas",
-    "Articulados",
-    "Bustos",
-    "Expositores de coleção"
-   ]
+   "capa": "fotos/produtos/organizador-porta-copos.webp",
+   "grupo": "trabalho"
   },
   {
    "id": "pecas-reposicao",
@@ -165,7 +284,8 @@
     "Engrenagens",
     "Suportes e fixadores",
     "Peças sob medida"
-   ]
+   ],
+   "grupo": "trabalho"
   },
   {
    "id": "maker-educacao",
@@ -176,17 +296,8 @@
     "Maquetes",
     "Robótica",
     "Material didático"
-   ]
-  },
-  {
-   "id": "cozinha-casa",
-   "nome": "Cozinha e Organização da Casa",
-   "desc": "Suportes, ganchos e organizadores para cozinha, banheiro e lavanderia (sem contato com alimentos).",
-   "subs": [
-    "Suportes de cozinha",
-    "Organizadores de gaveta",
-    "Banheiro e lavanderia"
-   ]
+   ],
+   "grupo": "trabalho"
   }
  ],
  "produtos": [
@@ -694,6 +805,23 @@
     "fotos/produtos/farol-miniatura-2.webp"
    ],
    "criado": "2026-11-10"
+  },
+  {
+   "ref": "SUB-028",
+   "nome": "Vaso orgânico",
+   "nicho": "decoracao",
+   "sub": "Vasos",
+   "descricao": "Vaso de formas orgânicas e onduladas, com acabamento fosco. Fica bonito com suculentas e plantas pequenas ou sozinho, como objeto decorativo.",
+   "dimensoes": "",
+   "cores": [
+    "Branco"
+   ],
+   "personalizavel": false,
+   "destaque": false,
+   "fotos": [
+    "fotos/produtos/vaso-organico.webp"
+   ],
+   "criado": "2026-11-24"
   }
  ]
 }

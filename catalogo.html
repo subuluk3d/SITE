@@ -204,6 +204,18 @@ main{padding:22px 0 80px;min-height:60vh;outline:none}
 .rel .row{grid-auto-columns:minmax(170px,200px)}
 .rel .card h3{font-size:.88rem}
 
+/* departamentos */
+.grp+.grp{margin-top:26px}
+.gh3{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.gh3 h3{font-size:1.02rem;font-weight:500;display:flex;align-items:center;gap:8px}
+.gh3 h3 svg{width:18px;height:18px;color:var(--lime)}
+.gh3 a{color:var(--lime);font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.sib{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 0 16px;padding:2px}
+.sib::-webkit-scrollbar{display:none}
+.sib .pill{height:34px;font-size:.84rem}
+.drawer h2 a:hover,.drawer h2 a[aria-current="page"]{color:var(--lime)}
+.lh .tiles{margin-top:4px}
+
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:.88rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer nav{display:flex;gap:16px;flex-wrap:wrap}footer a:hover,footer button:hover{color:var(--lime)}
@@ -261,6 +273,11 @@ footer button{color:inherit;font-size:inherit}
 <symbol id="c-edu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5Z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></g></symbol>
 <symbol id="c-kitchen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 3c-2 2-2.5 5-2 8h2v10"/></g></symbol>
 <symbol id="c-cube" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7Z"/><path d="M3 7l9 5 9-5M12 12v10"/></g></symbol>
+<symbol id="c-tree" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 7 10h3l-4 5h4l-5 5h14l-5-5h4l-4-5h3Z"/><path d="M12 20v2"/></g></symbol>
+<symbol id="c-puzzle" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4h-4a2 2 0 1 0-4 0H4v-4a2 2 0 1 0 0-4Z"/></symbol>
+<symbol id="c-dice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/></g><g fill="currentColor"><circle cx="9" cy="9" r="1.4"/><circle cx="15" cy="15" r="1.4"/><circle cx="12" cy="12" r="1.4"/></g></symbol>
+<symbol id="c-gem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4h12l3 5-9 11L3 9Z"/><path d="M3 9h18M9 4l3 16 3-16"/></g></symbol>
+<symbol id="c-mask" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7c3-1.5 15-1.5 18 0 0 6-3 10-6 10-1.5 0-2-2-3-2s-1.5 2-3 2c-3 0-6-4-6-10Z"/><path d="M7 11c1-1 2.5-1 3.5 0M13.5 11c1-1 2.5-1 3.5 0"/></g></symbol>
 </svg>
 
 <header class="top">
@@ -314,8 +331,15 @@ footer button{color:inherit;font-size:inherit}
 "use strict";
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var main=$("#conteudo"),D=null,N=[],P=[],byId={};
-var ICON={"comercio-empresas":"c-nfc","presentes-personalizados":"c-gift","decoracao":"c-vase","escritorio":"c-desk","casa-utilidades":"c-house","games-tecnologia":"c-game","automotivo":"c-car","pet-shop":"c-pet","ferramentas-oficina":"c-tool","turismo-regional":"c-wave","festas-eventos":"c-party","sinalizacao":"c-sign","plantas-jardim":"c-leaf","colecionaveis":"c-robot","pecas-reposicao":"c-gear","maker-educacao":"c-edu","cozinha-casa":"c-kitchen"};
+var ICON={"comercio-empresas":"c-nfc","presentes-personalizados":"c-gift","decoracao":"c-vase","escritorio":"c-desk","casa-utilidades":"c-house","games-tecnologia":"c-game","automotivo":"c-car","pet-shop":"c-pet","ferramentas-oficina":"c-tool","turismo-regional":"c-wave","festas-eventos":"c-party","sinalizacao":"c-sign","plantas-jardim":"c-leaf","colecionaveis":"c-robot","pecas-reposicao":"c-gear","maker-educacao":"c-edu","cozinha-casa":"c-kitchen","natal":"c-tree","moda-acessorios":"c-gem","brinquedos-fidgets":"c-puzzle","jogos-mesa":"c-dice","cosplay-props":"c-mask"};
 function ic(id){return '<svg aria-hidden="true"><use href="#'+(ICON[id]||"c-cube")+'"/></svg>'}
+function gic(g){return '<svg aria-hidden="true"><use href="#'+E((g&&g.icone)||"c-cube")+'"/></svg>'}
+/* departamentos: agrupam as categorias; categoria sem grupo válido cai em "Outras categorias" */
+var G=[],gById={};
+function grupoDe(n){return n&&gById[n.grupo]?n.grupo:"outros"}
+function nichosDe(gid){return N.filter(function(n){return grupoDe(n)===gid})}
+function cntG(gid){return P.filter(function(p){var n=byId[p.nicho];return n&&grupoDe(n)===gid}).length}
+function tile(n){var c=cnt(n.id);return'<a class="tile" href="'+url({n:n.id})+'"><div class="im">'+(n.capa?'<img src="'+E(n.capa)+'" alt="" loading="lazy">':ic(n.id))+(c?"":'<span class="so">Sob encomenda</span>')+'</div><div class="tt"><strong>'+E(n.nome)+'</strong><small>'+(c?c+(c>1?" peças":" peça"):"Peça orçamento")+'</small></div></a>'}
 function E(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return"&#"+c.charCodeAt(0)+";"})}
 function norm(s){return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()}
 function wa(t){var n=(D&&D.whatsapp)||(window.SBK&&SBK.config.WHATSAPP)||"5512982299331";return"https://wa.me/"+n+"?text="+encodeURIComponent(t||"Olá! Vim pelo catálogo da Subuluk 3D e gostaria de um orçamento.")}
@@ -323,8 +347,8 @@ function track(n,p){if(window.SBK)SBK.track(n,p)}
 function cnt(id){return P.filter(function(p){return p.nicho===id}).length}
 
 /* ---------- estado na URL ---------- */
-function getS(){var u=new URLSearchParams(location.search);return{q:u.get("q")||"",n:u.get("n")||"",s:u.get("s")||"",f:u.get("f")||"",o:u.get("o")||"",pers:u.get("pers")==="1",p:u.get("p")||""}}
-function url(s){var u=new URLSearchParams();["q","n","s","f","o","p"].forEach(function(k){if(s[k])u.set(k,s[k])});if(s.pers)u.set("pers","1");var x=u.toString();return"catalogo.html"+(x?"?"+x:"")}
+function getS(){var u=new URLSearchParams(location.search);return{q:u.get("q")||"",d:u.get("d")||"",n:u.get("n")||"",s:u.get("s")||"",f:u.get("f")||"",o:u.get("o")||"",pers:u.get("pers")==="1",p:u.get("p")||""}}
+function url(s){var u=new URLSearchParams();["q","d","n","s","f","o","p"].forEach(function(k){if(s[k])u.set(k,s[k])});if(s.pers)u.set("pers","1");var x=u.toString();return"catalogo.html"+(x?"?"+x:"")}
 function go(s,replace){history[replace?"replaceState":"pushState"](null,"",url(s));render()}
 
 /* ---------- busca ---------- */
@@ -341,6 +365,7 @@ function hl(text,q){var t=norm(q).split(/\s+/).filter(function(x){return x.lengt
 function filter(s){
   var L=P.slice();
   if(s.n)L=L.filter(function(p){return p.nicho===s.n});
+  else if(s.d&&gById[s.d])L=L.filter(function(p){var n=byId[p.nicho];return n&&grupoDe(n)===s.d});
   if(s.s)L=L.filter(function(p){return p.sub===s.s});
   if(s.f==="destaque")L=L.filter(function(p){return p.destaque});
   if(s.pers)L=L.filter(function(p){return p.personalizavel});
@@ -362,15 +387,16 @@ function card(p,q){
     '<div class="ft"><span class="mono">'+E(p.ref)+(p.dimensoes?" · "+E(p.dimensoes):"")+'</span><span class="wa" aria-hidden="true"><svg><use href="#i-wa"/></svg></span></div></div></a>';
 }
 function strip(s){
-  var home=!s.n&&!s.f&&!s.q&&!s.pers&&!s.o;
-  var items=[["","Para você","c-home",home],["f=destaque","Mais pedidos","c-star",s.f==="destaque"&&!s.n],["o=recentes","Novidades","c-new",s.o==="recentes"&&!s.n&&!s.f&&!s.q&&!s.pers],["pers=1","Personalizáveis","c-pen",s.pers&&!s.n&&!s.f]];
+  var home=!s.n&&!s.d&&!s.f&&!s.q&&!s.pers&&!s.o,area=s.n?grupoDe(byId[s.n]):s.d;
+  var items=[["","Para você","c-home",home],["f=destaque","Mais pedidos","c-star",s.f==="destaque"&&!s.n&&!s.d],["o=recentes","Novidades","c-new",s.o==="recentes"&&!s.n&&!s.d&&!s.f&&!s.q&&!s.pers],["pers=1","Personalizáveis","c-pen",s.pers&&!s.n&&!s.d&&!s.f]];
   var h=items.map(function(i){return'<a class="pill" href="catalogo.html'+(i[0]?"?"+i[0]:"")+'" aria-current="'+i[3]+'"><svg aria-hidden="true"><use href="#'+i[2]+'"/></svg>'+i[1]+'</a>'}).join("");
-  h+=N.map(function(n){return'<a class="pill" href="'+url({n:n.id})+'" aria-current="'+(s.n===n.id)+'">'+ic(n.id)+E(n.nome)+'</a>'}).join("");
+  h+=G.map(function(g){return'<a class="pill" href="'+url({d:g.id})+'" aria-current="'+(area===g.id)+'">'+gic(g)+E(g.nome)+'</a>'}).join("");
   $("#strip").innerHTML=h;
   var cur=$('#strip [aria-current="true"]'),st=$("#strip");if(cur)st.scrollTo({left:cur.offsetLeft-st.offsetLeft-st.clientWidth/2+cur.offsetWidth/2,behavior:"instant"});
   arrows();
-  $("#dlist").innerHTML='<h2>Categorias</h2><a class="dl" href="catalogo.html" aria-current="'+home+'"><svg aria-hidden="true"><use href="#c-home"/></svg>Todas<span class="c">'+P.length+'</span></a>'+
-    N.map(function(n){var c=cnt(n.id);return'<a class="dl" href="'+url({n:n.id})+'" aria-current="'+(s.n===n.id)+'">'+ic(n.id)+E(n.nome)+'<span class="c">'+(c||"sob encomenda")+'</span></a>'}).join("");
+  $("#dlist").innerHTML='<h2>Catálogo</h2><a class="dl" href="catalogo.html" aria-current="'+home+'"><svg aria-hidden="true"><use href="#c-home"/></svg>Todas as peças<span class="c">'+P.length+'</span></a>'+
+    G.map(function(g){return'<h2><a href="'+url({d:g.id})+'"'+(s.d===g.id&&!s.n?' aria-current="page"':"")+'>'+E(g.nome)+'</a></h2>'+
+      nichosDe(g.id).map(function(n){var c=cnt(n.id);return'<a class="dl" href="'+url({n:n.id})+'" aria-current="'+(s.n===n.id)+'">'+ic(n.id)+E(n.nome)+'<span class="c">'+(c||"sob encomenda")+'</span></a>'}).join("")}).join("");
 }
 function arrows(){var st=$("#strip");$("#stripL").disabled=st.scrollLeft<4;$("#stripR").disabled=st.scrollLeft+st.clientWidth>=st.scrollWidth-4}
 
@@ -388,8 +414,8 @@ function viewHome(){
     sl.map(function(s,i){return'<div class="slide '+s[0]+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' de '+sl.length+'"'+(i?' aria-hidden="true"':"")+'><div class="tx"><span class="mono">// Destaque '+(i+1)+'</span><h2>'+s[1]+'</h2><p>'+s[2]+'</p><a class="btn" href="'+s[4]+'"'+(i?' tabindex="-1"':"")+'>'+s[5]+' <svg class="i" style="width:16px;height:16px"><use href="#i-r"/></svg></a></div><div class="ph"><img src="'+s[3]+'" alt="" '+(i?'loading="lazy"':'fetchpriority="high"')+'></div></div>'}).join("")+
     '</div><div class="hctl"><div class="dots" id="dots">'+sl.map(function(_,i){return'<button type="button" aria-label="Ir para o destaque '+(i+1)+'" aria-current="'+(i===0)+'"></button>'}).join("")+'</div>'+
     '<button class="arr" type="button" id="hp" aria-label="Destaque anterior"><svg class="i" style="width:16px;height:16px"><use href="#i-l"/></svg></button><button class="arr" type="button" id="hn" aria-label="Próximo destaque"><svg class="i" style="width:16px;height:16px"><use href="#i-r"/></svg></button></div></section>'+
-    '<section class="sec" aria-labelledby="h-cat"><div class="sh"><h2 id="h-cat">Explorar categorias</h2><span class="mono">'+N.length+' categorias</span></div><div class="tiles">'+
-    N.map(function(n){var c=cnt(n.id);return'<a class="tile" href="'+url({n:n.id})+'"><div class="im">'+(n.capa?'<img src="'+E(n.capa)+'" alt="" loading="lazy">':ic(n.id))+(c?"":'<span class="so">Sob encomenda</span>')+'</div><div class="tt"><strong>'+E(n.nome)+'</strong><small>'+(c?c+(c>1?" peças":" peça"):"Peça orçamento")+'</small></div></a>'}).join("")+'</div></section>'+
+    '<section class="sec" aria-labelledby="h-cat"><div class="sh"><h2 id="h-cat">Explorar categorias</h2><span class="mono">'+N.length+' categorias</span></div>'+
+    G.map(function(g,i){return'<div class="grp" role="group" aria-labelledby="g-'+i+'"><div class="gh3"><h3 id="g-'+i+'">'+gic(g)+E(g.nome)+'</h3><a href="'+url({d:g.id})+'">Ver tudo <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="tiles">'+nichosDe(g.id).map(tile).join("")+'</div></div>'}).join("")+'</section>'+
     '<section class="sec" aria-labelledby="h-dest"><div class="sh"><h2 id="h-dest">Mais pedidos</h2><a href="'+url({f:"destaque"})+'">Ver todos <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+dest.map(function(p){return card(p)}).join("")+'</div></section>'+
     '<section class="sec" aria-labelledby="h-new"><div class="sh"><h2 id="h-new">Novidades</h2><a href="'+url({o:"recentes"})+'">Ver todas <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+novos.map(function(p){return card(p)}).join("")+'</div></section>'+
     '<section class="sec" aria-labelledby="h-all"><div class="sh"><h2 id="h-all">Todas as peças</h2><span class="mono">'+P.length+' peças</span></div><div class="grid">'+filter({o:"destaque"}).map(function(p){return card(p)}).join("")+'</div></section>';
@@ -405,30 +431,41 @@ function viewHome(){
 }
 function viewList(s){
   clearInterval(slideT);
-  var L=filter(s),n=byId[s.n],title,desc;
-  if(n){title=E(n.nome);desc=n.desc}
+  var L=filter(s),n=byId[s.n],g=n?gById[grupoDe(n)]:(s.n?null:gById[s.d]),title,desc;
+  if(s.n&&!n){title="Categoria não encontrada";desc="Esse link pode ser antigo. Veja as categorias no menu ou busque a peça."}
+  else if(n){title=E(n.nome);desc=n.desc}
+  else if(g){title=E(g.nome);desc=g.desc}
   else if(s.q){title='Resultados para “'+E(s.q)+'”';desc=""}
   else if(s.f==="destaque"){title="Mais pedidos";desc="As peças que nossos clientes mais pedem."}
   else if(s.pers){title="Personalizáveis";desc="Peças que aceitam nome, texto, logotipo ou cores sob medida."}
   else if(s.o==="recentes"){title="Novidades";desc="As peças mais recentes do catálogo."}
   else{title="Todas as peças";desc=""}
   var subs=n&&n.subs&&n.subs.length&&cnt(n.id)?n.subs.filter(function(x){return P.some(function(p){return p.nicho===n.id&&p.sub===x})}):[];
-  var h='<nav class="crumb" aria-label="Você está em"><a href="index.html">Início</a><span aria-hidden="true">/</span><a href="catalogo.html">Catálogo</a>'+(n?'<span aria-hidden="true">/</span><span aria-current="page">'+E(n.nome)+'</span>':"")+'</nav>'+
+  var sep='<span aria-hidden="true">/</span>';
+  var h='<nav class="crumb" aria-label="Você está em"><a href="index.html">Início</a>'+sep+'<a href="catalogo.html">Catálogo</a>'+
+    (g&&n?sep+'<a href="'+url({d:g.id})+'">'+E(g.nome)+'</a>'+sep+'<span aria-current="page">'+E(n.nome)+'</span>':g?sep+'<span aria-current="page">'+E(g.nome)+'</span>':"")+'</nav>'+
     '<div class="lh"><div><h1>'+title+'</h1>'+(desc?'<p>'+E(desc)+'</p>':"")+'</div></div>';
-  if(!(n&&!cnt(n.id)))h+='<div class="tools" role="group" aria-label="Filtros">'+
+  /* categoria: atalhos para as outras categorias do mesmo departamento */
+  if(n&&g){var irmas=nichosDe(g.id).filter(function(x){return x.id!==n.id});
+    if(irmas.length)h+='<nav class="sib" aria-label="Outras categorias em '+E(g.nome)+'">'+irmas.map(function(x){return'<a class="pill" href="'+url({n:x.id})+'">'+ic(x.id)+E(x.nome)+'</a>'}).join("")+'</nav>'}
+  /* departamento: as categorias dele em blocos, antes das peças */
+  if(g&&!n)h+='<div class="tiles" style="margin-bottom:24px">'+nichosDe(g.id).map(tile).join("")+'</div>'+(L.length?'<div class="sh"><h2>Peças em '+E(g.nome)+'</h2></div>':"");
+  if(g&&!n&&!L.length)h+='<div class="empty"><svg aria-hidden="true"><use href="'+E("#"+((g&&g.icone)||"c-cube"))+'"/></svg><h2>Feito sob encomenda</h2><p>Ainda não temos fotos destas categorias no catálogo, mas fazemos sob medida. Conte o que você precisa e mandamos o orçamento.</p><a class="btn" target="_blank" rel="noopener" href="'+wa("Olá! Vi "+g.nome+" no catálogo da Subuluk 3D e quero um orçamento.")+'"><svg class="i" style="width:18px;height:18px"><use href="#i-wa"/></svg>Pedir orçamento</a></div>';
+  else if(!(n&&!cnt(n.id)))h+='<div class="tools" role="group" aria-label="Filtros">'+
       '<div class="subs">'+(subs.length>1?['<button class="chip" type="button" data-sub="" aria-pressed="'+!s.s+'">Todas</button>'].concat(subs.map(function(x){return'<button class="chip" type="button" data-sub="'+E(x)+'" aria-pressed="'+(s.s===x)+'">'+E(x)+'</button>'})).join(""):"")+'</div>'+
       '<label class="tg"><input type="checkbox" id="fpers"'+(s.pers?" checked":"")+'>Só personalizáveis</label>'+
       '<label class="sr" for="ford">Ordenar</label><select class="sel" id="ford"><option value="">'+(s.q?"Relevância":"Ordenar")+'</option><option value="recentes"'+(s.o==="recentes"?" selected":"")+'>Mais recentes</option><option value="destaque"'+(s.o==="destaque"?" selected":"")+'>Mais pedidos</option><option value="nome"'+(s.o==="nome"?" selected":"")+'>Nome (A–Z)</option></select>'+
       '<span class="count" role="status">'+L.length+(L.length===1?" peça":" peças")+'</span></div>';
   if(L.length)h+='<div class="grid">'+L.map(function(p){return card(p,s.q)}).join("")+'</div>';
   else if(n&&!cnt(n.id)){h+='<div class="empty">'+ic(n.id)+'<h2>Feito sob encomenda</h2><p>Ainda não temos fotos desta categoria no catálogo, mas fazemos sob medida. Conte o que você precisa e mandamos o orçamento.</p>'+(n.subs&&n.subs.length?'<ul>'+n.subs.map(function(x){return"<li>"+E(x)+"</li>"}).join("")+'</ul>':"")+'<a class="btn" target="_blank" rel="noopener" href="'+wa("Olá! Vi a categoria "+n.nome+" no catálogo da Subuluk 3D e quero um orçamento.")+'"><svg class="i" style="width:18px;height:18px"><use href="#i-wa"/></svg>Pedir orçamento</a></div>'}
-  else h+='<div class="empty"><svg aria-hidden="true"><use href="#i-search"/></svg><h2>Nada encontrado'+(s.q?' para “'+E(s.q)+'”':"")+'</h2><p>Tente outra palavra ou veja todas as categorias. Se não estiver no catálogo, a gente faz sob medida.</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="btn gh" href="catalogo.html">Ver todo o catálogo</a><a class="btn" target="_blank" rel="noopener" href="'+wa("Olá! Procurei "+(s.q||"uma peça")+" no catálogo da Subuluk 3D e não encontrei. Vocês fazem?")+'">Pedir sob medida</a></div></div>';
+  else if(!(g&&!n))h+='<div class="empty"><svg aria-hidden="true"><use href="#i-search"/></svg><h2>Nada encontrado'+(s.q?' para “'+E(s.q)+'”':"")+'</h2><p>Tente outra palavra ou veja todas as categorias. Se não estiver no catálogo, a gente faz sob medida.</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="btn gh" href="catalogo.html">Ver todo o catálogo</a><a class="btn" target="_blank" rel="noopener" href="'+wa("Olá! Procurei "+(s.q||"uma peça")+" no catálogo da Subuluk 3D e não encontrei. Vocês fazem?")+'">Pedir sob medida</a></div></div>';
   main.innerHTML=h;
   $$("[data-sub]").forEach(function(b){b.onclick=function(){var t=getS();t.s=b.getAttribute("data-sub");go(t)}});
   if($("#fpers"))$("#fpers").onchange=function(){var t=getS();t.pers=this.checked;go(t)};
   if($("#ford"))$("#ford").onchange=function(){var t=getS();t.o=this.value;go(t)};
   if(s.q)track("search",{search_term:s.q,results:L.length});
   if(n)track("view_item_list",{item_list_id:n.id,item_list_name:n.nome});
+  else if(g)track("view_item_list",{item_list_id:"dep-"+g.id,item_list_name:g.nome});
 }
 
 /* ---------- modal do produto ---------- */
@@ -440,7 +477,7 @@ function openProduct(ref){
   pm.innerHTML='<div class="pbox"><button class="ib x" type="button" data-close aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button>'+
     '<div class="gal"><div class="main">'+(f[0]?'<img id="pmImg" src="'+E(f[0])+'" alt="'+E(p.nome)+'">':"")+'</div>'+
     (f.length>1?'<div class="thumbs">'+f.map(function(src,i){return'<button type="button" data-img="'+E(src)+'" aria-label="Foto '+(i+1)+'" aria-current="'+(i===0)+'"><img src="'+E(src)+'" alt=""></button>'}).join("")+'</div>':"")+'</div>'+
-    '<div class="pin"><nav class="crumb" aria-label="Categoria"><a href="'+url({n:p.nicho})+'">'+E(n.nome||"")+'</a>'+(p.sub?'<span aria-hidden="true">/</span><span>'+E(p.sub)+'</span>':"")+'</nav>'+
+    '<div class="pin"><nav class="crumb" aria-label="Categoria">'+(gById[grupoDe(n)]&&n.id?'<a href="'+url({d:grupoDe(n)})+'">'+E(gById[grupoDe(n)].nome)+'</a><span aria-hidden="true">/</span>':"")+'<a href="'+url({n:p.nicho})+'">'+E(n.nome||"")+'</a>'+(p.sub?'<span aria-hidden="true">/</span><span>'+E(p.sub)+'</span>':"")+'</nav>'+
     '<h2 id="pm-t">'+E(p.nome)+'</h2><div class="badges" style="position:static">'+(p.destaque?'<span class="bd">Mais pedido</span>':"")+(p.personalizavel?'<span class="bd o">Personalizável</span>':"")+'</div>'+
     '<p class="d">'+E(p.descricao)+'</p>'+
     '<dl class="specs"><dt>Código</dt><dd>'+E(p.ref)+'</dd>'+(p.dimensoes?'<dt>Medidas</dt><dd>'+E(p.dimensoes)+'</dd>':"")+((p.cores||[]).length?'<dt>Cores</dt><dd>'+E(p.cores.join(", "))+'</dd>':"")+'<dt>Personalização</dt><dd>'+(p.personalizavel?"Sim: nome, texto, logo ou cores":"Modelo padrão")+'</dd></dl>'+
@@ -483,8 +520,10 @@ function closeSug(){sg.hidden=true;q.setAttribute("aria-expanded","false");q.rem
 function suggest(){
   var v=q.value.trim();$("#clr").hidden=!v;
   if(!v){closeSug();return}
-  var cats=N.filter(function(n){return norm(n.nome).indexOf(norm(v))>=0||(n.subs||[]).some(function(x){return norm(x).indexOf(norm(v))>=0})}).slice(0,3);
+  var cats=N.filter(function(n){return norm(n.nome).indexOf(norm(v))>=0||(n.subs||[]).some(function(x){return norm(x).indexOf(norm(v))>=0})}).slice(0,4);
+  var deps=G.filter(function(g){return norm(g.nome).indexOf(norm(v))>=0}).slice(0,2);
   var prods=filter({q:v}).slice(0,6),h="",i=0;
+  if(deps.length)h+='<div class="h mono" aria-hidden="true">Departamentos</div>'+deps.map(function(g){var c=cntG(g.id);return'<div class="opt" role="option" id="o'+(i++)+'" data-go="'+E(url({d:g.id}))+'"><span class="ci">'+gic(g)+'</span><div><strong>'+hl(g.nome,v)+'</strong><small>'+nichosDe(g.id).length+' categorias'+(c?' · '+c+(c>1?' peças':' peça'):'')+'</small></div></div>'}).join("");
   if(cats.length)h+='<div class="h mono" aria-hidden="true">Categorias</div>'+cats.map(function(n){var c=cnt(n.id);return'<div class="opt" role="option" id="o'+(i++)+'" data-go="'+E(url({n:n.id}))+'"><span class="ci">'+ic(n.id)+'</span><div><strong>'+hl(n.nome,v)+'</strong><small>'+(c?c+" peças":"Sob encomenda")+'</small></div></div>'}).join("");
   if(prods.length)h+='<div class="h mono" aria-hidden="true">Peças</div>'+prods.map(function(p){return'<div class="opt" role="option" id="o'+(i++)+'" data-ref="'+E(p.ref)+'">'+((p.fotos||[])[0]?'<img src="'+E(p.fotos[0])+'" alt="">':'<span class="ci">'+ic(p.nicho)+'</span>')+'<div><strong>'+hl(p.nome,v)+'</strong><small>'+E((byId[p.nicho]||{}).nome||"")+' · '+E(p.ref)+'</small></div></div>'}).join("");
   h+='<div class="opt all" role="option" id="o'+(i++)+'" data-go="'+E(url({q:v}))+'"><span class="ci"><svg class="i"><use href="#i-search"/></svg></span>Ver todos os resultados para “'+E(v)+'”</div>';
@@ -520,13 +559,16 @@ function render(){
   if(!D)return;var s=getS();
   q.value=s.q;$("#clr").hidden=!s.q;
   strip(s);
-  var key=JSON.stringify([s.q,s.n,s.s,s.f,s.o,s.pers]);
-  if(main.dataset.key!==key){main.dataset.key=key;(s.q||s.n||s.f||s.o||s.pers)?viewList(s):viewHome()}
-  if(s.p)openProduct(s.p);else{closeProduct();var n=byId[s.n];document.title=n?n.nome+" | Catálogo Subuluk 3D":s.q?"Busca: "+s.q+" | Subuluk 3D":"Catálogo de Impressão 3D | Subuluk 3D"}
+  var key=JSON.stringify([s.q,s.d,s.n,s.s,s.f,s.o,s.pers]);
+  if(main.dataset.key!==key){main.dataset.key=key;(s.q||s.d||s.n||s.f||s.o||s.pers)?viewList(s):viewHome()}
+  if(s.p)openProduct(s.p);else{closeProduct();var n=byId[s.n],g=!s.n&&gById[s.d];document.title=n?n.nome+" | Catálogo Subuluk 3D":g?g.nome+" | Catálogo Subuluk 3D":s.q?"Busca: "+s.q+" | Subuluk 3D":"Catálogo de Impressão 3D | Subuluk 3D"}
 }
 $$("[data-wa]").forEach(function(a){a.href=wa();a.target="_blank";a.rel="noopener"});
 fetch("produtos.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
   D=d;N=d.nichos||[];P=d.produtos||[];N.forEach(function(n){byId[n.id]=n});
+  (d.departamentos||[]).forEach(function(g){if(g&&g.id&&!gById[g.id]){gById[g.id]=g;G.push(g)}});
+  if(N.some(function(n){return!gById[n.grupo]})){gById.outros={id:"outros",nome:"Outras categorias",desc:"Mais categorias do catálogo.",icone:"c-cube"};G.push(gById.outros)}
+  G=G.filter(function(g){return nichosDe(g.id).length});
   $$("[data-wa]").forEach(function(a){a.href=wa()});
   var ld=document.createElement("script");ld.type="application/ld+json";
   ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Catálogo Subuluk 3D","itemListElement":P.map(function(p,i){return{"@type":"ListItem","position":i+1,"url":"https://subuluk3d.github.io/SITE/catalogo.html?p="+encodeURIComponent(p.ref),"name":p.nome}})});
