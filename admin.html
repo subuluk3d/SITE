@@ -28,8 +28,9 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
 <div class="fg">
 <label>Referência (código)<input id="rf"></label>
 <label>Nome do produto<input id="nm"></label>
-<label>Nicho<select id="ni"></select></label>
+<label>Categoria principal<select id="ni"></select></label>
 <label>Subcategoria (opcional)<select id="su"></select></label>
+<label class="full">Também aparece em (opcional; segure Ctrl para marcar várias, ex.: profissões)<select id="tb2" multiple size="8"></select></label>
 <label class="full">Descrição<textarea id="ds"></textarea></label>
 <label>Dimensões (só se souber)<input id="di" placeholder="ex.: preencha com as medidas reais"></label>
 <label>Cores disponíveis (separadas por vírgula)<input id="co"></label>
@@ -40,11 +41,11 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
 <div class="row"><button class="btn primary" type="button" id="sv">Salvar produto</button><button class="btn" type="button" id="cl">Limpar formulário</button></div></div>
 
 <div class="panel"><h2>Produtos cadastrados (<span id="qt">0</span>)</h2>
-<div style="overflow-x:auto"><table><thead><tr><th>Ref.</th><th>Nome</th><th>Nicho</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+<div style="overflow-x:auto"><table><thead><tr><th>Ref.</th><th>Nome</th><th>Categoria</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
 
-<div class="panel"><h2>Adicionar novo nicho</h2>
-<div class="fg"><label>Nome do nicho<input id="nn"></label><label>Subcategorias (separadas por vírgula)<input id="ns"></label><label class="full">Descrição curta<input id="nd"></label></div>
-<div class="row"><button class="btn" type="button" id="an">Adicionar nicho</button></div></div>
+<div class="panel"><h2>Adicionar nova categoria</h2>
+<div class="fg"><label>Departamento<select id="ng"></select></label><label>Nome da categoria<input id="nn"></label><label>Subcategorias (separadas por vírgula)<input id="ns"></label><label>Ícone (opcional, ex.: c-vase)<input id="nc" placeholder="vazio = ícone do departamento"></label><label class="full">Descrição curta<input id="nd"></label></div>
+<div class="row"><button class="btn" type="button" id="an">Adicionar categoria</button></div></div>
 
 <div class="panel"><h2>Publicar no site</h2>
 <ol><li>Clique em <b>Copiar</b>.</li><li>No GitHub, abra o arquivo <b>produtos.json</b> e clique no lápis.</li><li>Apague tudo, cole o texto copiado e clique em <b>Commit changes</b>.</li><li>Envie as fotos para a pasta <b>fotos</b> (Add file → Upload files).</li></ol>
@@ -59,6 +60,19 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
   var say = function (t) { $('ms').textContent = t; };
   var list = function (v) { return v.split(',').map(function (x) { return x.trim(); }).filter(Boolean); };
   var nicho = function (id) { return D.nichos.filter(function (n) { return n.id === id; })[0]; };
+  var depto = function (id) { return (D.departamentos || []).filter(function (g) { return g.id === id; })[0]; };
+  /* opções de categoria agrupadas por departamento */
+  function nichoOpts() {
+    var deps = D.departamentos || [], h = deps.map(function (g) {
+      var ns = D.nichos.filter(function (n) { return n.grupo === g.id; });
+      return ns.length ? '<optgroup label="' + E(g.nome) + '">' + ns.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('') + '</optgroup>' : '';
+    }).join('');
+    var soltos = D.nichos.filter(function (n) { return !depto(n.grupo); });
+    if (soltos.length) h += '<optgroup label="Sem departamento">' + soltos.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('') + '</optgroup>';
+    return h;
+  }
+  function getTambem() { return Array.prototype.filter.call($('tb2').options, function (o) { return o.selected && o.value !== $('ni').value; }).map(function (o) { return o.value; }); }
+  function setTambem(v) { Array.prototype.forEach.call($('tb2').options, function (o) { o.selected = (v || []).indexOf(o.value) >= 0; }); }
 
   function persist() {
     D.whatsapp = $('wa').value.replace(/\D/g, '');
@@ -70,20 +84,23 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
     $('su').innerHTML = '<option value="">(nenhuma)</option>' + (n ? n.subs || [] : []).map(function (x) { return '<option' + (x === cur ? ' selected' : '') + '>' + E(x) + '</option>'; }).join('');
   }
   function nextRef() {
-    var m = 0; D.produtos.forEach(function (p) { var x = /SBK-(\d+)/.exec(p.ref); if (x) m = Math.max(m, +x[1]); });
-    return 'SBK-' + ('000' + (m + 1)).slice(-3);
+    var m = 0; D.produtos.forEach(function (p) { var x = /(?:SUB|SBK)-(\d+)/.exec(p.ref); if (x) m = Math.max(m, +x[1]); });
+    return 'SUB-' + ('000' + (m + 1)).slice(-3);
   }
   function clear() {
     ed = -1; $('ft').textContent = 'Novo produto';
     ['nm', 'ds', 'di', 'co', 'fo'].forEach(function (i) { $(i).value = ''; });
-    $('pe').checked = $('de').checked = false; $('rf').value = nextRef(); $('cr').value = new Date().toISOString().slice(0, 10); subs();
+    $('pe').checked = $('de').checked = false; $('rf').value = nextRef(); $('cr').value = new Date().toISOString().slice(0, 10); setTambem([]); subs();
   }
   function draw() {
     $('wa').value = D.whatsapp || '';
-    $('ni').innerHTML = D.nichos.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('');
+    var cur = $('ni').value, curT = getTambem();
+    $('ni').innerHTML = $('tb2').innerHTML = nichoOpts(); if (cur) $('ni').value = cur; setTambem(curT);
+    $('ng').innerHTML = (D.departamentos || []).map(function (g) { return '<option value="' + E(g.id) + '">' + E(g.nome) + '</option>'; }).join('');
     subs(); $('qt').textContent = D.produtos.length;
     $('tb').innerHTML = D.produtos.map(function (p, i) {
-      return '<tr><td>' + E(p.ref) + '</td><td>' + E(p.nome) + '</td><td>' + E((nicho(p.nicho) || {}).nome) + '</td><td>' +
+      var n = nicho(p.nicho) || {}, g = depto(n.grupo);
+      return '<tr><td>' + E(p.ref) + '</td><td>' + E(p.nome) + '</td><td>' + (g ? E(g.nome) + ' / ' : '') + E(n.nome) + ((p.tambem || []).length ? ' <small>(+' + p.tambem.length + ')</small>' : '') + '</td><td>' +
         '<button class="btn mini" data-e="' + i + '">Editar</button> <button class="btn mini" data-d="' + i + '">Excluir</button></td></tr>';
     }).join('') || '<tr><td colspan="4">Nenhum produto cadastrado ainda.</td></tr>';
     persist(); if (ed < 0) clear();
@@ -99,7 +116,8 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
       fotos: list($('fo').value).map(function (x) { return x.indexOf('/') < 0 ? 'fotos/' + x : x; }),
       personalizavel: $('pe').checked, destaque: $('de').checked, criado: $('cr').value
     };
-    if (!p.ref || !p.nome || !p.nicho) { say('Preencha referência, nome e nicho.'); return; }
+    var tb = getTambem(); if (tb.length) p.tambem = tb;
+    if (!p.ref || !p.nome || !p.nicho) { say('Preencha referência, nome e categoria.'); return; }
     var dup = D.produtos.some(function (x, i) { return x.ref === p.ref && i !== ed; });
     if (dup) { say('Já existe um produto com essa referência.'); return; }
     if (ed >= 0) D.produtos[ed] = p; else D.produtos.push(p);
@@ -112,7 +130,7 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
       $('rf').value = p.ref; $('nm').value = p.nome; $('ni').value = p.nicho; subs(); $('su').value = p.sub || '';
       $('ds').value = p.descricao || ''; $('di').value = p.dimensoes || ''; $('co').value = (p.cores || []).join(', ');
       $('fo').value = (p.fotos || []).map(function (x) { return x.replace(/^fotos\//, ''); }).join(', ');
-      $('cr').value = p.criado || ''; $('pe').checked = !!p.personalizavel; $('de').checked = !!p.destaque;
+      $('cr').value = p.criado || ''; $('pe').checked = !!p.personalizavel; $('de').checked = !!p.destaque; setTambem(p.tambem);
       $('ft').scrollIntoView({ behavior: 'smooth' });
     } else if (b.getAttribute('data-d') != null) {
       i = +b.getAttribute('data-d');
@@ -120,11 +138,12 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
     }
   });
   $('an').addEventListener('click', function () {
-    var nome = $('nn').value.trim(); if (!nome) { say('Informe o nome do nicho.'); return; }
+    var nome = $('nn').value.trim(); if (!nome) { say('Informe o nome da categoria.'); return; }
     var id = nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    if (nicho(id)) { say('Esse nicho já existe.'); return; }
-    D.nichos.push({ id: id, nome: nome, desc: $('nd').value.trim(), subs: list($('ns').value) });
-    $('nn').value = $('nd').value = $('ns').value = ''; draw(); say('Nicho adicionado ao rascunho.');
+    if (nicho(id)) { say('Essa categoria já existe.'); return; }
+    var g = depto($('ng').value), icone = $('nc').value.trim() || (g && g.icone) || 'c-cube';
+    D.nichos.push({ id: id, grupo: $('ng').value, nome: nome, desc: $('nd').value.trim(), icone: icone, subs: list($('ns').value) });
+    $('nn').value = $('nd').value = $('ns').value = $('nc').value = ''; draw(); say('Categoria adicionada ao rascunho.');
   });
   $('cp').addEventListener('click', function () {
     var t = $('js'); t.select();
@@ -141,7 +160,15 @@ textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{
 
   var saved = null;
   try { saved = JSON.parse(localStorage.getItem('sbk_rascunho')); } catch (e) {}
-  if (saved && saved.nichos) { D = saved; draw(); say('Rascunho anterior carregado.'); }
+  if (saved && saved.nichos) {
+    D = saved; draw(); say('Rascunho anterior carregado.');
+    /* avisa se o produtos.json publicado tem departamentos que o rascunho salvo não conhece (rascunho de antes de uma reorganização) */
+    fetch('produtos.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
+      var ids = (saved.departamentos || []).map(function (g) { return g.id; });
+      if ((j.departamentos || []).some(function (g) { return ids.indexOf(g.id) < 0; }))
+        say('Atenção: o catálogo publicado tem categorias novas que este rascunho não tem. Clique em "Descartar rascunho" para carregar a versão nova antes de editar.');
+    }).catch(function () {});
+  }
   else fetch('produtos.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) { D = j; draw(); })
     .catch(function () { say('Não consegui ler o produtos.json. Cole o conteúdo na última caixa e clique em Carregar.'); });
 })();

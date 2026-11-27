@@ -2,302 +2,873 @@
  "whatsapp": "5512982299331",
  "departamentos": [
   {
-   "id": "empresas",
-   "nome": "Para Empresas",
-   "desc": "Peças para o seu negócio atender, sinalizar e divulgar a marca.",
-   "icone": "c-sign"
-  },
-  {
-   "id": "presentes",
-   "nome": "Presentes e Festas",
-   "desc": "Presentes personalizados, lembranças, festas e datas especiais.",
-   "icone": "c-gift"
-  },
-  {
-   "id": "casa",
-   "nome": "Casa e Decoração",
-   "desc": "Decoração, organização e utilidades para todos os cômodos.",
+   "id": "decoracao",
+   "nome": "Decoração",
+   "desc": "Vasos, luminárias, esculturas, letreiros e peças que deixam a casa com a sua cara.",
    "icone": "c-vase"
   },
   {
-   "id": "lazer",
-   "nome": "Games e Diversão",
-   "desc": "Setup gamer, brinquedos, jogos de mesa, colecionáveis e cosplay.",
+   "id": "porta-objetos",
+   "nome": "Porta-objetos",
+   "desc": "Um lugar certo para cada coisa: canetas, chaves, joias, controles e muito mais.",
+   "icone": "c-box"
+  },
+  {
+   "id": "suportes",
+   "nome": "Suportes",
+   "desc": "Suportes para celular, fone, controle, notebook, parede e expositores.",
+   "icone": "c-stand"
+  },
+  {
+   "id": "organizacao",
+   "nome": "Organização",
+   "desc": "Organizadores para mesa, gavetas, cabos, oficina, cozinha e hobbies.",
+   "icone": "c-grid"
+  },
+  {
+   "id": "utilidades",
+   "nome": "Utilidades",
+   "desc": "Ganchos, peças de reposição, pet, carro, praia e eletrônica.",
+   "icone": "c-gear"
+  },
+  {
+   "id": "personalizados",
+   "nome": "Personalizados e Presentes",
+   "desc": "Chaveiros, presentes, lembrancinhas e topos de bolo com nome, foto ou logo.",
+   "icone": "c-gift"
+  },
+  {
+   "id": "geek",
+   "nome": "Geek e Hobbies",
+   "desc": "Games, RPG, colecionáveis, brinquedos, cosplay, maker e música.",
    "icone": "c-game"
   },
   {
-   "id": "trabalho",
-   "nome": "Escritório e Oficina",
-   "desc": "Organização de mesa, oficina, carro, peças de reposição e projetos maker.",
-   "icone": "c-tool"
+   "id": "profissoes",
+   "nome": "Por Profissão",
+   "desc": "Peças pensadas para o dia a dia de cada profissão, com o seu nome ou logo.",
+   "icone": "c-badge"
+  },
+  {
+   "id": "empresas",
+   "nome": "Para Empresas",
+   "desc": "Placas NFC, sinalização, expositores, brindes com a sua marca e peças técnicas.",
+   "icone": "c-sign"
   }
  ],
  "nichos": [
   {
-   "id": "comercio-empresas",
-   "nome": "Placas NFC e Empresas",
-   "desc": "Placas NFC de avaliação no Google, displays de balcão e peças com a sua marca.",
+   "id": "vasos",
+   "grupo": "decoracao",
+   "nome": "Vasos e Cachepôs",
+   "desc": "Vasos decorativos, cachepôs e kits que valorizam a textura das camadas.",
+   "icone": "c-vase",
    "subs": [
-    "Placas NFC de avaliação",
-    "Displays NFC de mesa",
-    "Porta-cartões",
-    "Expositores"
+    "Vasos",
+    "Cachepôs",
+    "Kits de vasos"
    ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp",
-   "grupo": "empresas"
+   "capa": "fotos/produtos/vaso-espiral.webp"
   },
   {
-   "id": "sinalizacao",
-   "nome": "Placas e Sinalização",
-   "desc": "Placas de porta, sinalização interna e letreiros com o logotipo da sua empresa.",
+   "id": "luminarias",
+   "grupo": "decoracao",
+   "nome": "Luminárias e Abajures",
+   "desc": "Luminárias de mesa, abajures e cúpulas com luz difusa.",
+   "icone": "c-lamp",
    "subs": [
-    "Placas de porta",
-    "Sinalização interna",
-    "Letreiros com logo",
-    "Placas de mesa"
+    "Luminárias de mesa",
+    "Abajures",
+    "Luminárias de parede"
    ],
-   "grupo": "empresas"
+   "capa": "fotos/produtos/luminaria.webp"
   },
   {
-   "id": "presentes-personalizados",
-   "nome": "Chaveiros e Presentes",
-   "desc": "Chaveiros com nome, letras decorativas e brindes para empresas e eventos.",
+   "id": "esculturas",
+   "grupo": "decoracao",
+   "nome": "Esculturas e Objetos",
+   "desc": "Esculturas, bustos e objetos minimalistas para estantes e mesas.",
+   "icone": "c-cube",
    "subs": [
-    "Chaveiros com nome",
+    "Esculturas",
+    "Bustos",
+    "Objetos minimalistas"
+   ],
+   "capa": "fotos/produtos/escultura-geometrica.webp"
+  },
+  {
+   "id": "letreiros",
+   "grupo": "decoracao",
+   "nome": "Letreiros e Nomes 3D",
+   "desc": "Nomes, frases, letras e números de casa em 3D.",
+   "icone": "c-pen",
+   "subs": [
+    "Nomes e frases",
     "Letras decorativas",
-    "Brindes corporativos",
-    "Lembrancinhas"
+    "Números de casa"
    ],
-   "capa": "fotos/produtos/chaveiro-nome.webp",
-   "grupo": "presentes"
+   "capa": "fotos/produtos/letras-decorativas.webp"
   },
   {
-   "id": "festas-eventos",
-   "nome": "Festas e Eventos",
-   "desc": "Topos de bolo, lembrancinhas, centros de mesa e letreiros para aniversários, casamentos e eventos.",
+   "id": "quadros",
+   "grupo": "decoracao",
+   "nome": "Quadros e Painéis",
+   "desc": "Quadros em relevo, mapas 3D e painéis de parede.",
+   "icone": "c-frame",
    "subs": [
-    "Topos de bolo",
-    "Centros de mesa",
-    "Letreiros de festa",
-    "Lembrancinhas de festa"
-   ],
-   "grupo": "presentes"
-  },
-  {
-   "id": "natal",
-   "nome": "Natal",
-   "desc": "Enfeites, árvores minimalistas e porta-velas para decorar a casa e a vitrine no fim de ano.",
-   "subs": [
-    "Enfeites de árvore",
-    "Árvores decorativas",
-    "Porta-velas",
-    "Presépios e figuras"
-   ],
-   "grupo": "presentes"
-  },
-  {
-   "id": "moda-acessorios",
-   "nome": "Moda e Acessórios",
-   "desc": "Brincos, porta-joias e acessórios leves, com cores e formatos sob medida.",
-   "subs": [
-    "Brincos",
-    "Anéis e pulseiras",
-    "Porta-joias",
-    "Acessórios para bolsas"
-   ],
-   "grupo": "presentes"
+    "Quadros em relevo",
+    "Mapas 3D",
+    "Painéis de parede"
+   ]
   },
   {
    "id": "turismo-regional",
-   "nome": "Litoral Norte",
+   "grupo": "decoracao",
+   "nome": "Praia e Litoral Norte",
    "desc": "Ímãs, chaveiros e miniaturas inspirados em Caraguatatuba e região.",
+   "icone": "c-wave",
    "subs": [
     "Ímãs de geladeira",
     "Chaveiros de cidades",
-    "Miniaturas"
+    "Miniaturas",
+    "Mapas da região"
    ],
-   "capa": "fotos/produtos/farol-miniatura.webp",
-   "grupo": "presentes"
-  },
-  {
-   "id": "decoracao",
-   "nome": "Decoração",
-   "desc": "Vasos, luminárias e esculturas que valorizam a textura das camadas.",
-   "subs": [
-    "Vasos",
-    "Luminárias",
-    "Esculturas",
-    "Objetos minimalistas"
-   ],
-   "capa": "fotos/produtos/vaso-espiral.webp",
-   "grupo": "casa"
-  },
-  {
-   "id": "casa-utilidades",
-   "nome": "Casa e Utilidades",
-   "desc": "Porta-chaves, ganchos e utilidades para banheiro, lavanderia e o dia a dia.",
-   "subs": [
-    "Porta-chaves de parede",
-    "Ganchos",
-    "Banheiro e lavanderia",
-    "Utilidades domésticas"
-   ],
-   "capa": "fotos/produtos/porta-chaves-parede.webp",
-   "grupo": "casa"
-  },
-  {
-   "id": "cozinha-casa",
-   "nome": "Cozinha",
-   "desc": "Suportes, organizadores de gaveta e utilidades para a cozinha.",
-   "subs": [
-    "Suportes de cozinha",
-    "Organizadores de gaveta",
-    "Porta-temperos",
-    "Utensílios"
-   ],
-   "grupo": "casa"
+   "capa": "fotos/produtos/ima-litoral.webp"
   },
   {
    "id": "plantas-jardim",
+   "grupo": "decoracao",
    "nome": "Plantas e Jardim",
    "desc": "Vasos autoirrigáveis, suportes de parede e marcadores para hortas e plantas.",
+   "icone": "c-leaf",
    "subs": [
     "Vasos autoirrigáveis",
     "Vasos para suculentas",
     "Suportes de parede",
     "Marcadores de plantas"
    ],
-   "grupo": "casa"
+   "capa": "fotos/produtos/vaso-espiral.webp"
   },
   {
-   "id": "pet-shop",
-   "nome": "Pet",
-   "desc": "Plaquinhas de identificação com o nome do seu pet.",
+   "id": "datas-comemorativas",
+   "grupo": "decoracao",
+   "nome": "Datas Comemorativas",
+   "desc": "Enfeites para Natal, Páscoa, Halloween e outras datas especiais.",
+   "icone": "c-tree",
    "subs": [
-    "Identificadores",
-    "Acessórios para coleiras"
-   ],
-   "capa": "fotos/produtos/tag-pet.webp",
-   "grupo": "casa"
+    "Natal",
+    "Páscoa",
+    "Halloween",
+    "Outras datas"
+   ]
   },
   {
-   "id": "games-tecnologia",
-   "nome": "Games e Setup",
-   "desc": "Suportes para headset, controles e acessórios para o seu setup.",
+   "id": "porta-canetas",
+   "grupo": "porta-objetos",
+   "nome": "Porta-canetas e Lápis",
+   "desc": "Porta-canetas, porta-lápis e porta-pincéis para mesa e ateliê.",
+   "icone": "c-pen",
    "subs": [
-    "Suportes para headset",
-    "Suportes para controles",
-    "Acessórios gamer"
+    "Porta-canetas",
+    "Porta-lápis",
+    "Porta-pincéis"
    ],
-   "capa": "fotos/produtos/suporte-headset.webp",
-   "grupo": "lazer"
+   "capa": "fotos/produtos/porta-canetas-hex.webp"
   },
   {
-   "id": "brinquedos-fidgets",
-   "nome": "Brinquedos e Fidgets",
-   "desc": "Fidgets, brinquedos articulados e quebra-cabeças impressos em 3D para todas as idades.",
+   "id": "porta-chaves",
+   "grupo": "porta-objetos",
+   "nome": "Porta-chaves",
+   "desc": "Porta-chaves de parede e de mesa para nunca mais perder a chave.",
+   "icone": "c-key",
    "subs": [
-    "Fidgets",
-    "Articulados",
-    "Quebra-cabeças",
-    "Brinquedos de montar"
+    "Porta-chaves de parede",
+    "Porta-chaves de mesa"
    ],
-   "grupo": "lazer"
+   "capa": "fotos/produtos/porta-chaves-parede.webp"
   },
   {
-   "id": "jogos-mesa",
-   "nome": "Jogos de Mesa e RPG",
-   "desc": "Torres de dados, porta-cartas, organizadores de caixa e peças para jogos de tabuleiro.",
+   "id": "porta-joias",
+   "grupo": "porta-objetos",
+   "nome": "Porta-joias e Relógios",
+   "desc": "Porta-joias, porta-anéis, porta-brincos e porta-relógios.",
+   "icone": "c-gem",
    "subs": [
-    "Torres de dados",
-    "Porta-cartas e deck box",
-    "Organizadores de jogos",
-    "Peças de reposição para jogos"
-   ],
-   "grupo": "lazer"
+    "Porta-joias",
+    "Porta-anéis",
+    "Porta-brincos",
+    "Porta-relógios"
+   ]
   },
   {
-   "id": "colecionaveis",
-   "nome": "Colecionáveis e Miniaturas",
-   "desc": "Miniaturas, bustos, dioramas e expositores para a sua coleção.",
+   "id": "porta-controles",
+   "grupo": "porta-objetos",
+   "nome": "Porta-controles",
+   "desc": "Porta-controles remotos de mesa e de parede.",
+   "icone": "c-box",
    "subs": [
-    "Miniaturas",
-    "Bustos",
-    "Dioramas",
-    "Expositores de coleção"
-   ],
-   "grupo": "lazer"
+    "Porta-controles de mesa",
+    "Porta-controles de parede"
+   ]
   },
   {
-   "id": "cosplay-props",
-   "nome": "Cosplay e Props",
-   "desc": "Máscaras, capacetes e acessórios de fantasia, prontos para lixar e pintar.",
+   "id": "porta-oculos",
+   "grupo": "porta-objetos",
+   "nome": "Porta-óculos",
+   "desc": "Porta-óculos de mesa e de parede.",
+   "icone": "c-glasses",
    "subs": [
-    "Máscaras e capacetes",
-    "Réplicas e props",
-    "Acessórios de fantasia"
-   ],
-   "grupo": "lazer"
+    "Porta-óculos de mesa",
+    "Porta-óculos de parede"
+   ]
   },
   {
-   "id": "escritorio",
-   "nome": "Escritório e Organização",
-   "desc": "Organizadores de mesa, porta-canetas, suportes e gestão de cabos.",
+   "id": "porta-cartoes",
+   "grupo": "porta-objetos",
+   "nome": "Porta-cartões e Porta-retratos",
+   "desc": "Porta-cartões, porta-retratos e porta-crachás.",
+   "icone": "c-frame",
+   "subs": [
+    "Porta-cartões",
+    "Porta-retratos",
+    "Porta-crachás"
+   ],
+   "capa": "fotos/produtos/porta-cartoes.webp"
+  },
+  {
+   "id": "porta-cozinha",
+   "grupo": "porta-objetos",
+   "nome": "Porta-temperos e Utensílios",
+   "desc": "Porta-temperos, porta-utensílios, porta-guardanapos e porta-copos.",
+   "icone": "c-kitchen",
+   "subs": [
+    "Porta-temperos",
+    "Porta-utensílios",
+    "Porta-guardanapos",
+    "Porta-copos"
+   ]
+  },
+  {
+   "id": "porta-banheiro",
+   "grupo": "porta-objetos",
+   "nome": "Porta-escovas e Banheiro",
+   "desc": "Porta-escovas, saboneteiras e porta-algodão.",
+   "icone": "c-drop",
+   "subs": [
+    "Porta-escovas",
+    "Saboneteiras",
+    "Porta-algodão"
+   ]
+  },
+  {
+   "id": "suporte-celular",
+   "grupo": "suportes",
+   "nome": "Celular e Tablet",
+   "desc": "Suportes de mesa, parede e cama para celular e tablet.",
+   "icone": "c-phone",
+   "subs": [
+    "Suportes de mesa",
+    "Suportes de parede",
+    "Suportes de cama"
+   ],
+   "capa": "fotos/produtos/suporte-celular.webp"
+  },
+  {
+   "id": "suporte-headset",
+   "grupo": "suportes",
+   "nome": "Fones e Headsets",
+   "desc": "Suportes e ganchos para fones e headsets.",
+   "icone": "c-headset",
+   "subs": [
+    "Suportes de headset",
+    "Ganchos de mesa"
+   ],
+   "capa": "fotos/produtos/suporte-headset.webp"
+  },
+  {
+   "id": "suporte-controle",
+   "grupo": "suportes",
+   "nome": "Controles de Videogame",
+   "desc": "Suportes, docks e bases para controles.",
+   "icone": "c-game",
+   "subs": [
+    "Suportes de controle",
+    "Docks e bases"
+   ],
+   "capa": "fotos/produtos/suporte-controle.webp"
+  },
+  {
+   "id": "suporte-notebook",
+   "grupo": "suportes",
+   "nome": "Notebook e Monitor",
+   "desc": "Suportes de notebook, elevadores de monitor e suportes de teclado.",
+   "icone": "c-desk",
+   "subs": [
+    "Suportes de notebook",
+    "Elevadores de monitor",
+    "Suportes de teclado"
+   ]
+  },
+  {
+   "id": "suporte-speaker",
+   "grupo": "suportes",
+   "nome": "Alexa e Smart Speakers",
+   "desc": "Suportes de mesa e de parede para assistentes e caixas de som.",
+   "icone": "c-speaker",
+   "subs": [
+    "Suportes de mesa",
+    "Suportes de parede"
+   ]
+  },
+  {
+   "id": "expositores",
+   "grupo": "suportes",
+   "nome": "Expositores",
+   "desc": "Expositores para miniaturas, colecionáveis, medalhas e balcão.",
+   "icone": "c-star",
+   "subs": [
+    "Miniaturas e colecionáveis",
+    "Medalhas e troféus",
+    "Expositores de balcão"
+   ],
+   "capa": "fotos/produtos/expositor-degraus.webp"
+  },
+  {
+   "id": "suportes-parede",
+   "grupo": "suportes",
+   "nome": "Suportes de Parede",
+   "desc": "Suportes de parede para ferramentas, instrumentos, bicicleta e capacete.",
+   "icone": "c-tool",
+   "subs": [
+    "Ferramentas",
+    "Violão e instrumentos",
+    "Bicicleta e capacete"
+   ]
+  },
+  {
+   "id": "org-mesa",
+   "grupo": "organizacao",
+   "nome": "Mesa e Escritório",
+   "desc": "Organizadores de mesa, bandejas e porta-documentos.",
+   "icone": "c-desk",
    "subs": [
     "Organizadores de mesa",
-    "Porta-canetas",
-    "Suportes para celular",
-    "Organizadores de cabos"
+    "Bandejas",
+    "Porta-documentos"
    ],
-   "capa": "fotos/produtos/organizador-mesa.webp",
-   "grupo": "trabalho"
+   "capa": "fotos/produtos/organizador-mesa.webp"
+  },
+  {
+   "id": "divisorias",
+   "grupo": "organizacao",
+   "nome": "Divisórias de Gaveta",
+   "desc": "Divisórias modulares e bandejas sob medida para gavetas.",
+   "icone": "c-grid",
+   "subs": [
+    "Divisórias modulares",
+    "Bandejas de gaveta"
+   ]
+  },
+  {
+   "id": "org-cabos",
+   "grupo": "organizacao",
+   "nome": "Cabos e Fios",
+   "desc": "Clipes, passa-cabos e canaletas para esconder a bagunça.",
+   "icone": "c-cable",
+   "subs": [
+    "Clipes de cabo",
+    "Passa-cabos",
+    "Canaletas"
+   ],
+   "capa": "fotos/produtos/organizador-cabos.webp"
   },
   {
    "id": "ferramentas-oficina",
-   "nome": "Ferramentas e Oficina",
+   "grupo": "organizacao",
+   "nome": "Oficina e Ferramentas",
    "desc": "Organizadores de parafusos, suportes de brocas e peças de bancada.",
+   "icone": "c-tool",
    "subs": [
     "Organizadores de parafusos",
-    "Suportes para brocas",
+    "Suportes de brocas e bits",
     "Acessórios de bancada"
    ],
-   "capa": "fotos/produtos/organizador-parafusos.webp",
-   "grupo": "trabalho"
+   "capa": "fotos/produtos/organizador-parafusos.webp"
   },
   {
-   "id": "automotivo",
-   "nome": "Automotivo",
-   "desc": "Organizadores e acessórios para o interior do carro.",
+   "id": "cozinha-casa",
+   "grupo": "organizacao",
+   "nome": "Cozinha e Despensa",
+   "desc": "Organizadores de despensa, de gaveta e suportes para a cozinha.",
+   "icone": "c-kitchen",
    "subs": [
-    "Organizadores automotivos",
-    "Acessórios internos"
+    "Organizadores de despensa",
+    "Organizadores de gaveta",
+    "Suportes de cozinha"
+   ]
+  },
+  {
+   "id": "org-maquiagem",
+   "grupo": "organizacao",
+   "nome": "Maquiagem e Cosméticos",
+   "desc": "Organizadores de maquiagem, porta-pincéis e porta-batons.",
+   "icone": "c-gem",
+   "subs": [
+    "Organizadores de maquiagem",
+    "Porta-pincéis",
+    "Porta-batons"
+   ]
+  },
+  {
+   "id": "org-costura",
+   "grupo": "organizacao",
+   "nome": "Costura e Artesanato",
+   "desc": "Porta-linhas, organizadores de agulhas e porta-fitas.",
+   "icone": "c-scissors",
+   "subs": [
+    "Porta-linhas",
+    "Organizadores de agulhas",
+    "Porta-fitas"
+   ]
+  },
+  {
+   "id": "org-brinquedos",
+   "grupo": "organizacao",
+   "nome": "Brinquedos e LEGO",
+   "desc": "Caixas de peças e expositores para brinquedos e LEGO.",
+   "icone": "c-puzzle",
+   "subs": [
+    "Caixas de peças",
+    "Expositores de LEGO"
+   ]
+  },
+  {
+   "id": "casa-utilidades",
+   "grupo": "utilidades",
+   "nome": "Ganchos e Cabideiros",
+   "desc": "Ganchos de parede, cabideiros e ganchos adesivos.",
+   "icone": "c-house",
+   "subs": [
+    "Ganchos de parede",
+    "Cabideiros",
+    "Ganchos adesivos"
    ],
-   "capa": "fotos/produtos/organizador-porta-copos.webp",
-   "grupo": "trabalho"
+   "capa": "fotos/produtos/porta-chaves-parede.webp"
   },
   {
    "id": "pecas-reposicao",
+   "grupo": "utilidades",
    "nome": "Peças de Reposição",
    "desc": "Reproduzimos peças quebradas ou que não se acham mais: tampas, engrenagens, presilhas e suportes.",
+   "icone": "c-gear",
    "subs": [
     "Tampas e presilhas",
     "Engrenagens",
     "Suportes e fixadores",
     "Peças sob medida"
+   ]
+  },
+  {
+   "id": "pet-shop",
+   "grupo": "utilidades",
+   "nome": "Pet",
+   "desc": "Plaquinhas de identificação, comedouros elevados e acessórios para pets.",
+   "icone": "c-pet",
+   "subs": [
+    "Identificadores",
+    "Comedouros elevados",
+    "Porta-saquinhos",
+    "Acessórios para coleiras"
    ],
-   "grupo": "trabalho"
+   "capa": "fotos/produtos/tag-pet.webp"
+  },
+  {
+   "id": "automotivo",
+   "grupo": "utilidades",
+   "nome": "Carro",
+   "desc": "Organizadores, suportes e acessórios para o interior do carro.",
+   "icone": "c-car",
+   "subs": [
+    "Organizadores automotivos",
+    "Suportes de celular",
+    "Acessórios internos"
+   ],
+   "capa": "fotos/produtos/organizador-porta-copos.webp"
+  },
+  {
+   "id": "praia-viagem",
+   "grupo": "utilidades",
+   "nome": "Praia e Viagem",
+   "desc": "Prendedores de canga, porta-celular de praia e acessórios de viagem.",
+   "icone": "c-sun",
+   "subs": [
+    "Prendedores de canga",
+    "Porta-celular de praia",
+    "Acessórios de viagem"
+   ]
+  },
+  {
+   "id": "casa-inteligente",
+   "grupo": "utilidades",
+   "nome": "Eletrônica e Casa Inteligente",
+   "desc": "Cases para eletrônicos, suportes de sensores e câmeras e acessórios maker.",
+   "icone": "c-robot",
+   "subs": [
+    "Cases para eletrônicos",
+    "Suportes de sensores e câmeras",
+    "Acessórios maker"
+   ]
+  },
+  {
+   "id": "chaveiros",
+   "grupo": "personalizados",
+   "nome": "Chaveiros",
+   "desc": "Chaveiros com nome, logo, cidade ou tema, em várias cores.",
+   "icone": "c-key",
+   "subs": [
+    "Chaveiros com nome",
+    "Chaveiros com logo",
+    "Chaveiros de cidades",
+    "Chaveiros temáticos"
+   ],
+   "capa": "fotos/produtos/chaveiro-nome.webp"
+  },
+  {
+   "id": "presentes-personalizados",
+   "grupo": "personalizados",
+   "nome": "Presentes",
+   "desc": "Presentes personalizados para Dia das Mães, dos Pais, dos Namorados e aniversários.",
+   "icone": "c-gift",
+   "subs": [
+    "Dia das Mães",
+    "Dia dos Pais",
+    "Dia dos Namorados",
+    "Aniversário"
+   ],
+   "capa": "fotos/produtos/chaveiro-nome.webp"
+  },
+  {
+   "id": "festas-eventos",
+   "grupo": "personalizados",
+   "nome": "Festas e Lembrancinhas",
+   "desc": "Lembrancinhas, centros de mesa e letreiros para casamentos, aniversários e eventos.",
+   "icone": "c-party",
+   "subs": [
+    "Lembrancinhas de casamento",
+    "Lembrancinhas de aniversário",
+    "Chá de bebê",
+    "Formatura"
+   ]
+  },
+  {
+   "id": "topos-bolo",
+   "grupo": "personalizados",
+   "nome": "Topos de Bolo",
+   "desc": "Topos de bolo com nome, temáticos e para casamento.",
+   "icone": "c-cake",
+   "subs": [
+    "Topos com nome",
+    "Topos temáticos",
+    "Topos de casamento"
+   ]
+  },
+  {
+   "id": "moda-acessorios",
+   "grupo": "personalizados",
+   "nome": "Moda e Acessórios",
+   "desc": "Brincos, anéis e acessórios leves, com cores e formatos sob medida.",
+   "icone": "c-gem",
+   "subs": [
+    "Brincos",
+    "Anéis e pulseiras",
+    "Acessórios para bolsas"
+   ]
+  },
+  {
+   "id": "games-tecnologia",
+   "grupo": "geek",
+   "nome": "Games e Setup",
+   "desc": "Organizadores, suportes e acessórios para o seu setup.",
+   "icone": "c-game",
+   "subs": [
+    "Organizadores de jogos",
+    "Acessórios gamer",
+    "Iluminação de setup"
+   ],
+   "capa": "fotos/produtos/organizador-cabos.webp"
+  },
+  {
+   "id": "jogos-mesa",
+   "grupo": "geek",
+   "nome": "Jogos de Mesa e RPG",
+   "desc": "Torres de dados, porta-cartas, organizadores de caixa e peças para jogos de tabuleiro.",
+   "icone": "c-dice",
+   "subs": [
+    "Torres de dados",
+    "Porta-cartas e deck box",
+    "Organizadores de jogos",
+    "Peças de reposição para jogos"
+   ]
+  },
+  {
+   "id": "colecionaveis",
+   "grupo": "geek",
+   "nome": "Colecionáveis e Miniaturas",
+   "desc": "Miniaturas, dioramas e expositores para a sua coleção.",
+   "icone": "c-robot",
+   "subs": [
+    "Miniaturas",
+    "Dioramas",
+    "Expositores de coleção"
+   ]
+  },
+  {
+   "id": "brinquedos-fidgets",
+   "grupo": "geek",
+   "nome": "Brinquedos e Fidgets",
+   "desc": "Fidgets, brinquedos articulados e quebra-cabeças impressos em 3D para todas as idades.",
+   "icone": "c-puzzle",
+   "subs": [
+    "Fidgets",
+    "Articulados",
+    "Quebra-cabeças",
+    "Brinquedos de montar"
+   ]
+  },
+  {
+   "id": "cosplay-props",
+   "grupo": "geek",
+   "nome": "Cosplay e Props",
+   "desc": "Máscaras, capacetes e acessórios de fantasia, prontos para lixar e pintar.",
+   "icone": "c-mask",
+   "subs": [
+    "Máscaras e capacetes",
+    "Réplicas e props",
+    "Acessórios de fantasia"
+   ]
   },
   {
    "id": "maker-educacao",
+   "grupo": "geek",
    "nome": "Maker e Educação",
    "desc": "Protótipos, maquetes, peças para robótica e materiais didáticos para escolas e projetos.",
+   "icone": "c-edu",
    "subs": [
     "Protótipos",
     "Maquetes",
     "Robótica",
     "Material didático"
+   ]
+  },
+  {
+   "id": "musica",
+   "grupo": "geek",
+   "nome": "Música",
+   "desc": "Suportes de pedal, porta-palhetas e suportes de instrumento.",
+   "icone": "c-music",
+   "subs": [
+    "Suportes de pedal",
+    "Porta-palhetas",
+    "Suportes de instrumento"
+   ]
+  },
+  {
+   "id": "prof-saude",
+   "grupo": "profissoes",
+   "nome": "Saúde",
+   "desc": "Peças para consultórios de dentistas, médicos, fisioterapeutas e psicólogos.",
+   "icone": "c-health",
+   "subs": [
+    "Dentistas",
+    "Médicos",
+    "Fisioterapeutas",
+    "Psicólogos",
+    "Enfermagem"
    ],
-   "grupo": "trabalho"
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "prof-beleza",
+   "grupo": "profissoes",
+   "nome": "Beleza e Estética",
+   "desc": "Peças para salões, barbearias, manicures e estúdios de estética.",
+   "icone": "c-scissors",
+   "subs": [
+    "Cabeleireiros",
+    "Barbeiros",
+    "Manicures",
+    "Esteticistas"
+   ],
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "prof-alimentacao",
+   "grupo": "profissoes",
+   "nome": "Restaurantes, Bares e Cafés",
+   "desc": "Porta-cardápios, números de mesa, porta-guardanapos e placas NFC para o salão.",
+   "icone": "c-cup",
+   "subs": [
+    "Porta-cardápios",
+    "Números de mesa",
+    "Porta-guardanapos",
+    "Placas NFC"
+   ],
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "prof-comercio",
+   "grupo": "profissoes",
+   "nome": "Lojas e Comércio",
+   "desc": "Expositores, porta-cartões e placas NFC para o balcão da sua loja.",
+   "icone": "c-shop",
+   "subs": [
+    "Expositores de balcão",
+    "Porta-cartões",
+    "Placas NFC"
+   ],
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "prof-escritorio",
+   "grupo": "profissoes",
+   "nome": "Advocacia, Contabilidade e Imóveis",
+   "desc": "Peças para escritórios de advogados, contadores e corretores de imóveis.",
+   "icone": "c-briefcase",
+   "subs": [
+    "Advogados",
+    "Contadores",
+    "Corretores de imóveis"
+   ],
+   "capa": "fotos/produtos/porta-cartoes.webp"
+  },
+  {
+   "id": "prof-educacao",
+   "grupo": "profissoes",
+   "nome": "Educação",
+   "desc": "Peças e lembranças para professores e escolas.",
+   "icone": "c-edu",
+   "subs": [
+    "Professores",
+    "Escolas"
+   ],
+   "capa": "fotos/produtos/porta-canetas-hex.webp"
+  },
+  {
+   "id": "prof-tecnicos",
+   "grupo": "profissoes",
+   "nome": "Técnicos e Engenharia",
+   "desc": "Peças para mecânicos, eletricistas, engenheiros, arquitetos e TI.",
+   "icone": "c-tool",
+   "subs": [
+    "Mecânicos",
+    "Eletricistas",
+    "Engenheiros",
+    "Arquitetos",
+    "TI"
+   ],
+   "capa": "fotos/produtos/organizador-parafusos.webp"
+  },
+  {
+   "id": "prof-turismo",
+   "grupo": "profissoes",
+   "nome": "Turismo e Hospedagem",
+   "desc": "Peças para pousadas, hotéis, náutica e surf no Litoral Norte.",
+   "icone": "c-wave",
+   "subs": [
+    "Pousadas",
+    "Hotéis",
+    "Náutica",
+    "Surf"
+   ],
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "prof-pet",
+   "grupo": "profissoes",
+   "nome": "Veterinários e Pet Shops",
+   "desc": "Peças para clínicas veterinárias e pet shops.",
+   "icone": "c-pet",
+   "subs": [
+    "Veterinários",
+    "Pet shops"
+   ],
+   "capa": "fotos/produtos/tag-pet.webp"
+  },
+  {
+   "id": "prof-fitness",
+   "grupo": "profissoes",
+   "nome": "Academias e Personal",
+   "desc": "Peças para academias, estúdios e personal trainers.",
+   "icone": "c-dumbbell",
+   "subs": [
+    "Academias",
+    "Personal trainers",
+    "Estúdios"
+   ]
+  },
+  {
+   "id": "comercio-empresas",
+   "grupo": "empresas",
+   "nome": "Placas e Displays NFC",
+   "desc": "Placas NFC de avaliação no Google e displays de balcão para Instagram, cardápio ou WhatsApp.",
+   "icone": "c-nfc",
+   "subs": [
+    "Placas NFC de avaliação",
+    "Displays NFC de mesa",
+    "NFC para Instagram e Wi-Fi"
+   ],
+   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+  },
+  {
+   "id": "expositores-balcao",
+   "grupo": "empresas",
+   "nome": "Expositores e Porta-cartões",
+   "desc": "Expositores em degraus, porta-cartões e displays para o balcão.",
+   "icone": "c-shop",
+   "subs": [
+    "Porta-cartões",
+    "Expositores",
+    "Displays de balcão"
+   ],
+   "capa": "fotos/produtos/porta-cartoes.webp"
+  },
+  {
+   "id": "sinalizacao",
+   "grupo": "empresas",
+   "nome": "Placas e Sinalização",
+   "desc": "Placas de porta, sinalização interna e letreiros com o logotipo da sua empresa.",
+   "icone": "c-sign",
+   "subs": [
+    "Placas de porta",
+    "Sinalização interna",
+    "Letreiros com logo",
+    "Placas de mesa"
+   ]
+  },
+  {
+   "id": "brindes-corporativos",
+   "grupo": "empresas",
+   "nome": "Brindes Corporativos",
+   "desc": "Chaveiros, kits e brindes com a sua marca, em quantidade.",
+   "icone": "c-gift",
+   "subs": [
+    "Chaveiros com logo",
+    "Kits com logo",
+    "Brindes em quantidade"
+   ],
+   "capa": "fotos/produtos/brinde-corporativo.webp"
+  },
+  {
+   "id": "prototipos",
+   "grupo": "empresas",
+   "nome": "Protótipos e Peças Técnicas",
+   "desc": "Protótipos, peças técnicas e pequenas séries para a sua empresa.",
+   "icone": "c-gear",
+   "subs": [
+    "Protótipos",
+    "Peças técnicas",
+    "Pequenas séries"
+   ]
   }
  ],
  "produtos": [
@@ -318,7 +889,14 @@
     "fotos/produtos/placa-nfc-avaliacao.webp",
     "fotos/produtos/placa-nfc-avaliacao-2.webp"
    ],
-   "criado": "2026-11-19"
+   "criado": "2026-11-19",
+   "tambem": [
+    "prof-alimentacao",
+    "prof-comercio",
+    "prof-saude",
+    "prof-beleza",
+    "prof-turismo"
+   ]
   },
   {
    "ref": "SUB-002",
@@ -336,12 +914,17 @@
     "fotos/produtos/display-nfc-mesa.webp",
     "fotos/produtos/display-nfc-mesa-2.webp"
    ],
-   "criado": "2026-11-19"
+   "criado": "2026-11-19",
+   "tambem": [
+    "prof-alimentacao",
+    "prof-comercio",
+    "prof-beleza"
+   ]
   },
   {
    "ref": "SUB-003",
    "nome": "Porta-cartões de balcão",
-   "nicho": "comercio-empresas",
+   "nicho": "expositores-balcao",
    "sub": "Porta-cartões",
    "descricao": "Porta-cartões com o nome ou logotipo da sua marca em relevo na frente.",
    "dimensoes": "9,6 × 3,4 × 2,3 cm",
@@ -355,12 +938,18 @@
     "fotos/produtos/porta-cartoes.webp",
     "fotos/produtos/porta-cartoes-2.webp"
    ],
-   "criado": "2026-11-18"
+   "criado": "2026-11-18",
+   "tambem": [
+    "porta-cartoes",
+    "prof-comercio",
+    "prof-escritorio",
+    "prof-saude"
+   ]
   },
   {
    "ref": "SUB-004",
    "nome": "Expositor em degraus",
-   "nicho": "comercio-empresas",
+   "nicho": "expositores-balcao",
    "sub": "Expositores",
    "descricao": "Expositor de três níveis para vitrines e balcões. Medidas ajustáveis aos seus produtos.",
    "dimensoes": "16 × 13,5 × 4,8 cm",
@@ -374,12 +963,16 @@
     "fotos/produtos/expositor-degraus.webp",
     "fotos/produtos/expositor-degraus-2.webp"
    ],
-   "criado": "2026-11-18"
+   "criado": "2026-11-18",
+   "tambem": [
+    "expositores",
+    "prof-comercio"
+   ]
   },
   {
    "ref": "SUB-005",
    "nome": "Chaveiro com nome",
-   "nicho": "presentes-personalizados",
+   "nicho": "chaveiros",
    "sub": "Chaveiros com nome",
    "descricao": "Chaveiro com nome em relevo e cor de contraste. Ótimo para presentes, lembrancinhas e identificação de chaves.",
    "dimensoes": "Aprox. 6 × 2,3 cm",
@@ -394,12 +987,15 @@
     "fotos/produtos/chaveiro-nome.webp",
     "fotos/produtos/chaveiro-nome-2.webp"
    ],
-   "criado": "2026-11-18"
+   "criado": "2026-11-18",
+   "tambem": [
+    "presentes-personalizados"
+   ]
   },
   {
    "ref": "SUB-006",
    "nome": "Letras decorativas",
-   "nicho": "presentes-personalizados",
+   "nicho": "letreiros",
    "sub": "Letras decorativas",
    "descricao": "Palavras e nomes em letras de 4 cm para decorar prateleiras, quartos e festas.",
    "dimensoes": "Letras de 4 cm de altura",
@@ -414,13 +1010,16 @@
     "fotos/produtos/letras-decorativas.webp",
     "fotos/produtos/letras-decorativas-2.webp"
    ],
-   "criado": "2026-11-17"
+   "criado": "2026-11-17",
+   "tambem": [
+    "presentes-personalizados"
+   ]
   },
   {
    "ref": "SUB-007",
    "nome": "Chaveiros brinde com sua marca",
-   "nicho": "presentes-personalizados",
-   "sub": "Brindes corporativos",
+   "nicho": "brindes-corporativos",
+   "sub": "Chaveiros com logo",
    "descricao": "Chaveiros em lote com o nome ou logotipo da empresa, para eventos, campanhas e clientes.",
    "dimensoes": "Aprox. 11 × 2,3 cm",
    "cores": [
@@ -433,12 +1032,15 @@
     "fotos/produtos/brinde-corporativo.webp",
     "fotos/produtos/brinde-corporativo-2.webp"
    ],
-   "criado": "2026-11-17"
+   "criado": "2026-11-17",
+   "tambem": [
+    "chaveiros"
+   ]
   },
   {
    "ref": "SUB-008",
    "nome": "Vaso espiral",
-   "nicho": "decoracao",
+   "nicho": "vasos",
    "sub": "Vasos",
    "descricao": "Vaso com nervuras em espiral que destacam as camadas da impressão. Ideal para flores secas ou plantas artificiais.",
    "dimensoes": "Ø 9 × 13 cm",
@@ -452,13 +1054,16 @@
     "fotos/produtos/vaso-espiral.webp",
     "fotos/produtos/vaso-espiral-2.webp"
    ],
-   "criado": "2026-11-17"
+   "criado": "2026-11-17",
+   "tambem": [
+    "plantas-jardim"
+   ]
   },
   {
    "ref": "SUB-009",
    "nome": "Kit vasos espiral terracota",
-   "nicho": "decoracao",
-   "sub": "Vasos",
+   "nicho": "vasos",
+   "sub": "Kits de vasos",
    "descricao": "Dupla de vasos em tom terroso, em dois tamanhos, para compor mesas e estantes.",
    "dimensoes": "Ø 8 × 11 cm e Ø 5 × 7 cm",
    "cores": [
@@ -470,13 +1075,16 @@
     "fotos/produtos/vaso-espiral-terracota.webp",
     "fotos/produtos/vaso-espiral-terracota-2.webp"
    ],
-   "criado": "2026-11-16"
+   "criado": "2026-11-16",
+   "tambem": [
+    "plantas-jardim"
+   ]
   },
   {
    "ref": "SUB-010",
    "nome": "Vasos geométricos",
-   "nicho": "decoracao",
-   "sub": "Objetos minimalistas",
+   "nicho": "vasos",
+   "sub": "Vasos",
    "descricao": "Vasos facetados em estilo low-poly, em versão alta e baixa.",
    "dimensoes": "Ø 7 × 11 cm e Ø 5 × 7 cm",
    "cores": [
@@ -494,8 +1102,8 @@
   {
    "ref": "SUB-011",
    "nome": "Luminária de mesa ondulada",
-   "nicho": "decoracao",
-   "sub": "Luminárias",
+   "nicho": "luminarias",
+   "sub": "Luminárias de mesa",
    "descricao": "Cúpula com ondulações que difundem a luz de forma suave. Usa lâmpada LED, que não aquece a peça.",
    "dimensoes": "Ø 10 × 15 cm",
    "cores": [
@@ -512,7 +1120,7 @@
   {
    "ref": "SUB-012",
    "nome": "Escultura nó infinito",
-   "nicho": "decoracao",
+   "nicho": "esculturas",
    "sub": "Esculturas",
    "descricao": "Escultura decorativa em filamento acetinado dourado com base preta.",
    "dimensoes": "Ø 9 × 11 cm",
@@ -530,7 +1138,7 @@
   {
    "ref": "SUB-013",
    "nome": "Organizador de mesa modular",
-   "nicho": "escritorio",
+   "nicho": "org-mesa",
    "sub": "Organizadores de mesa",
    "descricao": "Compartimentos para canetas, lápis, clipes e pequenos itens, com base em cor de destaque.",
    "dimensoes": "14 × 8,5 × 7,5 cm",
@@ -543,12 +1151,15 @@
     "fotos/produtos/organizador-mesa.webp",
     "fotos/produtos/organizador-mesa-2.webp"
    ],
-   "criado": "2026-11-15"
+   "criado": "2026-11-15",
+   "tambem": [
+    "prof-escritorio"
+   ]
   },
   {
    "ref": "SUB-014",
    "nome": "Porta-canetas colmeia",
-   "nicho": "escritorio",
+   "nicho": "porta-canetas",
    "sub": "Porta-canetas",
    "descricao": "Três tubos hexagonais de alturas diferentes. Vendidos juntos ou separados.",
    "dimensoes": "Tubos de 9, 7 e 5,5 cm",
@@ -561,13 +1172,18 @@
     "fotos/produtos/porta-canetas-hex.webp",
     "fotos/produtos/porta-canetas-hex-2.webp"
    ],
-   "criado": "2026-11-15"
+   "criado": "2026-11-15",
+   "tambem": [
+    "org-mesa",
+    "prof-escritorio",
+    "prof-educacao"
+   ]
   },
   {
    "ref": "SUB-015",
    "nome": "Suporte de celular de mesa",
-   "nicho": "escritorio",
-   "sub": "Suportes para celular",
+   "nicho": "suporte-celular",
+   "sub": "Suportes de mesa",
    "descricao": "Apoio inclinado para assistir, fazer chamadas de vídeo ou acompanhar receitas.",
    "dimensoes": "7 × 6,5 × 9 cm",
    "cores": [
@@ -586,8 +1202,8 @@
   {
    "ref": "SUB-016",
    "nome": "Organizador de cabos",
-   "nicho": "escritorio",
-   "sub": "Organizadores de cabos",
+   "nicho": "org-cabos",
+   "sub": "Clipes de cabo",
    "descricao": "Barra com presilhas para manter cabos de carregador e fones sempre à mão.",
    "dimensoes": "16 × 3,4 × 2 cm",
    "cores": [
@@ -599,12 +1215,15 @@
     "fotos/produtos/organizador-cabos.webp",
     "fotos/produtos/organizador-cabos-2.webp"
    ],
-   "criado": "2026-11-14"
+   "criado": "2026-11-14",
+   "tambem": [
+    "games-tecnologia"
+   ]
   },
   {
    "ref": "SUB-017",
    "nome": "Porta-chaves de parede Lar",
-   "nicho": "casa-utilidades",
+   "nicho": "porta-chaves",
    "sub": "Porta-chaves de parede",
    "descricao": "Placa em formato de casinha com quatro ganchos. O texto pode ser trocado pelo nome da família.",
    "dimensoes": "16 × 11 cm",
@@ -617,13 +1236,16 @@
     "fotos/produtos/porta-chaves-parede.webp",
     "fotos/produtos/porta-chaves-parede-2.webp"
    ],
-   "criado": "2026-11-14"
+   "criado": "2026-11-14",
+   "tambem": [
+    "casa-utilidades"
+   ]
   },
   {
    "ref": "SUB-018",
    "nome": "Ganchos de parede",
    "nicho": "casa-utilidades",
-   "sub": "Ganchos",
+   "sub": "Ganchos de parede",
    "descricao": "Ganchos para chaves, bolsas e toalhas, fixados com fita dupla face ou parafuso.",
    "dimensoes": "2,6 × 4,4 cm",
    "cores": [
@@ -642,8 +1264,8 @@
   {
    "ref": "SUB-019",
    "nome": "Suporte para headset",
-   "nicho": "games-tecnologia",
-   "sub": "Suportes para headset",
+   "nicho": "suporte-headset",
+   "sub": "Suportes de headset",
    "descricao": "Suporte de mesa com base firme e topo arredondado, que não marca o arco do fone.",
    "dimensoes": "Ø 10 × 18 cm",
    "cores": [
@@ -655,13 +1277,16 @@
     "fotos/produtos/suporte-headset.webp",
     "fotos/produtos/suporte-headset-2.webp"
    ],
-   "criado": "2026-11-13"
+   "criado": "2026-11-13",
+   "tambem": [
+    "games-tecnologia"
+   ]
   },
   {
    "ref": "SUB-020",
    "nome": "Suporte para controle",
-   "nicho": "games-tecnologia",
-   "sub": "Suportes para controles",
+   "nicho": "suporte-controle",
+   "sub": "Suportes de controle",
    "descricao": "Apoio inclinado para controles de videogame, deixando o setup organizado.",
    "dimensoes": "12 × 8 × 7 cm",
    "cores": [
@@ -674,7 +1299,10 @@
     "fotos/produtos/suporte-controle.webp",
     "fotos/produtos/suporte-controle-2.webp"
    ],
-   "criado": "2026-11-13"
+   "criado": "2026-11-13",
+   "tambem": [
+    "games-tecnologia"
+   ]
   },
   {
    "ref": "SUB-021",
@@ -712,7 +1340,10 @@
     "fotos/produtos/tag-pet.webp",
     "fotos/produtos/tag-pet-2.webp"
    ],
-   "criado": "2026-11-12"
+   "criado": "2026-11-12",
+   "tambem": [
+    "prof-pet"
+   ]
   },
   {
    "ref": "SUB-023",
@@ -730,13 +1361,16 @@
     "fotos/produtos/organizador-parafusos.webp",
     "fotos/produtos/organizador-parafusos-2.webp"
    ],
-   "criado": "2026-11-12"
+   "criado": "2026-11-12",
+   "tambem": [
+    "prof-tecnicos"
+   ]
   },
   {
    "ref": "SUB-024",
    "nome": "Suporte de brocas",
    "nicho": "ferramentas-oficina",
-   "sub": "Suportes para brocas",
+   "sub": "Suportes de brocas e bits",
    "descricao": "Base em degraus com furos por diâmetro, para achar a broca certa na hora.",
    "dimensoes": "14 × 6 × 4,5 cm",
    "cores": [
@@ -748,7 +1382,10 @@
     "fotos/produtos/suporte-brocas.webp",
     "fotos/produtos/suporte-brocas-2.webp"
    ],
-   "criado": "2026-11-11"
+   "criado": "2026-11-11",
+   "tambem": [
+    "prof-tecnicos"
+   ]
   },
   {
    "ref": "SUB-025",
@@ -766,7 +1403,10 @@
     "fotos/produtos/ima-litoral.webp",
     "fotos/produtos/ima-litoral-2.webp"
    ],
-   "criado": "2026-11-11"
+   "criado": "2026-11-11",
+   "tambem": [
+    "prof-turismo"
+   ]
   },
   {
    "ref": "SUB-026",
@@ -786,7 +1426,11 @@
     "fotos/produtos/chaveiro-cidade.webp",
     "fotos/produtos/chaveiro-cidade-2.webp"
    ],
-   "criado": "2026-11-11"
+   "criado": "2026-11-11",
+   "tambem": [
+    "chaveiros",
+    "prof-turismo"
+   ]
   },
   {
    "ref": "SUB-027",
@@ -804,12 +1448,15 @@
     "fotos/produtos/farol-miniatura.webp",
     "fotos/produtos/farol-miniatura-2.webp"
    ],
-   "criado": "2026-11-10"
+   "criado": "2026-11-10",
+   "tambem": [
+    "prof-turismo"
+   ]
   },
   {
    "ref": "SUB-028",
    "nome": "Vaso orgânico",
-   "nicho": "decoracao",
+   "nicho": "vasos",
    "sub": "Vasos",
    "descricao": "Vaso de formas orgânicas e onduladas, com acabamento fosco. Fica bonito com suculentas e plantas pequenas ou sozinho, como objeto decorativo.",
    "dimensoes": "",
@@ -821,7 +1468,10 @@
    "fotos": [
     "fotos/produtos/vaso-organico.webp"
    ],
-   "criado": "2026-11-24"
+   "criado": "2026-11-24",
+   "tambem": [
+    "plantas-jardim"
+   ]
   }
  ]
 }
