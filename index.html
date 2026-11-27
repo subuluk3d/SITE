@@ -263,6 +263,15 @@ form.qf{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(6,7,
 .qf .send{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .qf .send .pill{border:0;cursor:pointer}
 .qf .ok{color:var(--lime);font-size:.9rem}
+.qdrop{position:relative;display:flex;align-items:center;justify-content:center;min-height:64px;border:1.5px dashed var(--line2);border-radius:12px;background:#0A0C0A;cursor:pointer;transition:border-color .2s}
+.qdrop:hover,.qdrop:focus-within{border-color:var(--lime)}
+.qdrop input{position:absolute;inset:0;opacity:0;cursor:pointer;min-height:0}
+.qdrop .qd-t{display:flex;gap:10px;align-items:center;color:#C9D1C6;font-size:.92rem;pointer-events:none}.qdrop svg{width:22px;height:22px;color:var(--lime)}
+.qprev{display:flex;gap:12px;align-items:center;margin-top:4px}.qprev[hidden]{display:none}
+.qprev img{width:64px;height:64px;object-fit:cover;border-radius:10px;border:1px solid var(--line2)}
+.qprev span{flex:1;font-size:.85rem;color:#C9D1C6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qprev button,.qf .fotobtn{background:none;border:1px solid var(--line2);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer;font:inherit;font-size:.85rem}
+.qf .fotobtn{border-color:var(--lime);color:var(--lime);margin-top:8px}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 
 /* rodapé extra */
@@ -433,7 +442,11 @@ form.qf{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(6,7,
         <div class="f"><label for="f-tipo">O que você precisa?</label><select id="f-tipo" name="tipo"><option>Placa ou display NFC</option><option>Chaveiros e brindes</option><option>Decoração</option><option>Organização e escritório</option><option>Peça sob medida</option><option>Outro</option></select></div>
         <div class="f"><label for="f-qtd">Quantidade <span class="opt">(aprox.)</span></label><input id="f-qtd" name="qtd" inputmode="numeric" maxlength="10"></div>
         <div class="f"><label for="f-prazo">Para quando? <span class="opt">(opcional)</span></label><input id="f-prazo" name="prazo" maxlength="40" placeholder="ex.: até 10/12"></div>
-        <div class="f full"><label for="f-msg">Descreva o pedido</label><textarea id="f-msg" name="msg" required maxlength="1200" aria-describedby="h-msg e-msg"></textarea><span class="hint" id="h-msg">Medidas, cores, texto ou logotipo. Fotos de referência você envia na conversa.</span><span class="err" id="e-msg" aria-live="polite"></span></div>
+        <div class="f full"><label for="f-msg">Descreva o pedido</label><textarea id="f-msg" name="msg" required maxlength="1200" aria-describedby="h-msg e-msg"></textarea><span class="hint" id="h-msg">Medidas, cores, texto ou logotipo.</span><span class="err" id="e-msg" aria-live="polite"></span></div>
+        <div class="f full"><label for="f-foto">Foto de referência <span class="opt">(opcional)</span></label>
+          <label class="qdrop" id="qdrop" for="f-foto"><input id="f-foto" name="foto" type="file" accept="image/*" aria-describedby="h-foto e-foto"><span class="qd-t"><svg aria-hidden="true" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></g></svg><span>Escolher ou tirar uma foto</span></span></label>
+          <div class="qprev" id="qprev" hidden><img id="qimg" alt="Prévia da foto escolhida"><span id="qname"></span><button type="button" id="qrm" aria-label="Remover foto">Remover</button></div>
+          <span class="hint" id="h-foto">Desenho, foto da peça quebrada ou referência. A foto não fica no site: ela vai junto para o WhatsApp.</span><span class="err" id="e-foto" aria-live="polite"></span></div>
         <div class="hp" aria-hidden="true"><label for="f-site">Não preencha</label><input id="f-site" name="site" tabindex="-1" autocomplete="off"></div>
         <div class="f full"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required aria-describedby="e-ok"><span id="qf-priv">Concordo que a Subuluk 3D use esses dados para responder ao meu pedido de orçamento, conforme a <a href="privacidade.html">Política de Privacidade</a>. Nada é guardado no site: a mensagem é enviada pelo WhatsApp.</span></label><span class="err" id="e-ok" aria-live="polite"></span></div>
         <div class="full send"><button class="pill" type="submit">Enviar pelo WhatsApp<span class="ar"><svg aria-hidden="true"><use href="#i-ar"/></svg></span></button><span class="ok" id="qf-ok" role="status"></span></div>
@@ -571,8 +584,37 @@ function init(D){
   var ok=document.getElementById("qf-ok");
   function err(id,msg){var i=document.getElementById(id),e=document.getElementById("e-"+id.replace("f-",""));i.setAttribute("aria-invalid",msg?"true":"false");e.textContent=msg||"";return !msg}
   f.addEventListener("input",function(e){if(e.target.getAttribute("aria-invalid")==="true")e.target.setAttribute("aria-invalid","false")});
+  /* foto de referência: o link do WhatsApp não leva anexo, então a foto é copiada para a área de
+     transferência (para colar na conversa) e, no celular, pode ir pelo menu Compartilhar */
+  var fi=document.getElementById("f-foto"),prev=document.getElementById("qprev"),foto=null,purl="";
+  function setFoto(file){
+    if(purl){URL.revokeObjectURL(purl);purl=""}
+    foto=file||null;document.getElementById("e-foto").textContent="";
+    if(!foto){prev.hidden=true;fi.value="";return}
+    purl=URL.createObjectURL(foto);document.getElementById("qimg").src=purl;
+    document.getElementById("qname").textContent=foto.name||"foto";prev.hidden=false;
+  }
+  fi.addEventListener("change",function(){
+    var x=fi.files&&fi.files[0];if(!x){setFoto(null);return}
+    if(!/^image\//.test(x.type)){setFoto(null);document.getElementById("e-foto").textContent="Escolha um arquivo de imagem.";return}
+    if(x.size>20*1024*1024){setFoto(null);document.getElementById("e-foto").textContent="A foto passa de 20 MB. Escolha uma menor.";return}
+    setFoto(x);
+  });
+  document.getElementById("qrm").addEventListener("click",function(){setFoto(null);fi.focus()});
+  /* converte para PNG (formato aceito pela área de transferência), no máximo 1600 px */
+  function toPng(file){return new Promise(function(res,rej){var img=new Image(),u=URL.createObjectURL(file);
+    img.onload=function(){var k=Math.min(1,1600/Math.max(img.naturalWidth,img.naturalHeight)),c=document.createElement("canvas");
+      c.width=Math.round(img.naturalWidth*k);c.height=Math.round(img.naturalHeight*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);
+      c.toBlob(function(b){b?res(b):rej(new Error("png"))},"image/png")};
+    img.onerror=function(){URL.revokeObjectURL(u);rej(new Error("img"))};img.src=u})}
+  function copyFoto(file){
+    try{if(!(navigator.clipboard&&navigator.clipboard.write&&window.ClipboardItem))return Promise.resolve(false);
+      return navigator.clipboard.write([new ClipboardItem({"image/png":toPng(file)})]).then(function(){return true},function(){return false})}
+    catch(x){return Promise.resolve(false)}
+  }
+  function canShare(file){try{return!!(navigator.canShare&&navigator.canShare({files:[file]}))}catch(x){return false}}
   f.addEventListener("submit",function(e){
-    e.preventDefault();ok.textContent="";
+    e.preventDefault();ok.textContent="";var old=f.querySelector(".fotobtn");if(old)old.remove();
     if(f.site.value)return; // robô
     var tel=f.tel.value.replace(/\D/g,"");
     var v=[err("f-nome",f.nome.value.trim().length<2?"Informe seu nome.":""),
@@ -586,11 +628,23 @@ function init(D){
     if(f.qtd.value.trim())L.push("*Quantidade:* "+f.qtd.value.trim());
     if(f.prazo.value.trim())L.push("*Prazo:* "+f.prazo.value.trim());
     L.push("","*Pedido:* "+f.msg.value.trim());
+    var file=foto;
+    if(file)L.push("","*Foto de referência:* envio logo abaixo.");
     var url="https://wa.me/"+((window.SBK&&SBK.config.WHATSAPP)||"5512982299331")+"?text="+encodeURIComponent(L.join("\n"));
-    if(window.SBK)SBK.track("generate_lead",{form_name:"orcamento",lead_type:f.tipo.value});
-    var w=window.open(url,"_blank");if(w)w.opener=null;else location.href=url;
-    ok.textContent="Pronto! Abrimos o WhatsApp com o seu pedido. É só tocar em enviar.";
-    f.reset();
+    if(window.SBK)SBK.track("generate_lead",{form_name:"orcamento",lead_type:f.tipo.value,com_foto:!!file});
+    /* a cópia começa ainda dentro do clique (exigência do navegador), antes de abrir o WhatsApp */
+    var copied=file?copyFoto(file):Promise.resolve(false);
+    var w=window.open(url,"_blank");if(w)w.opener=null;
+    var go=function(){if(!w)location.href=url};
+    if(!file){ok.textContent="Pronto! Abrimos o WhatsApp com o seu pedido. É só tocar em enviar.";f.reset();go();return}
+    copied.then(function(c){
+      ok.textContent="Pronto! Abrimos o WhatsApp com o seu pedido. Envie o texto e depois a foto: "+
+        (c?"ela já foi copiada, é só colar na conversa (Ctrl+V no computador, ou segure o campo de mensagem e toque em Colar no celular).":"na conversa, toque no clipe 📎 e escolha a foto.");
+      if(canShare(file)){var b=document.createElement("button");b.type="button";b.className="fotobtn";b.textContent="Enviar a foto pelo WhatsApp";
+        b.onclick=function(){navigator.share({files:[file],text:"Foto de referência do meu pedido"}).catch(function(){})};
+        ok.parentNode.appendChild(b)}
+      f.reset();setFoto(null);go();
+    });
   });
 })();
 </script>
