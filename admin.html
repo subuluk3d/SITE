@@ -4,173 +4,630 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Painel do catálogo | Subuluk 3D</title>
-<link rel="stylesheet" href="catalogo.css">
+<meta name="referrer" content="no-referrer">
+<title>Painel de produtos | Subuluk 3D</title>
 <style>
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:20px}.panel h2{font-size:1.1rem;margin-bottom:12px}
-.fg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.fg label,.panel>label{display:flex;flex-direction:column;gap:5px;font-size:.84rem;color:var(--muted)}.fg .full{grid-column:1/-1}.row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:14px}
-table{width:100%;border-collapse:collapse;font-size:.86rem}td,th{padding:8px;border-bottom:1px solid var(--line);text-align:left}.mini{padding:5px 10px;font-size:.78rem}
-textarea{width:100%;min-height:210px;font-family:monospace;font-size:.78rem}#ds{min-height:80px;font-family:inherit;font-size:.9rem}.msg{color:var(--green);font-size:.85rem;margin-top:10px;min-height:1.2em}ol{margin:10px 0 0 20px;color:var(--muted);font-size:.88rem}
-@media(max-width:700px){.fg{grid-template-columns:1fr}}
+:root{--bg:#060706;--panel:#0F120F;--panel2:#151915;--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.18);--ink:#EEF2EC;--mute:#8E978C;--green:#4CD62B;--lime:#B8FF3C;--on-lime:#081006;--red:#ff6b5e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:15px}
+a{color:var(--lime)}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.wrap{width:min(1180px,100% - 32px);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(6,7,6,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:14px;min-height:62px;flex-wrap:wrap;padding:8px 0}
+.brand{font-weight:800;letter-spacing:.06em;text-decoration:none;color:var(--ink)}.brand b{color:var(--green)}
+.tabs{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+.tab{background:none;border:1px solid transparent;border-radius:999px;padding:7px 14px;cursor:pointer;color:var(--mute)}
+.tab[aria-selected="true"]{background:var(--panel2);border-color:var(--line2);color:var(--ink)}
+.pub{display:flex;align-items:center;gap:10px}
+.pend{font-size:.82rem;color:var(--mute)}.pend.on{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:var(--panel2);border-radius:10px;padding:9px 14px;cursor:pointer;text-decoration:none;color:var(--ink);white-space:nowrap}
+.btn:hover{border-color:var(--mute)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.pri{background:var(--lime);color:var(--on-lime);border-color:var(--lime);font-weight:700}
+.btn.dan{color:var(--red)}.btn.sm{padding:5px 10px;font-size:.82rem;border-radius:8px}
+main{padding:24px 0 80px}
+h1{font-size:1.5rem;margin-bottom:6px}h2{font-size:1.1rem;margin-bottom:12px}h3{font-size:.95rem;margin:18px 0 8px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.lead{color:var(--mute);max-width:70ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:16px}
+.msg{position:sticky;top:70px;z-index:15;margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--panel2);border:1px solid var(--line2);font-size:.9rem}
+.msg.ok{border-color:var(--green)}.msg.err{border-color:var(--red);color:#ffd0cb}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.fg .w2{grid-column:span 2}.fg .full{grid-column:1/-1}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:.82rem;color:var(--mute)}
+input[type=text],input[type=number],input[type=password],input[type=date],input[type=search],select,textarea{background:#0a0c0a;border:1px solid var(--line2);border-radius:9px;padding:9px 11px;width:100%;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+.chk{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;cursor:pointer}.chk input{width:17px;height:17px;accent-color:var(--green)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.hint{font-size:.8rem;color:var(--mute)}
+.req::after{content:" *";color:var(--lime)}
+/* fotos */
+.drop{border:2px dashed var(--line2);border-radius:var(--r);padding:22px;text-align:center;color:var(--mute);cursor:pointer;transition:border-color .2s,background .2s}
+.drop.over{border-color:var(--lime);background:rgba(184,255,60,.05);color:var(--ink)}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.th{position:relative;width:120px;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#000}
+.th img{width:120px;height:120px;object-fit:cover;display:block}
+.th .ac{display:flex;justify-content:space-between;padding:4px}
+.th .ac button{background:var(--panel2);border:1px solid var(--line2);border-radius:6px;width:30px;height:26px;cursor:pointer}
+.th .cap{position:absolute;top:6px;left:6px;font-size:.66rem;background:var(--lime);color:var(--on-lime);padding:2px 7px;border-radius:999px;font-weight:700}
+.th .nw{position:absolute;top:6px;right:6px;font-size:.66rem;background:rgba(0,0,0,.75);padding:2px 7px;border-radius:999px}
+/* também */
+details.tb{border:1px solid var(--line2);border-radius:10px;padding:10px 12px}details.tb summary{cursor:pointer;color:var(--mute);font-size:.88rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.chips label{font-size:.82rem;border:1px solid var(--line2);border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips input{accent-color:var(--green)}.chips label:has(input:checked){border-color:var(--green);background:rgba(76,214,43,.1)}
+/* lista de produtos */
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.tools input{flex:1;min-width:200px}.tools select{width:auto}
+.plist{display:grid;gap:8px}
+.pi{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px}
+.pi img,.pi .ph{width:64px;height:64px;border-radius:8px;object-fit:cover;background:#000;display:grid;place-items:center;color:var(--mute);font-size:.7rem}
+.pi strong{display:block}.pi small{color:var(--mute)}.pi .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.pi .price{color:var(--lime);font-weight:700;font-size:.88rem}
+.empty{color:var(--mute);padding:20px;text-align:center}
+/* categorias */
+.dep{border:1px solid var(--line);border-radius:var(--r);margin-top:14px;overflow:hidden}
+.dep>.hd{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--panel2);flex-wrap:wrap}
+.dep>.hd strong{font-size:1rem}
+.cat{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line)}
+.cat small{color:var(--mute);display:block}.cat .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.edit{padding:14px;border-top:1px solid var(--line);background:#0b0e0b}
+.badge{font-size:.72rem;border:1px solid var(--line2);border-radius:999px;padding:1px 8px;color:var(--mute);margin-left:6px}
+ol.steps{margin:8px 0 0 20px;color:var(--mute);font-size:.9rem}ol.steps li{margin:4px 0}
+[hidden]{display:none!important}
+@media(max-width:760px){.fg{grid-template-columns:1fr}.fg .w2{grid-column:auto}.pi{grid-template-columns:52px 1fr}.pi .acts{grid-column:1/-1;justify-content:flex-start}.pi img,.pi .ph{width:52px;height:52px}.msg{top:110px}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="index.html">SUBULUK <span>3D</span></a><nav class="navlinks"><a href="catalogo.html">Ver catálogo</a></nav></div></header>
-<main><div class="wrap">
-<h1>Painel do catálogo</h1>
-<p class="lead">Cadastre e organize os produtos aqui. O rascunho fica salvo neste navegador. Para publicar no site, copie o texto da última caixa para o arquivo <b>produtos.json</b> no GitHub.</p>
-<div id="ms" class="msg" role="status"></div>
+<header><div class="wrap bar">
+  <a class="brand" href="catalogo.html">SUBULUK<b>3D</b></a>
+  <nav class="tabs" role="tablist" aria-label="Seções do painel">
+    <button class="tab" role="tab" data-t="produtos" aria-selected="true">Produtos</button>
+    <button class="tab" role="tab" data-t="categorias" aria-selected="false">Categorias</button>
+    <button class="tab" role="tab" data-t="config" aria-selected="false">Configuração</button>
+  </nav>
+  <div class="pub"><span class="pend" id="pend" role="status">Tudo publicado</span><button class="btn pri" type="button" id="pubBtn" disabled>Publicar no site</button></div>
+</div></header>
 
-<div class="panel"><h2>WhatsApp</h2>
-<label>Número com DDI e DDD, só dígitos (55 + DDD + número)<input id="wa" inputmode="numeric" placeholder="Preencha com o número oficial da Subuluk 3D"></label></div>
+<main class="wrap">
+<div class="msg" id="msg" role="status" hidden></div>
 
-<div class="panel"><h2 id="ft">Novo produto</h2>
-<div class="fg">
-<label>Referência (código)<input id="rf"></label>
-<label>Nome do produto<input id="nm"></label>
-<label>Categoria principal<select id="ni"></select></label>
-<label>Subcategoria (opcional)<select id="su"></select></label>
-<label class="full">Também aparece em (opcional; segure Ctrl para marcar várias, ex.: profissões)<select id="tb2" multiple size="8"></select></label>
-<label class="full">Descrição<textarea id="ds"></textarea></label>
-<label>Dimensões (só se souber)<input id="di" placeholder="ex.: preencha com as medidas reais"></label>
-<label>Cores disponíveis (separadas por vírgula)<input id="co"></label>
-<label class="full">Fotos: nomes dos arquivos da pasta "fotos", separados por vírgula<input id="fo" placeholder="ex.: ref-001-a.jpg, ref-001-b.jpg"></label>
-<label>Data de cadastro<input id="cr" type="date"></label>
-</div>
-<div class="row"><label class="chk"><input type="checkbox" id="pe">Aceita personalização</label><label class="chk"><input type="checkbox" id="de">Produto em destaque</label></div>
-<div class="row"><button class="btn primary" type="button" id="sv">Salvar produto</button><button class="btn" type="button" id="cl">Limpar formulário</button></div></div>
+<!-- ===== PRODUTOS ===== -->
+<section id="t-produtos">
+  <div class="panel" id="formPanel">
+    <h2 id="ft">Novo produto</h2>
+    <div class="fg">
+      <label class="f w2"><span class="req">Nome do produto</span><input type="text" id="nm" maxlength="90" placeholder="ex.: Porta-canetas colmeia"></label>
+      <label class="f">Código<input type="text" id="rf" maxlength="20"></label>
+      <label class="f"><span class="req">Departamento</span><select id="dp"></select></label>
+      <label class="f"><span class="req">Categoria</span><select id="ni"></select></label>
+      <label class="f">Subcategoria<select id="su"></select></label>
+      <div class="full"><details class="tb" id="tbBox"><summary>Também aparece em… <span id="tbCount" class="badge">0</span></summary><p class="hint" style="margin-top:6px">Marque outras categorias onde a peça deve aparecer, por exemplo as profissões. A categoria principal não precisa ser marcada.</p><div id="tbList"></div></details></div>
+      <label class="f full">Descrição<textarea id="ds" maxlength="900" placeholder="Para que serve, material, como personaliza, tamanho…"></textarea></label>
+      <label class="f">Preço (R$, opcional)<input type="number" id="pr" min="0" step="0.01" inputmode="decimal" placeholder="vazio = sob orçamento"></label>
+      <label class="f">Medidas (opcional)<input type="text" id="di" maxlength="60" placeholder="ex.: 10 × 14 cm"></label>
+      <label class="f">Cores (separadas por vírgula)<input type="text" id="co" maxlength="160" placeholder="ex.: Preto, Branco, Verde"></label>
+    </div>
+    <div class="row">
+      <label class="chk"><input type="checkbox" id="pa">Preço “a partir de”</label>
+      <label class="chk"><input type="checkbox" id="pe">Aceita personalização</label>
+      <label class="chk"><input type="checkbox" id="de">Destaque (mais pedido)</label>
+    </div>
+    <h3>Fotos</h3>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Adicionar fotos">Arraste as fotos aqui ou <u>clique para escolher</u><br><span class="hint">JPG, PNG, WebP ou HEIC convertidos no navegador. A primeira foto é a capa. Elas são reduzidas e convertidas para WebP automaticamente.</span></div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="row">
+      <button class="btn pri" type="button" id="sv">Salvar produto</button>
+      <button class="btn" type="button" id="cl">Limpar formulário</button>
+      <span class="hint">Salvar guarda no rascunho. O site só muda ao clicar em <b>Publicar no site</b>.</span>
+    </div>
+  </div>
 
-<div class="panel"><h2>Produtos cadastrados (<span id="qt">0</span>)</h2>
-<div style="overflow-x:auto"><table><thead><tr><th>Ref.</th><th>Nome</th><th>Categoria</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+  <div class="panel">
+    <h2>Produtos cadastrados (<span id="qt">0</span>)</h2>
+    <div class="tools"><input type="search" id="fq" placeholder="Buscar por nome ou código"><select id="fd" aria-label="Filtrar por departamento"></select></div>
+    <div class="plist" id="plist"></div>
+  </div>
+</section>
 
-<div class="panel"><h2>Adicionar nova categoria</h2>
-<div class="fg"><label>Departamento<select id="ng"></select></label><label>Nome da categoria<input id="nn"></label><label>Subcategorias (separadas por vírgula)<input id="ns"></label><label>Ícone (opcional, ex.: c-vase)<input id="nc" placeholder="vazio = ícone do departamento"></label><label class="full">Descrição curta<input id="nd"></label></div>
-<div class="row"><button class="btn" type="button" id="an">Adicionar categoria</button></div></div>
+<!-- ===== CATEGORIAS ===== -->
+<section id="t-categorias" hidden>
+  <div class="panel">
+    <h2>Categorias do catálogo</h2>
+    <p class="lead">Departamento → categoria → subcategoria. Categoria sem produto aparece no site como “Sob encomenda”. Use ↑ ↓ para mudar a ordem.</p>
+    <div class="row"><button class="btn" type="button" id="addDep">+ Novo departamento</button></div>
+    <div id="deps"></div>
+  </div>
+</section>
 
-<div class="panel"><h2>Publicar no site</h2>
-<ol><li>Clique em <b>Copiar</b>.</li><li>No GitHub, abra o arquivo <b>produtos.json</b> e clique no lápis.</li><li>Apague tudo, cole o texto copiado e clique em <b>Commit changes</b>.</li><li>Envie as fotos para a pasta <b>fotos</b> (Add file → Upload files).</li></ol>
-<textarea id="js" spellcheck="false" aria-label="Conteúdo do produtos.json"></textarea>
-<div class="row"><button class="btn primary" type="button" id="cp">Copiar</button><button class="btn" type="button" id="ld">Carregar texto colado</button><button class="btn" type="button" id="rs">Descartar rascunho</button></div></div>
-</div></main>
+<!-- ===== CONFIG ===== -->
+<section id="t-config" hidden>
+  <div class="panel">
+    <h2>Conexão com o GitHub</h2>
+    <p class="lead">O botão Publicar envia as fotos e o catálogo direto para o repositório do site. Para isso o painel precisa de um token do GitHub. O token fica salvo <b>só neste navegador</b>.</p>
+    <ol class="steps">
+      <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a> (token <i>fine-grained</i>).</li>
+      <li>Nome: “Painel Subuluk”. Expiração: 1 ano.</li>
+      <li>Repository access: <b>Only select repositories</b> → escolha só o repositório <b>SITE</b>.</li>
+      <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Não marque mais nada.</li>
+      <li>Clique em Generate token, copie e cole abaixo.</li>
+    </ol>
+    <div class="fg" style="margin-top:14px">
+      <label class="f full">Token do GitHub<input type="password" id="tk" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></label>
+      <label class="f">Usuário ou organização<input type="text" id="ow"></label>
+      <label class="f">Repositório<input type="text" id="rp"></label>
+      <label class="f">Branch publicada<input type="text" id="br"></label>
+    </div>
+    <div class="row"><button class="btn pri" type="button" id="tkSave">Salvar e conectar</button><button class="btn dan" type="button" id="tkForget">Esquecer token</button><span class="hint" id="tkState"></span></div>
+    <p class="hint" style="margin-top:12px">Segurança: nunca envie esse token para ninguém. Use este painel só no seu computador ou celular. Se perder o aparelho, apague o token em github.com/settings/personal-access-tokens.</p>
+  </div>
+  <div class="panel">
+    <h2>WhatsApp do catálogo</h2>
+    <label class="f">Número com DDI e DDD, só dígitos<input type="text" id="wa" inputmode="numeric" maxlength="15"></label>
+  </div>
+  <div class="panel">
+    <h2>Rascunho</h2>
+    <p class="lead">Alterações salvas e ainda não publicadas ficam guardadas neste navegador, inclusive as fotos.</p>
+    <div class="row"><button class="btn dan" type="button" id="discard">Descartar rascunho e recarregar o site publicado</button></div>
+  </div>
+</section>
+</main>
+
 <script>
 (function () {
-  var D = { whatsapp: '', nichos: [], produtos: [] }, ed = -1;
+  "use strict";
   var $ = function (i) { return document.getElementById(i); };
-  var E = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); };
-  var say = function (t) { $('ms').textContent = t; };
-  var list = function (v) { return v.split(',').map(function (x) { return x.trim(); }).filter(Boolean); };
-  var nicho = function (id) { return D.nichos.filter(function (n) { return n.id === id; })[0]; };
-  var depto = function (id) { return (D.departamentos || []).filter(function (g) { return g.id === id; })[0]; };
-  /* opções de categoria agrupadas por departamento */
-  function nichoOpts() {
-    var deps = D.departamentos || [], h = deps.map(function (g) {
-      var ns = D.nichos.filter(function (n) { return n.grupo === g.id; });
-      return ns.length ? '<optgroup label="' + E(g.nome) + '">' + ns.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('') + '</optgroup>' : '';
-    }).join('');
-    var soltos = D.nichos.filter(function (n) { return !depto(n.grupo); });
-    if (soltos.length) h += '<optgroup label="Sem departamento">' + soltos.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + '</option>'; }).join('') + '</optgroup>';
-    return h;
-  }
-  function getTambem() { return Array.prototype.filter.call($('tb2').options, function (o) { return o.selected && o.value !== $('ni').value; }).map(function (o) { return o.value; }); }
-  function setTambem(v) { Array.prototype.forEach.call($('tb2').options, function (o) { o.selected = (v || []).indexOf(o.value) >= 0; }); }
+  var E = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); };
+  var ICONS = ["c-vase","c-lamp","c-cube","c-pen","c-frame","c-wave","c-leaf","c-tree","c-box","c-key","c-gem","c-glasses","c-kitchen","c-drop","c-stand","c-phone","c-headset","c-game","c-desk","c-speaker","c-star","c-tool","c-grid","c-cable","c-scissors","c-puzzle","c-gear","c-house","c-pet","c-car","c-sun","c-robot","c-gift","c-party","c-cake","c-dice","c-mask","c-edu","c-music","c-badge","c-health","c-cup","c-shop","c-briefcase","c-dumbbell","c-sign","c-nfc"];
+  var DEF_CFG = { token: "", owner: "subuluk3d", repo: "SITE", branch: "main" };
+  var CFG = DEF_CFG, D = null, BASE = null, ed = -1, formFotos = [];
+  /* BASE: { head: sha do commit carregado, json: sha do produtos.json carregado, text: texto carregado } */
+  var URLS = {}; /* caminho da foto pendente -> objectURL para a prévia */
 
-  function persist() {
-    D.whatsapp = $('wa').value.replace(/\D/g, '');
-    try { localStorage.setItem('sbk_rascunho', JSON.stringify(D)); } catch (e) {}
-    $('js').value = JSON.stringify(D, null, 1);
+  /* ---------- mensagens ---------- */
+  var msgT;
+  function say(t, kind) { var m = $("msg"); m.textContent = t; m.className = "msg" + (kind ? " " + kind : ""); m.hidden = false; clearTimeout(msgT); if (kind !== "err") msgT = setTimeout(function () { m.hidden = true; }, 6000); }
+
+  /* ---------- armazenamento local ---------- */
+  function lsGet(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  /* fotos pendentes ficam no IndexedDB (localStorage não aguenta imagens) */
+  var idb = null;
+  function db() {
+    if (idb) return idb;
+    idb = new Promise(function (ok, no) {
+      if (!window.indexedDB) return no(new Error("sem IndexedDB"));
+      var r = indexedDB.open("sbk_painel", 1);
+      r.onupgradeneeded = function () { r.result.createObjectStore("fotos"); };
+      r.onsuccess = function () { ok(r.result); }; r.onerror = function () { no(r.error); };
+    });
+    return idb;
   }
-  function subs() {
-    var n = nicho($('ni').value), cur = $('su').value;
-    $('su').innerHTML = '<option value="">(nenhuma)</option>' + (n ? n.subs || [] : []).map(function (x) { return '<option' + (x === cur ? ' selected' : '') + '>' + E(x) + '</option>'; }).join('');
+  function idbDo(mode, fn) { return db().then(function (d) { return new Promise(function (ok, no) { var tx = d.transaction("fotos", mode), st = tx.objectStore("fotos"), req = fn(st); tx.oncomplete = function () { ok(req && req.result); }; tx.onerror = function () { no(tx.error); }; }); }); }
+  var putFoto = function (k, blob) { return idbDo("readwrite", function (s) { return s.put(blob, k); }); };
+  var getFoto = function (k) { return idbDo("readonly", function (s) { return s.get(k); }); };
+  var delFoto = function (k) { return idbDo("readwrite", function (s) { return s.delete(k); }); };
+  var allKeys = function () { return idbDo("readonly", function (s) { return s.getAllKeys(); }); };
+
+  /* rascunho: dados + lista de fotos a enviar/apagar */
+  var PEND = { up: [], del: [] };
+  function saveDraft() { lsSet("sbk_painel", { D: D, BASE: BASE, PEND: PEND }); updPend(); }
+  function dirty() { return !!BASE && (JSON.stringify(D, null, 1) + "\n" !== BASE.text || PEND.up.length || PEND.del.length); }
+  function updPend() {
+    var on = dirty(), n = PEND.up.length;
+    $("pend").textContent = on ? "Alterações não publicadas" + (n ? " · " + n + (n > 1 ? " fotos novas" : " foto nova") : "") : "Tudo publicado";
+    $("pend").className = "pend" + (on ? " on" : "");
+    $("pubBtn").disabled = !on || !CFG.token;
+    $("pubBtn").title = CFG.token ? "" : "Configure o token na aba Configuração";
   }
-  function nextRef() {
-    var m = 0; D.produtos.forEach(function (p) { var x = /(?:SUB|SBK)-(\d+)/.exec(p.ref); if (x) m = Math.max(m, +x[1]); });
-    return 'SUB-' + ('000' + (m + 1)).slice(-3);
+  addEventListener("beforeunload", function (e) { if (dirty() && !$("pubBtn").disabled) { e.preventDefault(); e.returnValue = ""; } });
+
+  /* ---------- GitHub ---------- */
+  function gh(path, opt) {
+    opt = opt || {};
+    return fetch("https://api.github.com/repos/" + encodeURIComponent(CFG.owner) + "/" + encodeURIComponent(CFG.repo) + path, {
+      method: opt.method || "GET",
+      headers: { "Accept": "application/vnd.github+json", "Authorization": "Bearer " + CFG.token, "X-GitHub-Api-Version": "2022-11-28" },
+      body: opt.body ? JSON.stringify(opt.body) : undefined, cache: "no-store"
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok) { var e = new Error((j && j.message) || ("HTTP " + r.status)); e.status = r.status; throw e; }
+        return j;
+      });
+    });
   }
-  function clear() {
-    ed = -1; $('ft').textContent = 'Novo produto';
-    ['nm', 'ds', 'di', 'co', 'fo'].forEach(function (i) { $(i).value = ''; });
-    $('pe').checked = $('de').checked = false; $('rf').value = nextRef(); $('cr').value = new Date().toISOString().slice(0, 10); setTambem([]); subs();
-  }
-  function draw() {
-    $('wa').value = D.whatsapp || '';
-    var cur = $('ni').value, curT = getTambem();
-    $('ni').innerHTML = $('tb2').innerHTML = nichoOpts(); if (cur) $('ni').value = cur; setTambem(curT);
-    $('ng').innerHTML = (D.departamentos || []).map(function (g) { return '<option value="' + E(g.id) + '">' + E(g.nome) + '</option>'; }).join('');
-    subs(); $('qt').textContent = D.produtos.length;
-    $('tb').innerHTML = D.produtos.map(function (p, i) {
-      var n = nicho(p.nicho) || {}, g = depto(n.grupo);
-      return '<tr><td>' + E(p.ref) + '</td><td>' + E(p.nome) + '</td><td>' + (g ? E(g.nome) + ' / ' : '') + E(n.nome) + ((p.tambem || []).length ? ' <small>(+' + p.tambem.length + ')</small>' : '') + '</td><td>' +
-        '<button class="btn mini" data-e="' + i + '">Editar</button> <button class="btn mini" data-d="' + i + '">Excluir</button></td></tr>';
-    }).join('') || '<tr><td colspan="4">Nenhum produto cadastrado ainda.</td></tr>';
-    persist(); if (ed < 0) clear();
+  function b64ToText(b) { var bin = atob(b.replace(/\s/g, "")), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return new TextDecoder().decode(u); }
+  function blobToB64(blob) { return new Promise(function (ok, no) { var fr = new FileReader(); fr.onload = function () { ok(String(fr.result).split(",")[1]); }; fr.onerror = no; fr.readAsDataURL(blob); }); }
+  function ghErr(e) {
+    if (e.status === 401) return "Token inválido ou expirado. Gere outro na aba Configuração.";
+    if (e.status === 403) return "O token não tem permissão de escrita. Confira “Contents: Read and write” no repositório SITE.";
+    if (e.status === 404) return "Repositório ou branch não encontrado. Confira usuário, repositório e branch na aba Configuração.";
+    if (e.status === 409 || e.status === 422) return "O site mudou enquanto você editava. Recarregue a página e tente de novo.";
+    return "Erro ao falar com o GitHub: " + e.message;
   }
 
-  $('ni').addEventListener('change', subs);
-  $('wa').addEventListener('input', persist);
-  $('cl').addEventListener('click', clear);
-  $('sv').addEventListener('click', function () {
-    var p = {
-      ref: $('rf').value.trim(), nome: $('nm').value.trim(), nicho: $('ni').value, sub: $('su').value, descricao: $('ds').value.trim(),
-      dimensoes: $('di').value.trim(), cores: list($('co').value),
-      fotos: list($('fo').value).map(function (x) { return x.indexOf('/') < 0 ? 'fotos/' + x : x; }),
-      personalizavel: $('pe').checked, destaque: $('de').checked, criado: $('cr').value
-    };
-    var tb = getTambem(); if (tb.length) p.tambem = tb;
-    if (!p.ref || !p.nome || !p.nicho) { say('Preencha referência, nome e categoria.'); return; }
-    var dup = D.produtos.some(function (x, i) { return x.ref === p.ref && i !== ed; });
-    if (dup) { say('Já existe um produto com essa referência.'); return; }
-    if (ed >= 0) D.produtos[ed] = p; else D.produtos.push(p);
-    ed = -1; say('Produto salvo no rascunho. Lembre de copiar e publicar.'); draw();
+  /* carrega o produtos.json da branch publicada (com token) ou do próprio site (sem token) */
+  function loadRemote() {
+    if (CFG.token) {
+      return gh("/branches/" + encodeURIComponent(CFG.branch)).then(function (b) {
+        return gh("/contents/produtos.json?ref=" + encodeURIComponent(b.commit.sha)).then(function (f) {
+          var text = b64ToText(f.content);
+          return { data: JSON.parse(text), base: { head: b.commit.sha, json: f.sha, text: text } };
+        });
+      });
+    }
+    return fetch("produtos.json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(function (text) { return { data: JSON.parse(text), base: { head: null, json: null, text: text } }; });
+  }
+
+  function publish() {
+    if (!CFG.token) { say("Configure o token do GitHub na aba Configuração.", "err"); return; }
+    var btn = $("pubBtn"); btn.disabled = true; btn.textContent = "Publicando…";
+    var text = JSON.stringify(D, null, 1) + "\n", head, tree = [];
+    gh("/git/ref/heads/" + encodeURIComponent(CFG.branch)).then(function (ref) {
+      head = ref.object.sha;
+      /* confere se o produtos.json publicado ainda é o mesmo que foi carregado */
+      return gh("/contents/produtos.json?ref=" + head).then(function (f) {
+        if (BASE.json && f.sha !== BASE.json) { var e = new Error("conflito"); e.status = 409; throw e; }
+      });
+    }).then(function () {
+      /* envia as fotos novas, uma de cada vez */
+      var chain = Promise.resolve(), i = 0;
+      PEND.up.forEach(function (path) {
+        chain = chain.then(function () {
+          btn.textContent = "Enviando foto " + (++i) + "/" + PEND.up.length + "…";
+          return getFoto(path).then(function (blob) {
+            if (!blob) throw new Error("Foto " + path + " sumiu do rascunho. Remova-a do produto e adicione de novo.");
+            return blobToB64(blob);
+          }).then(function (b64) { return gh("/git/blobs", { method: "POST", body: { content: b64, encoding: "base64" } }); })
+            .then(function (bl) { tree.push({ path: path, mode: "100644", type: "blob", sha: bl.sha }); });
+        });
+      });
+      return chain;
+    }).then(function () {
+      btn.textContent = "Atualizando catálogo…";
+      PEND.del.forEach(function (path) { tree.push({ path: path, mode: "100644", type: "blob", sha: null }); });
+      return gh("/git/blobs", { method: "POST", body: { content: text, encoding: "utf-8" } }).then(function (bl) {
+        tree.push({ path: "produtos.json", mode: "100644", type: "blob", sha: bl.sha });
+      });
+    }).then(function () {
+      /* mantém a cópia de reserva embutida na página inicial igual ao catálogo */
+      return gh("/contents/index.html?ref=" + head).then(function (f) {
+        var html = b64ToText(f.content), blob = JSON.stringify(D).replace(/<\//g, "<\\/"), done = false;
+        var html2 = html.replace(/(<script id="data" type="application\/json">)[\s\S]*?(<\/script>)/, function (m, a, b) { done = true; return a + blob + b; });
+        if (!done || html2 === html) return;
+        return gh("/git/blobs", { method: "POST", body: { content: html2, encoding: "utf-8" } }).then(function (bl) { tree.push({ path: "index.html", mode: "100644", type: "blob", sha: bl.sha }); });
+      }).catch(function () { /* sem a cópia de reserva o site continua funcionando */ });
+    }).then(function () {
+      return gh("/git/commits/" + head);
+    }).then(function (c) {
+      return gh("/git/trees", { method: "POST", body: { base_tree: c.tree.sha, tree: tree } });
+    }).then(function (t) {
+      var n = PEND.up.length;
+      return gh("/git/commits", { method: "POST", body: { message: "Catálogo: atualizado pelo painel" + (n ? " (" + n + (n > 1 ? " fotos novas)" : " foto nova)") : ""), tree: t.sha, parents: [head] } });
+    }).then(function (c) {
+      return gh("/git/refs/heads/" + encodeURIComponent(CFG.branch), { method: "PATCH", body: { sha: c.sha } }).then(function () { return c.sha; });
+    }).then(function (sha) {
+      var ups = PEND.up.slice();
+      BASE = { head: sha, json: null, text: text }; PEND = { up: [], del: [] };
+      return gh("/contents/produtos.json?ref=" + sha).then(function (f) { BASE.json = f.sha; }).catch(function () {})
+        .then(function () { return Promise.all(ups.map(function (k) { return delFoto(k).catch(function () {}); })); });
+    }).then(function () {
+      saveDraft(); drawAll();
+      say("Publicado! O site atualiza em cerca de 1 minuto.", "ok");
+    }).catch(function (e) {
+      say(e.status ? ghErr(e) : e.message, "err");
+    }).then(function () { btn.textContent = "Publicar no site"; updPend(); });
+  }
+
+  /* ---------- utilidades de dados ---------- */
+  function deps() { return D.departamentos || (D.departamentos = []); }
+  function depto(id) { return deps().filter(function (g) { return g.id === id; })[0]; }
+  function nicho(id) { return D.nichos.filter(function (n) { return n.id === id; })[0]; }
+  function nichosDe(gid) { return D.nichos.filter(function (n) { return n.grupo === gid; }); }
+  function slug(s) { return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40); }
+  function uniqId(base, exists) { var id = base || "item", i = 2; while (exists(id)) id = base + "-" + i++; return id; }
+  function list(v) { return String(v || "").split(",").map(function (x) { return x.trim(); }).filter(Boolean); }
+  function money(p) { var v = Number(p.preco); return v > 0 ? (p.precoAPartir ? "a partir de " : "") + v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "Sob orçamento"; }
+  function nextRef() { var m = 0; D.produtos.forEach(function (p) { var x = /(?:SUB|SBK)-(\d+)/.exec(p.ref); if (x) m = Math.max(m, +x[1]); }); return "SUB-" + ("000" + (m + 1)).slice(-3); }
+  function fotoSrc(path) { return URLS[path] || path; }
+  function usada(path, skip) { return D.produtos.some(function (p, i) { return i !== skip && (p.fotos || []).indexOf(path) >= 0; }); }
+  /* foto deixou de ser usada: se ainda não foi enviada, some do rascunho; se já está no site, entra na lista para apagar */
+  function soltarFoto(path, skip) {
+    if (usada(path, skip) || formFotos.indexOf(path) >= 0) return;
+    var i = PEND.up.indexOf(path);
+    if (i >= 0) { PEND.up.splice(i, 1); delFoto(path).catch(function () {}); if (URLS[path]) { URL.revokeObjectURL(URLS[path]); delete URLS[path]; } }
+    else if (/^fotos\//.test(path) && PEND.del.indexOf(path) < 0) PEND.del.push(path);
+  }
+
+  /* ---------- formulário de produto ---------- */
+  function fillDeps(sel, cur, all) {
+    sel.innerHTML = (all ? '<option value="">Todos os departamentos</option>' : "") + deps().map(function (g) { return '<option value="' + E(g.id) + '">' + E(g.nome) + "</option>"; }).join("");
+    if (cur != null) sel.value = cur;
+  }
+  function fillNichos(cur) {
+    var ns = nichosDe($("dp").value);
+    $("ni").innerHTML = ns.map(function (n) { return '<option value="' + E(n.id) + '">' + E(n.nome) + "</option>"; }).join("") || '<option value="">(crie uma categoria neste departamento)</option>';
+    if (cur && ns.some(function (n) { return n.id === cur; })) $("ni").value = cur;
+    fillSubs();
+  }
+  function fillSubs(cur) {
+    var n = nicho($("ni").value);
+    $("su").innerHTML = '<option value="">(nenhuma)</option>' + (n ? n.subs || [] : []).map(function (x) { return "<option>" + E(x) + "</option>"; }).join("") + '<option value="__nova">+ Nova subcategoria…</option>';
+    $("su").value = cur && n && (n.subs || []).indexOf(cur) >= 0 ? cur : "";
+    drawTambem(getTambem());
+  }
+  function getTambem() { return Array.prototype.map.call(document.querySelectorAll("#tbList input:checked"), function (i) { return i.value; }); }
+  function drawTambem(sel) {
+    var main = $("ni").value;
+    $("tbList").innerHTML = deps().map(function (g) {
+      var ns = nichosDe(g.id).filter(function (n) { return n.id !== main; });
+      return ns.length ? "<h3>" + E(g.nome) + '</h3><div class="chips">' + ns.map(function (n) { return '<label><input type="checkbox" value="' + E(n.id) + '"' + (sel.indexOf(n.id) >= 0 ? " checked" : "") + ">" + E(n.nome) + "</label>"; }).join("") + "</div>" : "";
+    }).join("");
+    $("tbCount").textContent = getTambem().length;
+  }
+  $("tbList").addEventListener("change", function () { $("tbCount").textContent = getTambem().length; });
+  $("dp").addEventListener("change", function () { fillNichos(); });
+  $("ni").addEventListener("change", function () { fillSubs(); });
+  $("su").addEventListener("change", function () {
+    if (this.value !== "__nova") return;
+    var n = nicho($("ni").value), nome = n && (prompt("Nome da nova subcategoria em “" + n.nome + "”:") || "").trim();
+    if (nome) { n.subs = n.subs || []; if (n.subs.indexOf(nome) < 0) n.subs.push(nome); saveDraft(); }
+    var keep = getTambem(); fillSubs(nome || ""); drawTambem(keep);
   });
-  $('tb').addEventListener('click', function (e) {
-    var b = e.target, i;
-    if (b.getAttribute('data-e') != null) {
-      i = +b.getAttribute('data-e'); var p = D.produtos[i]; ed = i; $('ft').textContent = 'Editando ' + p.ref;
-      $('rf').value = p.ref; $('nm').value = p.nome; $('ni').value = p.nicho; subs(); $('su').value = p.sub || '';
-      $('ds').value = p.descricao || ''; $('di').value = p.dimensoes || ''; $('co').value = (p.cores || []).join(', ');
-      $('fo').value = (p.fotos || []).map(function (x) { return x.replace(/^fotos\//, ''); }).join(', ');
-      $('cr').value = p.criado || ''; $('pe').checked = !!p.personalizavel; $('de').checked = !!p.destaque; setTambem(p.tambem);
-      $('ft').scrollIntoView({ behavior: 'smooth' });
-    } else if (b.getAttribute('data-d') != null) {
-      i = +b.getAttribute('data-d');
-      if (confirm('Excluir "' + D.produtos[i].nome + '"?')) { D.produtos.splice(i, 1); ed = -1; draw(); say('Produto excluído do rascunho.'); }
+
+  function drawThumbs() {
+    $("thumbs").innerHTML = formFotos.map(function (f, i) {
+      return '<div class="th"><img src="' + E(fotoSrc(f)) + '" alt="Foto ' + (i + 1) + '">' + (i === 0 ? '<span class="cap">Capa</span>' : "") + (PEND.up.indexOf(f) >= 0 ? '<span class="nw">nova</span>' : "") +
+        '<div class="ac"><button type="button" data-mv="' + i + '" data-d="-1" aria-label="Mover para a esquerda">←</button><button type="button" data-rm="' + i + '" aria-label="Remover foto">✕</button><button type="button" data-mv="' + i + '" data-d="1" aria-label="Mover para a direita">→</button></div></div>';
+    }).join("");
+  }
+  $("thumbs").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.rm != null) { var p = formFotos.splice(+b.dataset.rm, 1)[0]; soltarFoto(p, ed); saveDraft(); }
+    else { var i = +b.dataset.mv, j = i + +b.dataset.d; if (j < 0 || j >= formFotos.length) return; var t = formFotos[i]; formFotos[i] = formFotos[j]; formFotos[j] = t; }
+    drawThumbs();
+  });
+
+  /* reduz para no máximo 1400 px e converte para WebP (JPEG se o navegador não gerar WebP) */
+  function process(file) {
+    return new Promise(function (ok, no) {
+      var img = new Image(), u = URL.createObjectURL(file);
+      img.onload = function () {
+        var max = 1400, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+        var c = document.createElement("canvas"); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u);
+        c.toBlob(function (b) {
+          if (b && b.type === "image/webp") return ok({ blob: b, ext: "webp" });
+          c.toBlob(function (j) { j ? ok({ blob: j, ext: "jpg" }) : no(new Error("não consegui converter")); }, "image/jpeg", 0.86);
+        }, "image/webp", 0.84);
+      };
+      img.onerror = function () { URL.revokeObjectURL(u); no(new Error("formato não suportado")); };
+      img.src = u;
+    });
+  }
+  function addFiles(files) {
+    files = Array.prototype.filter.call(files, function (f) { return /^image\//.test(f.type) || /\.(heic|heif)$/i.test(f.name); });
+    if (!files.length) return;
+    var base = slug($("nm").value) || "produto", ref = slug($("rf").value) || "sub";
+    say("Preparando " + files.length + (files.length > 1 ? " fotos…" : " foto…"));
+    var chain = Promise.resolve(), okN = 0, bad = [];
+    files.forEach(function (f) {
+      chain = chain.then(function () { return process(f); }).then(function (r) {
+        var path = "fotos/produtos/" + base + "-" + ref + "-" + Math.random().toString(36).slice(2, 7) + "." + r.ext;
+        return putFoto(path, r.blob).then(function () { URLS[path] = URL.createObjectURL(r.blob); PEND.up.push(path); formFotos.push(path); okN++; });
+      }).catch(function () { bad.push(f.name); });
+    });
+    chain.then(function () {
+      drawThumbs(); saveDraft();
+      if (bad.length) say("Não consegui abrir: " + bad.join(", ") + ". Tente salvar como JPG ou PNG.", "err");
+      else say(okN + (okN > 1 ? " fotos prontas." : " foto pronta.") + " Salve o produto e depois clique em Publicar.", "ok");
+    });
+  }
+  var drop = $("drop");
+  drop.addEventListener("click", function () { $("file").click(); });
+  drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("file").click(); } });
+  $("file").addEventListener("change", function () { addFiles(this.files); this.value = ""; });
+  ["dragenter", "dragover"].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+  drop.addEventListener("drop", function (e) { addFiles(e.dataTransfer.files); });
+
+  function clearForm() {
+    /* fotos novas que ficaram só no formulário, sem salvar, são descartadas */
+    var sobra = formFotos.slice(); formFotos = [];
+    sobra.forEach(function (p) { if (ed < 0 || (D.produtos[ed].fotos || []).indexOf(p) < 0) soltarFoto(p, -1); });
+    ed = -1; $("ft").textContent = "Novo produto"; $("sv").textContent = "Salvar produto";
+    ["nm", "ds", "di", "co", "pr"].forEach(function (i) { $(i).value = ""; });
+    $("pa").checked = $("pe").checked = $("de").checked = false; $("rf").value = nextRef();
+    fillDeps($("dp")); fillNichos(); drawTambem([]); $("tbBox").open = false; drawThumbs(); saveDraft();
+  }
+  function editProduct(i) {
+    clearForm(); var p = D.produtos[i], n = nicho(p.nicho) || {}; ed = i;
+    $("ft").textContent = "Editando " + p.ref; $("sv").textContent = "Salvar alterações";
+    $("nm").value = p.nome || ""; $("rf").value = p.ref || ""; $("ds").value = p.descricao || ""; $("di").value = p.dimensoes || "";
+    $("co").value = (p.cores || []).join(", "); $("pr").value = Number(p.preco) > 0 ? p.preco : ""; $("pa").checked = !!p.precoAPartir;
+    $("pe").checked = !!p.personalizavel; $("de").checked = !!p.destaque;
+    fillDeps($("dp"), n.grupo); fillNichos(p.nicho); fillSubs(p.sub); drawTambem(p.tambem || []);
+    formFotos = (p.fotos || []).slice(); drawThumbs();
+    $("formPanel").scrollIntoView({ behavior: "smooth" });
+  }
+  $("cl").addEventListener("click", clearForm);
+  $("sv").addEventListener("click", function () {
+    var nome = $("nm").value.trim(), ref = $("rf").value.trim().toUpperCase(), ni = $("ni").value;
+    if (!nome) { say("Dê um nome ao produto.", "err"); $("nm").focus(); return; }
+    if (!ni || !nicho(ni)) { say("Escolha a categoria do produto.", "err"); return; }
+    if (!ref) ref = nextRef();
+    if (D.produtos.some(function (x, i) { return x.ref === ref && i !== ed; })) { say("Já existe um produto com o código " + ref + ".", "err"); return; }
+    var old = ed >= 0 ? D.produtos[ed] : null, v = parseFloat(String($("pr").value).replace(",", "."));
+    var p = { ref: ref, nome: nome, nicho: ni, sub: $("su").value === "__nova" ? "" : $("su").value, descricao: $("ds").value.trim(), dimensoes: $("di").value.trim(), cores: list($("co").value), fotos: formFotos.slice(), personalizavel: $("pe").checked, destaque: $("de").checked, criado: (old && old.criado) || new Date().toISOString().slice(0, 10) };
+    if (v > 0) { p.preco = Math.round(v * 100) / 100; if ($("pa").checked) p.precoAPartir = true; }
+    var tb = getTambem().filter(function (x) { return x !== ni; }); if (tb.length) p.tambem = tb;
+    if (old) { (old.fotos || []).forEach(function (f) { if (p.fotos.indexOf(f) < 0) soltarFoto(f, ed); }); D.produtos[ed] = p; }
+    else D.produtos.unshift(p);
+    formFotos = []; ed = -1; saveDraft(); clearForm(); drawList();
+    say("“" + nome + "” salvo no rascunho. Clique em Publicar no site quando terminar.", "ok");
+  });
+
+  /* ---------- lista de produtos ---------- */
+  function drawList() {
+    $("qt").textContent = D.produtos.length;
+    var q = slug($("fq").value).replace(/-/g, " "), fd = $("fd").value;
+    var L = D.produtos.map(function (p, i) { return [p, i]; }).filter(function (x) {
+      var p = x[0], n = nicho(p.nicho) || {};
+      if (fd && n.grupo !== fd) return false;
+      return !q || slug(p.nome + " " + p.ref).replace(/-/g, " ").indexOf(q) >= 0;
+    });
+    $("plist").innerHTML = L.map(function (x) {
+      var p = x[0], i = x[1], n = nicho(p.nicho) || {}, g = depto(n.grupo) || {}, f = (p.fotos || [])[0];
+      return '<div class="pi">' + (f ? '<img src="' + E(fotoSrc(f)) + '" alt="">' : '<span class="ph">sem foto</span>') +
+        "<div><strong>" + E(p.nome) + '</strong><small>' + E(p.ref) + " · " + E(g.nome || "?") + " / " + E(n.nome || "categoria removida") + (p.sub ? " / " + E(p.sub) : "") + ((p.tambem || []).length ? " · +" + p.tambem.length + " categorias" : "") + '</small><div class="price">' + E(money(p)) + "</div></div>" +
+        '<div class="acts"><button class="btn sm" data-e="' + i + '">Editar</button><button class="btn sm" data-c="' + i + '">Duplicar</button><button class="btn sm dan" data-x="' + i + '">Excluir</button></div></div>';
+    }).join("") || '<p class="empty">' + (D.produtos.length ? "Nenhum produto encontrado." : "Nenhum produto ainda. Cadastre o primeiro no formulário acima.") + "</p>";
+  }
+  $("fq").addEventListener("input", drawList); $("fd").addEventListener("change", drawList);
+  $("plist").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.e != null) editProduct(+b.dataset.e);
+    else if (b.dataset.c != null) {
+      var src = D.produtos[+b.dataset.c]; editProduct(+b.dataset.c);
+      ed = -1; formFotos = []; drawThumbs(); $("rf").value = nextRef(); $("nm").value = src.nome + " (cópia)";
+      $("ft").textContent = "Novo produto (cópia de " + src.ref + ")"; $("sv").textContent = "Salvar produto";
+      say("Cópia aberta no formulário. Adicione as fotos e salve.");
+    } else if (b.dataset.x != null) {
+      var i = +b.dataset.x, p = D.produtos[i];
+      if (!confirm("Excluir “" + p.nome + "”? As fotos dele também serão apagadas do site ao publicar.")) return;
+      D.produtos.splice(i, 1); (p.fotos || []).forEach(function (f) { soltarFoto(f, -1); });
+      if (ed === i) clearForm(); else if (ed > i) ed--;
+      saveDraft(); drawList(); say("Produto excluído do rascunho.");
     }
   });
-  $('an').addEventListener('click', function () {
-    var nome = $('nn').value.trim(); if (!nome) { say('Informe o nome da categoria.'); return; }
-    var id = nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    if (nicho(id)) { say('Essa categoria já existe.'); return; }
-    var g = depto($('ng').value), icone = $('nc').value.trim() || (g && g.icone) || 'c-cube';
-    D.nichos.push({ id: id, grupo: $('ng').value, nome: nome, desc: $('nd').value.trim(), icone: icone, subs: list($('ns').value) });
-    $('nn').value = $('nd').value = $('ns').value = $('nc').value = ''; draw(); say('Categoria adicionada ao rascunho.');
+
+  /* ---------- categorias ---------- */
+  var openCat = null, openDep = null;
+  function countIn(id) { return D.produtos.filter(function (p) { return p.nicho === id || (p.tambem || []).indexOf(id) >= 0; }).length; }
+  function iconSel(id, cur) { return '<select id="' + id + '">' + ICONS.map(function (c) { return "<option" + (c === cur ? " selected" : "") + ">" + c + "</option>"; }).join("") + "</select>"; }
+  function drawCats() {
+    var ds = deps();
+    $("deps").innerHTML = ds.map(function (g, gi) {
+      var ns = nichosDe(g.id);
+      var h = '<div class="dep"><div class="hd"><div><strong>' + E(g.nome) + '</strong><span class="badge">' + ns.length + " categorias</span></div>" +
+        '<div class="acts"><button class="btn sm" data-dmv="' + gi + '" data-d="-1" aria-label="Subir departamento">↑</button><button class="btn sm" data-dmv="' + gi + '" data-d="1" aria-label="Descer departamento">↓</button><button class="btn sm" data-ded="' + E(g.id) + '">Editar</button><button class="btn sm" data-dadd="' + E(g.id) + '">+ Categoria</button></div></div>';
+      if (openDep === g.id) h += '<div class="edit"><div class="fg"><label class="f">Nome<input type="text" id="eg-nome" value="' + E(g.nome) + '"></label><label class="f">Ícone' + iconSel("eg-ic", g.icone) + '</label><label class="f full">Descrição<input type="text" id="eg-desc" value="' + E(g.desc || "") + '"></label></div><div class="row"><button class="btn pri sm" data-dsave="' + E(g.id) + '">Salvar</button><button class="btn sm" data-dcancel>Cancelar</button><button class="btn sm dan" data-ddel="' + E(g.id) + '">Excluir departamento</button></div></div>';
+      h += ns.map(function (n) {
+        var c = countIn(n.id), idx = D.nichos.indexOf(n);
+        var row = '<div class="cat"><div><strong>' + E(n.nome) + '</strong><span class="badge">' + (c ? c + (c > 1 ? " peças" : " peça") : "sob encomenda") + "</span><small>" + E((n.subs || []).join(" · ") || "sem subcategorias") + "</small></div>" +
+          '<div class="acts"><button class="btn sm" data-mv="' + idx + '" data-d="-1" aria-label="Subir">↑</button><button class="btn sm" data-mv="' + idx + '" data-d="1" aria-label="Descer">↓</button><button class="btn sm" data-ced="' + E(n.id) + '">Editar</button></div></div>';
+        if (openCat === n.id) row += '<div class="edit"><div class="fg"><label class="f">Nome<input type="text" id="ec-nome" value="' + E(n.nome) + '"></label><label class="f">Departamento<select id="ec-dep">' + ds.map(function (x) { return '<option value="' + E(x.id) + '"' + (x.id === n.grupo ? " selected" : "") + ">" + E(x.nome) + "</option>"; }).join("") + '</select></label><label class="f">Ícone' + iconSel("ec-ic", n.icone) + '</label><label class="f full">Subcategorias (separadas por vírgula)<input type="text" id="ec-subs" value="' + E((n.subs || []).join(", ")) + '"></label><label class="f full">Descrição (aparece no topo da página da categoria)<input type="text" id="ec-desc" value="' + E(n.desc || "") + '"></label></div><div class="row"><button class="btn pri sm" data-csave="' + E(n.id) + '">Salvar</button><button class="btn sm" data-ccancel>Cancelar</button><button class="btn sm dan" data-cdel="' + E(n.id) + '">Excluir categoria</button></div></div>';
+        return row;
+      }).join("");
+      return h + "</div>";
+    }).join("");
+  }
+  $("addDep").addEventListener("click", function () {
+    var nome = (prompt("Nome do novo departamento:") || "").trim(); if (!nome) return;
+    var id = uniqId(slug(nome), function (x) { return !!depto(x); });
+    deps().push({ id: id, nome: nome, desc: "", icone: "c-cube" }); openDep = id; saveDraft(); drawAll(); say("Departamento criado. Agora adicione categorias nele.", "ok");
   });
-  $('cp').addEventListener('click', function () {
-    var t = $('js'); t.select();
-    if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(function () { say('Copiado! Agora cole no produtos.json do GitHub.'); }, function () { document.execCommand('copy'); say('Copiado.'); });
-    else { document.execCommand('copy'); say('Copiado.'); }
-  });
-  $('ld').addEventListener('click', function () {
-    try { var j = JSON.parse($('js').value); if (!j.nichos) throw 0; D = j; ed = -1; draw(); say('Texto carregado.'); } catch (e) { say('Texto inválido. Cole o conteúdo completo do produtos.json.'); }
-  });
-  $('rs').addEventListener('click', function () {
-    if (!confirm('Descartar o rascunho e recarregar o produtos.json publicado?')) return;
-    try { localStorage.removeItem('sbk_rascunho'); } catch (e) {} location.reload();
+  $("deps").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return; var d = b.dataset, ds = deps();
+    if (d.dmv != null) { var i = +d.dmv, j = i + +d.d; if (j < 0 || j >= ds.length) return; var t = ds[i]; ds[i] = ds[j]; ds[j] = t; }
+    else if (d.ded) { openDep = openDep === d.ded ? null : d.ded; openCat = null; }
+    else if (d.dcancel != null) openDep = null;
+    else if (d.dsave) { var g = depto(d.dsave); g.nome = $("eg-nome").value.trim() || g.nome; g.desc = $("eg-desc").value.trim(); g.icone = $("eg-ic").value; openDep = null; }
+    else if (d.ddel) {
+      if (nichosDe(d.ddel).length) { say("Mova ou exclua as categorias deste departamento antes de excluí-lo.", "err"); return; }
+      if (!confirm("Excluir o departamento?")) return; D.departamentos = ds.filter(function (x) { return x.id !== d.ddel; }); openDep = null;
+    } else if (d.dadd) {
+      var nome = (prompt("Nome da nova categoria:") || "").trim(); if (!nome) return;
+      var id = uniqId(slug(nome), function (x) { return !!nicho(x); }), gg = depto(d.dadd);
+      D.nichos.push({ id: id, grupo: d.dadd, nome: nome, desc: "", icone: (gg && gg.icone) || "c-cube", subs: [] }); openCat = id;
+    } else if (d.mv != null) {
+      /* troca de posição com a categoria vizinha do mesmo departamento */
+      var a = +d.mv, n = D.nichos[a], same = D.nichos.map(function (x, k) { return [x, k]; }).filter(function (x) { return x[0].grupo === n.grupo; }).map(function (x) { return x[1]; });
+      var pos = same.indexOf(a) + +d.d; if (pos < 0 || pos >= same.length) return; var bI = same[pos], tmp = D.nichos[a]; D.nichos[a] = D.nichos[bI]; D.nichos[bI] = tmp;
+    } else if (d.ced) { openCat = openCat === d.ced ? null : d.ced; openDep = null; }
+    else if (d.ccancel != null) openCat = null;
+    else if (d.csave) {
+      var c = nicho(d.csave), subs = list($("ec-subs").value), perdidas = (c.subs || []).filter(function (s) { return subs.indexOf(s) < 0 && D.produtos.some(function (p) { return p.nicho === c.id && p.sub === s; }); });
+      if (perdidas.length && !confirm("Produtos usam a subcategoria “" + perdidas.join("”, “") + "”. Eles ficarão sem subcategoria. Continuar?")) return;
+      D.produtos.forEach(function (p) { if (p.nicho === c.id && perdidas.indexOf(p.sub) >= 0) p.sub = ""; });
+      c.nome = $("ec-nome").value.trim() || c.nome; c.grupo = $("ec-dep").value; c.icone = $("ec-ic").value; c.subs = subs; c.desc = $("ec-desc").value.trim(); openCat = null;
+    } else if (d.cdel) {
+      var main = D.produtos.filter(function (p) { return p.nicho === d.cdel; }).length;
+      if (main) { say("Há " + main + " produto(s) com esta categoria como principal. Mude a categoria deles antes de excluir.", "err"); return; }
+      if (!confirm("Excluir a categoria?")) return;
+      D.nichos = D.nichos.filter(function (x) { return x.id !== d.cdel; });
+      D.produtos.forEach(function (p) { if (p.tambem) { p.tambem = p.tambem.filter(function (x) { return x !== d.cdel; }); if (!p.tambem.length) delete p.tambem; } });
+      openCat = null;
+    } else return;
+    saveDraft(); drawAll();
   });
 
-  var saved = null;
-  try { saved = JSON.parse(localStorage.getItem('sbk_rascunho')); } catch (e) {}
-  if (saved && saved.nichos) {
-    D = saved; draw(); say('Rascunho anterior carregado.');
-    /* avisa se o produtos.json publicado tem departamentos que o rascunho salvo não conhece (rascunho de antes de uma reorganização) */
-    fetch('produtos.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
-      var ids = (saved.departamentos || []).map(function (g) { return g.id; });
-      if ((j.departamentos || []).some(function (g) { return ids.indexOf(g.id) < 0; }))
-        say('Atenção: o catálogo publicado tem categorias novas que este rascunho não tem. Clique em "Descartar rascunho" para carregar a versão nova antes de editar.');
-    }).catch(function () {});
+  /* ---------- configuração ---------- */
+  function drawCfg() {
+    $("tk").value = CFG.token ? "••••••••••••" : ""; $("ow").value = CFG.owner; $("rp").value = CFG.repo; $("br").value = CFG.branch;
+    $("tkState").textContent = CFG.token ? "Token salvo neste navegador." : "Sem token: dá para cadastrar, mas não publicar.";
+    $("wa").value = D ? D.whatsapp || "" : "";
   }
-  else fetch('produtos.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) { D = j; draw(); })
-    .catch(function () { say('Não consegui ler o produtos.json. Cole o conteúdo na última caixa e clique em Carregar.'); });
+  $("tkSave").addEventListener("click", function () {
+    var t = $("tk").value.trim(), next = { token: /^•+$/.test(t) ? CFG.token : t, owner: $("ow").value.trim() || DEF_CFG.owner, repo: $("rp").value.trim() || DEF_CFG.repo, branch: $("br").value.trim() || DEF_CFG.branch };
+    if (!next.token) { say("Cole o token do GitHub.", "err"); return; }
+    var prev = CFG; CFG = next; $("tkState").textContent = "Testando…";
+    gh("").then(function (r) {
+      if (!r.permissions || !r.permissions.push) { var e = new Error("sem escrita"); e.status = 403; throw e; }
+      lsSet("sbk_cfg", CFG); drawCfg(); updPend(); say("Conectado ao repositório " + CFG.owner + "/" + CFG.repo + ".", "ok");
+      if (!dirty()) return boot();
+    }).catch(function (e) { CFG = prev; drawCfg(); say(ghErr(e), "err"); });
+  });
+  $("tkForget").addEventListener("click", function () { if (!confirm("Apagar o token deste navegador?")) return; CFG = { token: "", owner: CFG.owner, repo: CFG.repo, branch: CFG.branch }; lsSet("sbk_cfg", CFG); drawCfg(); updPend(); say("Token apagado deste navegador."); });
+  $("wa").addEventListener("input", function () { D.whatsapp = this.value.replace(/\D/g, ""); saveDraft(); });
+  $("discard").addEventListener("click", function () {
+    if (!confirm("Descartar todas as alterações não publicadas, inclusive fotos novas?")) return;
+    try { localStorage.removeItem("sbk_painel"); } catch (e) {}
+    allKeys().then(function (ks) { return Promise.all((ks || []).map(function (k) { return delFoto(k); })); }).catch(function () {}).then(function () { location.reload(); });
+  });
+
+  /* ---------- abas ---------- */
+  document.querySelector(".tabs").addEventListener("click", function (e) {
+    var b = e.target.closest(".tab"); if (!b) return;
+    document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+    ["produtos", "categorias", "config"].forEach(function (t) { $("t-" + t).hidden = t !== b.dataset.t; });
+  });
+  $("pubBtn").addEventListener("click", publish);
+
+  function drawAll() {
+    var curDep = $("dp").value, curNi = $("ni").value, curSu = $("su").value, curTb = getTambem();
+    fillDeps($("fd"), $("fd").value, true); fillDeps($("dp"), curDep || undefined);
+    if (!$("dp").value && deps()[0]) $("dp").value = deps()[0].id;
+    fillNichos(curNi); fillSubs(curSu); drawTambem(curTb);
+    drawThumbs(); drawList(); drawCats(); drawCfg(); updPend();
+  }
+
+  /* ---------- início ---------- */
+  function boot() {
+    return loadRemote().then(function (r) {
+      var draft = lsGet("sbk_painel");
+      if (draft && draft.D && draft.BASE && (draft.BASE.text !== r.base.text)) {
+        /* rascunho feito sobre uma versão antiga do site */
+        var temMudanca = JSON.stringify(draft.D, null, 1) + "\n" !== draft.BASE.text || (draft.PEND && (draft.PEND.up.length || draft.PEND.del.length));
+        if (temMudanca && confirm("Há um rascunho não publicado, mas o site foi atualizado depois dele.\n\nOK = continuar o rascunho (ele vai substituir o que está no site ao publicar)\nCancelar = descartar o rascunho e usar o site publicado")) {
+          D = draft.D; PEND = draft.PEND || PEND; BASE = r.base; return;
+        }
+        draft = null;
+      }
+      if (draft && draft.D && draft.BASE) { D = draft.D; PEND = draft.PEND || PEND; BASE = r.base; say("Rascunho não publicado carregado."); }
+      else { D = r.data; BASE = r.base; PEND = { up: [], del: [] }; }
+      D.produtos = D.produtos || []; D.nichos = D.nichos || [];
+    }).then(function () {
+      /* prévias das fotos ainda não enviadas */
+      return Promise.all(PEND.up.map(function (k) { return getFoto(k).then(function (b) { if (b) URLS[k] = URL.createObjectURL(b); }).catch(function () {}); }));
+    }).then(function () {
+      saveDraft(); clearForm(); drawAll();
+      if (!CFG.token) say("Para publicar direto no site, configure o token na aba Configuração.");
+    }).catch(function (e) {
+      say(e.status ? ghErr(e) : "Não consegui carregar o catálogo: " + e.message, "err");
+    });
+  }
+  CFG = Object.assign({}, DEF_CFG, lsGet("sbk_cfg") || {});
+  drawCfg(); boot();
 })();
 </script>
 </body>

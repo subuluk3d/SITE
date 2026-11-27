@@ -67,8 +67,7 @@
     "Vasos",
     "Cachepôs",
     "Kits de vasos"
-   ],
-   "capa": "fotos/produtos/vaso-espiral.webp"
+   ]
   },
   {
    "id": "luminarias",
@@ -80,8 +79,7 @@
     "Luminárias de mesa",
     "Abajures",
     "Luminárias de parede"
-   ],
-   "capa": "fotos/produtos/luminaria.webp"
+   ]
   },
   {
    "id": "esculturas",
@@ -93,8 +91,7 @@
     "Esculturas",
     "Bustos",
     "Objetos minimalistas"
-   ],
-   "capa": "fotos/produtos/escultura-geometrica.webp"
+   ]
   },
   {
    "id": "letreiros",
@@ -106,8 +103,7 @@
     "Nomes e frases",
     "Letras decorativas",
     "Números de casa"
-   ],
-   "capa": "fotos/produtos/letras-decorativas.webp"
+   ]
   },
   {
    "id": "quadros",
@@ -132,8 +128,7 @@
     "Chaveiros de cidades",
     "Miniaturas",
     "Mapas da região"
-   ],
-   "capa": "fotos/produtos/ima-litoral.webp"
+   ]
   },
   {
    "id": "plantas-jardim",
@@ -146,8 +141,7 @@
     "Vasos para suculentas",
     "Suportes de parede",
     "Marcadores de plantas"
-   ],
-   "capa": "fotos/produtos/vaso-espiral.webp"
+   ]
   },
   {
    "id": "datas-comemorativas",
@@ -172,8 +166,7 @@
     "Porta-canetas",
     "Porta-lápis",
     "Porta-pincéis"
-   ],
-   "capa": "fotos/produtos/porta-canetas-hex.webp"
+   ]
   },
   {
    "id": "porta-chaves",
@@ -184,8 +177,7 @@
    "subs": [
     "Porta-chaves de parede",
     "Porta-chaves de mesa"
-   ],
-   "capa": "fotos/produtos/porta-chaves-parede.webp"
+   ]
   },
   {
    "id": "porta-joias",
@@ -232,8 +224,7 @@
     "Porta-cartões",
     "Porta-retratos",
     "Porta-crachás"
-   ],
-   "capa": "fotos/produtos/porta-cartoes.webp"
+   ]
   },
   {
    "id": "porta-cozinha",
@@ -270,8 +261,7 @@
     "Suportes de mesa",
     "Suportes de parede",
     "Suportes de cama"
-   ],
-   "capa": "fotos/produtos/suporte-celular.webp"
+   ]
   },
   {
    "id": "suporte-headset",
@@ -282,8 +272,7 @@
    "subs": [
     "Suportes de headset",
     "Ganchos de mesa"
-   ],
-   "capa": "fotos/produtos/suporte-headset.webp"
+   ]
   },
   {
    "id": "suporte-controle",
@@ -294,8 +283,7 @@
    "subs": [
     "Suportes de controle",
     "Docks e bases"
-   ],
-   "capa": "fotos/produtos/suporte-controle.webp"
+   ]
   },
   {
    "id": "suporte-notebook",
@@ -330,8 +318,7 @@
     "Miniaturas e colecionáveis",
     "Medalhas e troféus",
     "Expositores de balcão"
-   ],
-   "capa": "fotos/produtos/expositor-degraus.webp"
+   ]
   },
   {
    "id": "suportes-parede",
@@ -355,8 +342,7 @@
     "Organizadores de mesa",
     "Bandejas",
     "Porta-documentos"
-   ],
-   "capa": "fotos/produtos/organizador-mesa.webp"
+   ]
   },
   {
    "id": "divisorias",
@@ -379,8 +365,7 @@
     "Clipes de cabo",
     "Passa-cabos",
     "Canaletas"
-   ],
-   "capa": "fotos/produtos/organizador-cabos.webp"
+   ]
   },
   {
    "id": "ferramentas-oficina",
@@ -392,8 +377,7 @@
     "Organizadores de parafusos",
     "Suportes de brocas e bits",
     "Acessórios de bancada"
-   ],
-   "capa": "fotos/produtos/organizador-parafusos.webp"
+   ]
   },
   {
    "id": "cozinha-casa",
@@ -452,8 +436,7 @@
     "Ganchos de parede",
     "Cabideiros",
     "Ganchos adesivos"
-   ],
-   "capa": "fotos/produtos/porta-chaves-parede.webp"
+   ]
   },
   {
    "id": "pecas-reposicao",
@@ -479,8 +462,7 @@
     "Comedouros elevados",
     "Porta-saquinhos",
     "Acessórios para coleiras"
-   ],
-   "capa": "fotos/produtos/tag-pet.webp"
+   ]
   },
   {
    "id": "automotivo",
@@ -492,8 +474,7 @@
     "Organizadores automotivos",
     "Suportes de celular",
     "Acessórios internos"
-   ],
-   "capa": "fotos/produtos/organizador-porta-copos.webp"
+   ]
   },
   {
    "id": "praia-viagem",
@@ -530,8 +511,7 @@
     "Chaveiros com logo",
     "Chaveiros de cidades",
     "Chaveiros temáticos"
-   ],
-   "capa": "fotos/produtos/chaveiro-nome.webp"
+   ]
   },
   {
    "id": "presentes-personalizados",
@@ -544,8 +524,7 @@
     "Dia dos Pais",
     "Dia dos Namorados",
     "Aniversário"
-   ],
-   "capa": "fotos/produtos/chaveiro-nome.webp"
+   ]
   },
   {
    "id": "festas-eventos",
@@ -594,8 +573,7 @@
     "Organizadores de jogos",
     "Acessórios gamer",
     "Iluminação de setup"
-   ],
-   "capa": "fotos/produtos/organizador-cabos.webp"
+   ]
   },
   {
    "id": "jogos-mesa",
@@ -684,8 +662,7 @@
     "Fisioterapeutas",
     "Psicólogos",
     "Enfermagem"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "prof-beleza",
@@ -698,8 +675,7 @@
     "Barbeiros",
     "Manicures",
     "Esteticistas"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "prof-alimentacao",
@@ -712,8 +688,7 @@
     "Números de mesa",
     "Porta-guardanapos",
     "Placas NFC"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "prof-comercio",
@@ -725,8 +700,7 @@
     "Expositores de balcão",
     "Porta-cartões",
     "Placas NFC"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "prof-escritorio",
@@ -738,8 +712,7 @@
     "Advogados",
     "Contadores",
     "Corretores de imóveis"
-   ],
-   "capa": "fotos/produtos/porta-cartoes.webp"
+   ]
   },
   {
    "id": "prof-educacao",
@@ -750,8 +723,7 @@
    "subs": [
     "Professores",
     "Escolas"
-   ],
-   "capa": "fotos/produtos/porta-canetas-hex.webp"
+   ]
   },
   {
    "id": "prof-tecnicos",
@@ -765,8 +737,7 @@
     "Engenheiros",
     "Arquitetos",
     "TI"
-   ],
-   "capa": "fotos/produtos/organizador-parafusos.webp"
+   ]
   },
   {
    "id": "prof-turismo",
@@ -779,8 +750,7 @@
     "Hotéis",
     "Náutica",
     "Surf"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "prof-pet",
@@ -791,8 +761,7 @@
    "subs": [
     "Veterinários",
     "Pet shops"
-   ],
-   "capa": "fotos/produtos/tag-pet.webp"
+   ]
   },
   {
    "id": "prof-fitness",
@@ -816,8 +785,7 @@
     "Placas NFC de avaliação",
     "Displays NFC de mesa",
     "NFC para Instagram e Wi-Fi"
-   ],
-   "capa": "fotos/produtos/placa-nfc-avaliacao.webp"
+   ]
   },
   {
    "id": "expositores-balcao",
@@ -829,8 +797,7 @@
     "Porta-cartões",
     "Expositores",
     "Displays de balcão"
-   ],
-   "capa": "fotos/produtos/porta-cartoes.webp"
+   ]
   },
   {
    "id": "sinalizacao",
@@ -855,8 +822,7 @@
     "Chaveiros com logo",
     "Kits com logo",
     "Brindes em quantidade"
-   ],
-   "capa": "fotos/produtos/brinde-corporativo.webp"
+   ]
   },
   {
    "id": "prototipos",
@@ -871,607 +837,5 @@
    ]
   }
  ],
- "produtos": [
-  {
-   "ref": "SUB-001",
-   "nome": "Placa NFC de avaliação Google",
-   "nicho": "comercio-empresas",
-   "sub": "Placas NFC de avaliação",
-   "descricao": "O cliente aproxima o celular e já abre a página de avaliação da sua empresa no Google. Sem aplicativo e sem QR Code. R$ 75,00.",
-   "dimensoes": "10 × 14 cm (com base)",
-   "cores": [
-    "Preto e verde",
-    "Preto e branco"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/placa-nfc-avaliacao.webp",
-    "fotos/produtos/placa-nfc-avaliacao-2.webp"
-   ],
-   "criado": "2026-11-19",
-   "tambem": [
-    "prof-alimentacao",
-    "prof-comercio",
-    "prof-saude",
-    "prof-beleza",
-    "prof-turismo"
-   ]
-  },
-  {
-   "ref": "SUB-002",
-   "nome": "Display NFC de mesa",
-   "nicho": "comercio-empresas",
-   "sub": "Displays NFC de mesa",
-   "descricao": "Display em formato de cavalete para mesas e balcões. Leva o cliente ao Instagram, cardápio ou WhatsApp com um toque do celular.",
-   "dimensoes": "9 × 11 cm",
-   "cores": [
-    "Branco e verde"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/display-nfc-mesa.webp",
-    "fotos/produtos/display-nfc-mesa-2.webp"
-   ],
-   "criado": "2026-11-19",
-   "tambem": [
-    "prof-alimentacao",
-    "prof-comercio",
-    "prof-beleza"
-   ]
-  },
-  {
-   "ref": "SUB-003",
-   "nome": "Porta-cartões de balcão",
-   "nicho": "expositores-balcao",
-   "sub": "Porta-cartões",
-   "descricao": "Porta-cartões com o nome ou logotipo da sua marca em relevo na frente.",
-   "dimensoes": "9,6 × 3,4 × 2,3 cm",
-   "cores": [
-    "Preto e verde",
-    "Branco e preto"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/porta-cartoes.webp",
-    "fotos/produtos/porta-cartoes-2.webp"
-   ],
-   "criado": "2026-11-18",
-   "tambem": [
-    "porta-cartoes",
-    "prof-comercio",
-    "prof-escritorio",
-    "prof-saude"
-   ]
-  },
-  {
-   "ref": "SUB-004",
-   "nome": "Expositor em degraus",
-   "nicho": "expositores-balcao",
-   "sub": "Expositores",
-   "descricao": "Expositor de três níveis para vitrines e balcões. Medidas ajustáveis aos seus produtos.",
-   "dimensoes": "16 × 13,5 × 4,8 cm",
-   "cores": [
-    "Branco",
-    "Preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/expositor-degraus.webp",
-    "fotos/produtos/expositor-degraus-2.webp"
-   ],
-   "criado": "2026-11-18",
-   "tambem": [
-    "expositores",
-    "prof-comercio"
-   ]
-  },
-  {
-   "ref": "SUB-005",
-   "nome": "Chaveiro com nome",
-   "nicho": "chaveiros",
-   "sub": "Chaveiros com nome",
-   "descricao": "Chaveiro com nome em relevo e cor de contraste. Ótimo para presentes, lembrancinhas e identificação de chaves.",
-   "dimensoes": "Aprox. 6 × 2,3 cm",
-   "cores": [
-    "Verde",
-    "Preto",
-    "Branco"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/chaveiro-nome.webp",
-    "fotos/produtos/chaveiro-nome-2.webp"
-   ],
-   "criado": "2026-11-18",
-   "tambem": [
-    "presentes-personalizados"
-   ]
-  },
-  {
-   "ref": "SUB-006",
-   "nome": "Letras decorativas",
-   "nicho": "letreiros",
-   "sub": "Letras decorativas",
-   "descricao": "Palavras e nomes em letras de 4 cm para decorar prateleiras, quartos e festas.",
-   "dimensoes": "Letras de 4 cm de altura",
-   "cores": [
-    "Branco",
-    "Verde",
-    "Sob consulta"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/letras-decorativas.webp",
-    "fotos/produtos/letras-decorativas-2.webp"
-   ],
-   "criado": "2026-11-17",
-   "tambem": [
-    "presentes-personalizados"
-   ]
-  },
-  {
-   "ref": "SUB-007",
-   "nome": "Chaveiros brinde com sua marca",
-   "nicho": "brindes-corporativos",
-   "sub": "Chaveiros com logo",
-   "descricao": "Chaveiros em lote com o nome ou logotipo da empresa, para eventos, campanhas e clientes.",
-   "dimensoes": "Aprox. 11 × 2,3 cm",
-   "cores": [
-    "Verde e preto",
-    "Cores da marca"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/brinde-corporativo.webp",
-    "fotos/produtos/brinde-corporativo-2.webp"
-   ],
-   "criado": "2026-11-17",
-   "tambem": [
-    "chaveiros"
-   ]
-  },
-  {
-   "ref": "SUB-008",
-   "nome": "Vaso espiral",
-   "nicho": "vasos",
-   "sub": "Vasos",
-   "descricao": "Vaso com nervuras em espiral que destacam as camadas da impressão. Ideal para flores secas ou plantas artificiais.",
-   "dimensoes": "Ø 9 × 13 cm",
-   "cores": [
-    "Verde sálvia (seda)",
-    "Sob consulta"
-   ],
-   "personalizavel": false,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/vaso-espiral.webp",
-    "fotos/produtos/vaso-espiral-2.webp"
-   ],
-   "criado": "2026-11-17",
-   "tambem": [
-    "plantas-jardim"
-   ]
-  },
-  {
-   "ref": "SUB-009",
-   "nome": "Kit vasos espiral terracota",
-   "nicho": "vasos",
-   "sub": "Kits de vasos",
-   "descricao": "Dupla de vasos em tom terroso, em dois tamanhos, para compor mesas e estantes.",
-   "dimensoes": "Ø 8 × 11 cm e Ø 5 × 7 cm",
-   "cores": [
-    "Terracota"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/vaso-espiral-terracota.webp",
-    "fotos/produtos/vaso-espiral-terracota-2.webp"
-   ],
-   "criado": "2026-11-16",
-   "tambem": [
-    "plantas-jardim"
-   ]
-  },
-  {
-   "ref": "SUB-010",
-   "nome": "Vasos geométricos",
-   "nicho": "vasos",
-   "sub": "Vasos",
-   "descricao": "Vasos facetados em estilo low-poly, em versão alta e baixa.",
-   "dimensoes": "Ø 7 × 11 cm e Ø 5 × 7 cm",
-   "cores": [
-    "Branco",
-    "Preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/vaso-geometrico.webp",
-    "fotos/produtos/vaso-geometrico-2.webp"
-   ],
-   "criado": "2026-11-16"
-  },
-  {
-   "ref": "SUB-011",
-   "nome": "Luminária de mesa ondulada",
-   "nicho": "luminarias",
-   "sub": "Luminárias de mesa",
-   "descricao": "Cúpula com ondulações que difundem a luz de forma suave. Usa lâmpada LED, que não aquece a peça.",
-   "dimensoes": "Ø 10 × 15 cm",
-   "cores": [
-    "Branco"
-   ],
-   "personalizavel": false,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/luminaria.webp",
-    "fotos/produtos/luminaria-2.webp"
-   ],
-   "criado": "2026-11-16"
-  },
-  {
-   "ref": "SUB-012",
-   "nome": "Escultura nó infinito",
-   "nicho": "esculturas",
-   "sub": "Esculturas",
-   "descricao": "Escultura decorativa em filamento acetinado dourado com base preta.",
-   "dimensoes": "Ø 9 × 11 cm",
-   "cores": [
-    "Dourado seda"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/escultura-geometrica.webp",
-    "fotos/produtos/escultura-geometrica-2.webp"
-   ],
-   "criado": "2026-11-15"
-  },
-  {
-   "ref": "SUB-013",
-   "nome": "Organizador de mesa modular",
-   "nicho": "org-mesa",
-   "sub": "Organizadores de mesa",
-   "descricao": "Compartimentos para canetas, lápis, clipes e pequenos itens, com base em cor de destaque.",
-   "dimensoes": "14 × 8,5 × 7,5 cm",
-   "cores": [
-    "Grafite e verde"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/organizador-mesa.webp",
-    "fotos/produtos/organizador-mesa-2.webp"
-   ],
-   "criado": "2026-11-15",
-   "tambem": [
-    "prof-escritorio"
-   ]
-  },
-  {
-   "ref": "SUB-014",
-   "nome": "Porta-canetas colmeia",
-   "nicho": "porta-canetas",
-   "sub": "Porta-canetas",
-   "descricao": "Três tubos hexagonais de alturas diferentes. Vendidos juntos ou separados.",
-   "dimensoes": "Tubos de 9, 7 e 5,5 cm",
-   "cores": [
-    "Branco, verde e preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/porta-canetas-hex.webp",
-    "fotos/produtos/porta-canetas-hex-2.webp"
-   ],
-   "criado": "2026-11-15",
-   "tambem": [
-    "org-mesa",
-    "prof-escritorio",
-    "prof-educacao"
-   ]
-  },
-  {
-   "ref": "SUB-015",
-   "nome": "Suporte de celular de mesa",
-   "nicho": "suporte-celular",
-   "sub": "Suportes de mesa",
-   "descricao": "Apoio inclinado para assistir, fazer chamadas de vídeo ou acompanhar receitas.",
-   "dimensoes": "7 × 6,5 × 9 cm",
-   "cores": [
-    "Verde",
-    "Preto",
-    "Branco"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/suporte-celular.webp",
-    "fotos/produtos/suporte-celular-2.webp"
-   ],
-   "criado": "2026-11-14"
-  },
-  {
-   "ref": "SUB-016",
-   "nome": "Organizador de cabos",
-   "nicho": "org-cabos",
-   "sub": "Clipes de cabo",
-   "descricao": "Barra com presilhas para manter cabos de carregador e fones sempre à mão.",
-   "dimensoes": "16 × 3,4 × 2 cm",
-   "cores": [
-    "Branco e verde"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/organizador-cabos.webp",
-    "fotos/produtos/organizador-cabos-2.webp"
-   ],
-   "criado": "2026-11-14",
-   "tambem": [
-    "games-tecnologia"
-   ]
-  },
-  {
-   "ref": "SUB-017",
-   "nome": "Porta-chaves de parede Lar",
-   "nicho": "porta-chaves",
-   "sub": "Porta-chaves de parede",
-   "descricao": "Placa em formato de casinha com quatro ganchos. O texto pode ser trocado pelo nome da família.",
-   "dimensoes": "16 × 11 cm",
-   "cores": [
-    "Preto e verde"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/porta-chaves-parede.webp",
-    "fotos/produtos/porta-chaves-parede-2.webp"
-   ],
-   "criado": "2026-11-14",
-   "tambem": [
-    "casa-utilidades"
-   ]
-  },
-  {
-   "ref": "SUB-018",
-   "nome": "Ganchos de parede",
-   "nicho": "casa-utilidades",
-   "sub": "Ganchos de parede",
-   "descricao": "Ganchos para chaves, bolsas e toalhas, fixados com fita dupla face ou parafuso.",
-   "dimensoes": "2,6 × 4,4 cm",
-   "cores": [
-    "Branco",
-    "Verde",
-    "Preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/ganchos-parede.webp",
-    "fotos/produtos/ganchos-parede-2.webp"
-   ],
-   "criado": "2026-11-13"
-  },
-  {
-   "ref": "SUB-019",
-   "nome": "Suporte para headset",
-   "nicho": "suporte-headset",
-   "sub": "Suportes de headset",
-   "descricao": "Suporte de mesa com base firme e topo arredondado, que não marca o arco do fone.",
-   "dimensoes": "Ø 10 × 18 cm",
-   "cores": [
-    "Preto e verde"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/suporte-headset.webp",
-    "fotos/produtos/suporte-headset-2.webp"
-   ],
-   "criado": "2026-11-13",
-   "tambem": [
-    "games-tecnologia"
-   ]
-  },
-  {
-   "ref": "SUB-020",
-   "nome": "Suporte para controle",
-   "nicho": "suporte-controle",
-   "sub": "Suportes de controle",
-   "descricao": "Apoio inclinado para controles de videogame, deixando o setup organizado.",
-   "dimensoes": "12 × 8 × 7 cm",
-   "cores": [
-    "Verde",
-    "Preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/suporte-controle.webp",
-    "fotos/produtos/suporte-controle-2.webp"
-   ],
-   "criado": "2026-11-13",
-   "tambem": [
-    "games-tecnologia"
-   ]
-  },
-  {
-   "ref": "SUB-021",
-   "nome": "Organizador de porta-copos",
-   "nicho": "automotivo",
-   "sub": "Organizadores automotivos",
-   "descricao": "Encaixa no porta-copos do carro e separa moedas, chaves e cartão de estacionamento.",
-   "dimensoes": "Ø 7,4 × 7,5 cm",
-   "cores": [
-    "Preto"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/organizador-porta-copos.webp",
-    "fotos/produtos/organizador-porta-copos-2.webp"
-   ],
-   "criado": "2026-11-12"
-  },
-  {
-   "ref": "SUB-022",
-   "nome": "Plaquinha de identificação pet",
-   "nicho": "pet-shop",
-   "sub": "Identificadores",
-   "descricao": "Plaquinhas em formato de osso ou patinha com o nome do pet. No verso cabe o telefone do tutor.",
-   "dimensoes": "Aprox. 6 × 4 cm",
-   "cores": [
-    "Azul",
-    "Amarelo",
-    "Sob consulta"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/tag-pet.webp",
-    "fotos/produtos/tag-pet-2.webp"
-   ],
-   "criado": "2026-11-12",
-   "tambem": [
-    "prof-pet"
-   ]
-  },
-  {
-   "ref": "SUB-023",
-   "nome": "Organizador de parafusos",
-   "nicho": "ferramentas-oficina",
-   "sub": "Organizadores de parafusos",
-   "descricao": "Caixa com seis divisórias para parafusos, porcas e arruelas na bancada.",
-   "dimensoes": "15 × 10 × 3,9 cm",
-   "cores": [
-    "Laranja e grafite"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/organizador-parafusos.webp",
-    "fotos/produtos/organizador-parafusos-2.webp"
-   ],
-   "criado": "2026-11-12",
-   "tambem": [
-    "prof-tecnicos"
-   ]
-  },
-  {
-   "ref": "SUB-024",
-   "nome": "Suporte de brocas",
-   "nicho": "ferramentas-oficina",
-   "sub": "Suportes de brocas e bits",
-   "descricao": "Base em degraus com furos por diâmetro, para achar a broca certa na hora.",
-   "dimensoes": "14 × 6 × 4,5 cm",
-   "cores": [
-    "Verde"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/suporte-brocas.webp",
-    "fotos/produtos/suporte-brocas-2.webp"
-   ],
-   "criado": "2026-11-11",
-   "tambem": [
-    "prof-tecnicos"
-   ]
-  },
-  {
-   "ref": "SUB-025",
-   "nome": "Ímã Caraguatatuba",
-   "nicho": "turismo-regional",
-   "sub": "Ímãs de geladeira",
-   "descricao": "Ímã de geladeira com mar, sol e a Serra do Mar em camadas coloridas.",
-   "dimensoes": "9 × 6 cm",
-   "cores": [
-    "Colorido"
-   ],
-   "personalizavel": true,
-   "destaque": true,
-   "fotos": [
-    "fotos/produtos/ima-litoral.webp",
-    "fotos/produtos/ima-litoral-2.webp"
-   ],
-   "criado": "2026-11-11",
-   "tambem": [
-    "prof-turismo"
-   ]
-  },
-  {
-   "ref": "SUB-026",
-   "nome": "Chaveiros das cidades do litoral",
-   "nicho": "turismo-regional",
-   "sub": "Chaveiros de cidades",
-   "descricao": "Chaveiros de Caraguatatuba, Ubatuba, Ilhabela e São Sebastião. Ideais para lojas de souvenir.",
-   "dimensoes": "Aprox. 11 × 2,3 cm",
-   "cores": [
-    "Azul",
-    "Amarelo",
-    "Branco"
-   ],
-   "personalizavel": true,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/chaveiro-cidade.webp",
-    "fotos/produtos/chaveiro-cidade-2.webp"
-   ],
-   "criado": "2026-11-11",
-   "tambem": [
-    "chaveiros",
-    "prof-turismo"
-   ]
-  },
-  {
-   "ref": "SUB-027",
-   "nome": "Farol em miniatura",
-   "nicho": "turismo-regional",
-   "sub": "Miniaturas",
-   "descricao": "Miniatura de farol listrado sobre pedras, para decoração e lembrança do litoral.",
-   "dimensoes": "Ø 6 × 19 cm",
-   "cores": [
-    "Vermelho e branco"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/farol-miniatura.webp",
-    "fotos/produtos/farol-miniatura-2.webp"
-   ],
-   "criado": "2026-11-10",
-   "tambem": [
-    "prof-turismo"
-   ]
-  },
-  {
-   "ref": "SUB-028",
-   "nome": "Vaso orgânico",
-   "nicho": "vasos",
-   "sub": "Vasos",
-   "descricao": "Vaso de formas orgânicas e onduladas, com acabamento fosco. Fica bonito com suculentas e plantas pequenas ou sozinho, como objeto decorativo.",
-   "dimensoes": "",
-   "cores": [
-    "Branco"
-   ],
-   "personalizavel": false,
-   "destaque": false,
-   "fotos": [
-    "fotos/produtos/vaso-organico.webp"
-   ],
-   "criado": "2026-11-24",
-   "tambem": [
-    "plantas-jardim"
-   ]
-  }
- ]
+ "produtos": []
 }

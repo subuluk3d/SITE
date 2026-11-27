@@ -113,6 +113,9 @@ main{padding:22px 0 80px;min-height:60vh;outline:none}
 .slide .ph{position:relative;overflow:hidden}
 .slide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .slide .ph::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--panel),transparent 40%)}
+.slide .ph.ic{display:grid;place-items:center}.slide .ph.ic>svg{width:38%;max-width:170px;height:auto;aspect-ratio:1;color:var(--lime);opacity:.85}
+.card .im>svg{position:absolute;inset:0;margin:auto;width:46px;height:46px;color:var(--lime);opacity:.7}
+.card .pr{font-weight:700;color:var(--lime);font-size:.95rem}
 .slide.s1{background:radial-gradient(80% 120% at 0% 100%,rgba(76,214,43,.25),transparent 60%),var(--panel)}
 .slide.s2{background:radial-gradient(80% 120% at 0% 0%,rgba(184,255,60,.18),transparent 60%),var(--panel)}
 .slide.s3{background:radial-gradient(80% 120% at 0% 100%,rgba(60,170,255,.16),transparent 60%),var(--panel)}
@@ -344,7 +347,7 @@ footer button{color:inherit;font-size:inherit}
 <div class="pm" id="pm" role="dialog" aria-modal="true" aria-labelledby="pm-t" hidden></div>
 
 <footer><div class="wrap">
-  <span>© 2026 Subuluk 3D · Caraguatatuba, SP · Imagens ilustrativas (renderizações 3D)</span>
+  <span>© 2026 Subuluk 3D · Caraguatatuba, SP</span>
   <nav aria-label="Rodapé"><a href="index.html">Início</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos</a><a href="cookies.html">Cookies</a><button type="button" data-cookie-prefs>Gerenciar cookies</button></nav>
 </div></footer>
 
@@ -370,6 +373,8 @@ function E(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return"
 function norm(s){return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()}
 function wa(t){var n=(D&&D.whatsapp)||(window.SBK&&SBK.config.WHATSAPP)||"5512982299331";return"https://wa.me/"+n+"?text="+encodeURIComponent(t||"Olá! Vim pelo catálogo da Subuluk 3D e gostaria de um orçamento.")}
 function track(n,p){if(window.SBK)SBK.track(n,p)}
+/* preço opcional: número em reais; "precoAPartir" mostra "a partir de" */
+function preco(p){var v=Number(p&&p.preco);if(!(v>0))return"";return(p.precoAPartir?"a partir de ":"")+v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
 function cnt(id){return P.filter(function(p){return em(p,id)}).length}
 
 /* ---------- estado na URL ---------- */
@@ -411,9 +416,10 @@ function filter(s){
 function card(p,q){
   var f=p.fotos||[],n=byId[p.nicho]||{};
   return '<a class="card" href="'+url({p:p.ref})+'" data-ref="'+E(p.ref)+'">'+
-    '<div class="im">'+(f[0]?'<img src="'+E(f[0])+'" alt="'+E(p.nome)+'" loading="lazy" decoding="async" width="600" height="600">':"")+(f[1]?'<img src="'+E(f[1])+'" alt="" loading="lazy" decoding="async">':"")+
+    '<div class="im">'+(f[0]?'<img src="'+E(f[0])+'" alt="'+E(p.nome)+'" loading="lazy" decoding="async" width="600" height="600">':ic(p.nicho))+(f[1]?'<img src="'+E(f[1])+'" alt="" loading="lazy" decoding="async">':"")+
     '<div class="badges">'+(p.destaque?'<span class="bd">Mais pedido</span>':"")+(p.personalizavel?'<span class="bd o">Personalizável</span>':"")+'</div></div>'+
     '<div class="bo"><h3>'+(q?hl(p.nome,q):E(p.nome))+'</h3><span class="ct">'+E(n.nome||"")+'</span>'+
+    (preco(p)?'<span class="pr">'+E(preco(p))+'</span>':"")+
     '<div class="ft"><span class="mono">'+E(p.ref)+(p.dimensoes?" · "+E(p.dimensoes):"")+'</span><span class="wa" aria-hidden="true"><svg><use href="#i-wa"/></svg></span></div></div></a>';
 }
 function strip(s){
@@ -435,20 +441,22 @@ var slideT=null;
 function viewHome(){
   var dest=P.filter(function(p){return p.destaque}),novos=P.slice().sort(function(a,b){return(b.criado||"").localeCompare(a.criado||"")}).slice(0,12);
   var sl=[
-    ["s1","Avaliações no Google <em>com um toque.</em>","Placas e displays NFC para o balcão: o cliente encosta o celular e avalia sua empresa.","fotos/produtos/placa-nfc-avaliacao.webp",url({n:"comercio-empresas"}),"Ver placas NFC"],
-    ["s2","Brindes com <em>a sua marca.</em>","Chaveiros, letreiros e lembranças com logotipo, para eventos, campanhas e clientes.","fotos/produtos/brinde-corporativo.webp",url({n:"brindes-corporativos"}),"Ver brindes"],
-    ["s3","Feito no <em>Litoral Norte.</em>","Ímãs, chaveiros das cidades e miniaturas para lojas de souvenir e para quem ama a região.","fotos/produtos/ima-litoral.webp",url({n:"turismo-regional"}),"Ver Litoral Norte"]];
+    /* 4º item: ícone do destaque (sem fotos por enquanto) */
+    ["s1","Avaliações no Google <em>com um toque.</em>","Placas e displays NFC para o balcão: o cliente encosta o celular e avalia sua empresa.","c-nfc",url({n:"comercio-empresas"}),"Ver placas NFC"],
+    ["s2","Brindes com <em>a sua marca.</em>","Chaveiros, letreiros e lembranças com logotipo, para eventos, campanhas e clientes.","c-gift",url({n:"brindes-corporativos"}),"Ver brindes"],
+    ["s3","Feito no <em>Litoral Norte.</em>","Ímãs, chaveiros das cidades e miniaturas para lojas de souvenir e para quem ama a região.","c-wave",url({n:"turismo-regional"}),"Ver Litoral Norte"]];
   main.innerHTML=
     '<h1 class="sr">Catálogo Subuluk 3D</h1>'+
     '<section class="hero" aria-roledescription="carrossel" aria-label="Destaques"><div class="slides" id="slides">'+
-    sl.map(function(s,i){return'<div class="slide '+s[0]+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' de '+sl.length+'"'+(i?' aria-hidden="true"':"")+'><div class="tx"><span class="mono">// Destaque '+(i+1)+'</span><h2>'+s[1]+'</h2><p>'+s[2]+'</p><a class="btn" href="'+s[4]+'"'+(i?' tabindex="-1"':"")+'>'+s[5]+' <svg class="i" style="width:16px;height:16px"><use href="#i-r"/></svg></a></div><div class="ph"><img src="'+s[3]+'" alt="" '+(i?'loading="lazy"':'fetchpriority="high"')+'></div></div>'}).join("")+
+    sl.map(function(s,i){return'<div class="slide '+s[0]+'" role="group" aria-roledescription="slide" aria-label="'+(i+1)+' de '+sl.length+'"'+(i?' aria-hidden="true"':"")+'><div class="tx"><span class="mono">// Destaque '+(i+1)+'</span><h2>'+s[1]+'</h2><p>'+s[2]+'</p><a class="btn" href="'+s[4]+'"'+(i?' tabindex="-1"':"")+'>'+s[5]+' <svg class="i" style="width:16px;height:16px"><use href="#i-r"/></svg></a></div><div class="ph ic"><svg aria-hidden="true"><use href="#'+s[3]+'"/></svg></div></div>'}).join("")+
     '</div><div class="hctl"><div class="dots" id="dots">'+sl.map(function(_,i){return'<button type="button" aria-label="Ir para o destaque '+(i+1)+'" aria-current="'+(i===0)+'"></button>'}).join("")+'</div>'+
     '<button class="arr" type="button" id="hp" aria-label="Destaque anterior"><svg class="i" style="width:16px;height:16px"><use href="#i-l"/></svg></button><button class="arr" type="button" id="hn" aria-label="Próximo destaque"><svg class="i" style="width:16px;height:16px"><use href="#i-r"/></svg></button></div></section>'+
     '<section class="sec" aria-labelledby="h-cat"><div class="sh"><h2 id="h-cat">Explorar categorias</h2><span class="mono">'+N.length+' categorias</span></div>'+
     G.map(function(g,i){return'<div class="grp" role="group" aria-labelledby="g-'+i+'"><div class="gh3"><h3 id="g-'+i+'">'+gic(g)+E(g.nome)+'</h3><a href="'+url({d:g.id})+'">Ver tudo <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="tiles">'+nichosDe(g.id).map(tile).join("")+'</div></div>'}).join("")+'</section>'+
-    '<section class="sec" aria-labelledby="h-dest"><div class="sh"><h2 id="h-dest">Mais pedidos</h2><a href="'+url({f:"destaque"})+'">Ver todos <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+dest.map(function(p){return card(p)}).join("")+'</div></section>'+
-    '<section class="sec" aria-labelledby="h-new"><div class="sh"><h2 id="h-new">Novidades</h2><a href="'+url({o:"recentes"})+'">Ver todas <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+novos.map(function(p){return card(p)}).join("")+'</div></section>'+
-    '<section class="sec" aria-labelledby="h-all"><div class="sh"><h2 id="h-all">Todas as peças</h2><span class="mono">'+P.length+' peças</span></div><div class="grid">'+filter({o:"destaque"}).map(function(p){return card(p)}).join("")+'</div></section>';
+    /* seções de peças só aparecem quando há produtos cadastrados */
+    (dest.length?'<section class="sec" aria-labelledby="h-dest"><div class="sh"><h2 id="h-dest">Mais pedidos</h2><a href="'+url({f:"destaque"})+'">Ver todos <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+dest.map(function(p){return card(p)}).join("")+'</div></section>':"")+
+    (novos.length?'<section class="sec" aria-labelledby="h-new"><div class="sh"><h2 id="h-new">Novidades</h2><a href="'+url({o:"recentes"})+'">Ver todas <svg class="i" style="width:14px;height:14px"><use href="#i-r"/></svg></a></div><div class="row">'+novos.map(function(p){return card(p)}).join("")+'</div></section>':"")+
+    (P.length?'<section class="sec" aria-labelledby="h-all"><div class="sh"><h2 id="h-all">Todas as peças</h2><span class="mono">'+P.length+' peças</span></div><div class="grid">'+filter({o:"destaque"}).map(function(p){return card(p)}).join("")+'</div></section>':"");
   var idx=0,n=sl.length,box=$("#slides");
   function show(i){idx=(i+n)%n;box.style.transform="translateX(-"+idx*100+"%)";$$("#dots button").forEach(function(b,j){b.setAttribute("aria-current",j===idx)});
     $$(".slide",box).forEach(function(s,j){s.setAttribute("aria-hidden",j!==idx);var a=$("a",s);if(a)a.tabIndex=j===idx?0:-1})}
@@ -510,9 +518,9 @@ function openProduct(ref){
     '<div class="pin"><nav class="crumb" aria-label="Categoria">'+(gById[grupoDe(n)]&&n.id?'<a href="'+url({d:grupoDe(n)})+'">'+E(gById[grupoDe(n)].nome)+'</a><span aria-hidden="true">/</span>':"")+'<a href="'+url({n:p.nicho})+'">'+E(n.nome||"")+'</a>'+(p.sub?'<span aria-hidden="true">/</span><span>'+E(p.sub)+'</span>':"")+'</nav>'+
     '<h2 id="pm-t">'+E(p.nome)+'</h2><div class="badges" style="position:static">'+(p.destaque?'<span class="bd">Mais pedido</span>':"")+(p.personalizavel?'<span class="bd o">Personalizável</span>':"")+'</div>'+
     '<p class="d">'+E(p.descricao)+'</p>'+
-    '<dl class="specs"><dt>Código</dt><dd>'+E(p.ref)+'</dd>'+(p.dimensoes?'<dt>Medidas</dt><dd>'+E(p.dimensoes)+'</dd>':"")+((p.cores||[]).length?'<dt>Cores</dt><dd>'+E(p.cores.join(", "))+'</dd>':"")+'<dt>Personalização</dt><dd>'+(p.personalizavel?"Sim: nome, texto, logo ou cores":"Modelo padrão")+'</dd></dl>'+
+    '<dl class="specs"><dt>Código</dt><dd>'+E(p.ref)+'</dd>'+(preco(p)?'<dt>Preço</dt><dd><strong>'+E(preco(p))+'</strong></dd>':"")+(p.dimensoes?'<dt>Medidas</dt><dd>'+E(p.dimensoes)+'</dd>':"")+((p.cores||[]).length?'<dt>Cores</dt><dd>'+E(p.cores.join(", "))+'</dd>':"")+'<dt>Personalização</dt><dd>'+(p.personalizavel?"Sim: nome, texto, logo ou cores":"Modelo padrão")+'</dd></dl>'+
     '<div class="acts"><a class="btn" target="_blank" rel="noopener" href="'+wa(msg)+'"><svg class="i" style="width:18px;height:18px"><use href="#i-wa"/></svg>Pedir pelo WhatsApp</a><button class="btn gh" type="button" id="copy"><svg class="i" style="width:16px;height:16px"><use href="#i-link"/></svg><span>Copiar link</span></button></div>'+
-    '<p class="note">Imagens ilustrativas. Cores e acabamento podem variar na peça real. Preço e prazo vêm no orçamento.</p></div>'+
+    '<p class="note">Cores e acabamento podem variar na peça real. '+(preco(p)?"Personalizações e frete podem alterar o valor; o prazo vem no orçamento.":"Preço e prazo vêm no orçamento.")+'</p></div>'+
     (rel.length?'<div class="rel"><div class="sh"><h2 style="font-size:1.1rem">Mais em '+E(n.nome||"")+'</h2></div><div class="row">'+rel.map(function(x){return card(x)}).join("")+'</div></div>':"")+'</div>';
   if(pm.hidden)lastFocus=document.activeElement;
   pm.hidden=false;document.documentElement.classList.add("ck-lock");$(".pbox",pm).scrollTop=0;
